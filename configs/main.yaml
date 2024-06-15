@@ -1,0 +1,5 @@
+data:
+  version: v1.0
+  remote: localstore
+  repo: "."
+  path: data/raw/Equity_Apartments_Data.csv 
