@@ -2,7 +2,7 @@ import hydra
 import dvc.api
 import pandas as pd
 
-@hydra.main(config_path="../config", config_name = "name", version_base=None)
+@hydra.main(config_path="../configs", config_name = "main", version_base=None)
 def app(cfg = None):
     url = dvc.api.get_url(
         path=cfg.data.path,
