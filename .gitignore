@@ -1,4 +1,4 @@
 #datastore
 datastore
-/data/raw/.
+data/raw/
 __pycache__/
