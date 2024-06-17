@@ -18,3 +18,9 @@ For Equity Residential, the challenge lies in accurately adjusting rental prices
 ├───sql                # SQL files \
 ├───src                # Python scripts \
 └───tests              # Scripts for testing Python code \
+
+##Installing
+To install environments and requirements, use the following script:
+```bash
+./scripts/install_requirements.sh
+```
