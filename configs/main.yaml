@@ -3,3 +3,5 @@ data:
   remote: localstore
   repo: "."
   path: data/raw/Equity_Apartments_Data.csv 
+  sample_size: 0.2
+  random_state: 1

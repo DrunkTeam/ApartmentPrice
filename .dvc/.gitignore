@@ -1,3 +1,5 @@
-/config.local
+/config
 /tmp
+/caches
+/config.local
 /cache

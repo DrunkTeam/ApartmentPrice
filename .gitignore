@@ -1,6 +1,6 @@
 #datastore
 datastore
-data/raw/
 __pycache__/
 venv
 outputs
+pytest.ini
