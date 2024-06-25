@@ -15,7 +15,7 @@ elif [[ "$OSTYPE" == "cygwin" ]]; then
 elif [[ "$OSTYPE" == "msys" ]]; then
     source venv/Scripts/activate
 elif [[ "$OSTYPE" == "win32" ]]; then
-    source venv/Scripts/activate
+    venv\Scripts\activate
 else
     echo "Unknown OS type: $OSTYPE"
     exit 1
@@ -25,6 +25,9 @@ fi
 pip install --upgrade pip
 
 # Install requirements
-pip install -r requirements.txt
-
-echo "Requirements installed in virtual environment"
+if pip install -r requirements.txt; then
+    echo "Requirements installed in virtual environment"
+else
+    echo "Error installing requirements"
+    exit 1
+fi
