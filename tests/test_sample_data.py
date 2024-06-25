@@ -4,6 +4,7 @@ import pandas as pd
 from hydra import initialize, compose
 from unittest.mock import patch
 from src.data import sample_data
+from src.validate_data import validate_initial_data
 
 def mock_system(command):
     if command.startswith('dvc add') or command.startswith('dvc push'):
@@ -41,3 +42,7 @@ def test_sample_data_not_empty(tmp_path):
         sample_df = pd.read_csv('data/samples/sample.csv')
         
         assert not sample_df.empty, "Sample file is empty."
+
+def test_validate_initial_data():
+    csv_path = "../data/samples/sample.csv"
+    validate_initial_data(csv_path)
