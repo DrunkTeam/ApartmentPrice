@@ -2,6 +2,7 @@
 For Equity Residential, the challenge lies in accurately adjusting rental prices for their apartments on a daily basis to maximize revenue while maintaining competitive occupancy rates.
 
 ## The structure of repo
+```
 ├───README.md          # Repo docs \
 ├───.gitignore         # gitignore file \
 ├───requirements.txt   # Python packages   \
@@ -18,6 +19,7 @@ For Equity Residential, the challenge lies in accurately adjusting rental prices
 ├───sql                # SQL files \
 ├───src                # Python scripts \
 └───tests              # Scripts for testing Python code \
+```
 
 ##Installing
 To install environments and requirements, use the following script:
