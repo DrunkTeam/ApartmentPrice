@@ -14,6 +14,7 @@ sudo apt upgrade
 
 ```bash
 sudo apt install python3.11
+sudo apt install python3.11-venv
 ```
 
 ```bash
@@ -56,5 +57,85 @@ modified      /root/.bashrc
 Thank you for installing Anaconda3!
 
 ```bash
-
+sudo apt-get install postgresql
 ```
+
+```bash
+sudo systemctl start postgresql
+```
+
+```bash
+exit
+```
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+```bash
+sudo -i
+```
+
+```bash
+conda create -n mlops python=3.11.0
+```
+
+```bash
+conda activate mlops
+```
+
+```bash
+pip install poetry==1.8.1
+```
+
+```bash
+poetry install
+```
+
+```bash
+exit
+```
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+```bash
+echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+```
+
+```bash
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+```
+
+```bash
+sudo apt-get install build-essential
+```
+
+```bash
+mkdir ~/ApartmentPrice
+```
+
+```bash
+cd ~/ApartmentPrice
+```
+
+```bash
+git clone https://github.com/DrunkTeam/ApartmentPrice.git .
+```
+
+```bash
+git checkout dev-kama
+```
+
+```bash
+pip install poetry==1.8.1
+```
+
+```bash
+poetry install
+```
+
+Current Python version (3.11.0) is not allowed by the project (3.10.13).
+Please change python executable via the "env use" command.
+
