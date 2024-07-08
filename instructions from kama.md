@@ -145,3 +145,28 @@ Please change python executable via the "env use" command.
 git pull
 ```
 
+Ошибка не ушла, но мы пошли дальше
+
+```bash
+cd /root/ApartmentPrice/services/airflow/
+```
+
+```bash
+nano airflow.cfg
+```
+
+Меняем пути на 
+dags_folder = /root/ApartmentPrice/services/airflow/dags
+plugins_folder = /root/ApartmentPrice/services/airflow/plugins
+base_log_folder = /root/ApartmentPrice/services/airflow/logs
+dag_processor_manager_log_location = /root/ApartmentPrice/services/airflow/logs/dag_processor_manager/dag_processor_man>
+config_file = /root/ApartmentPrice/services/airflow/webserver_config.py
+child_process_log_directory = /root/ApartmentPrice/services/airflow/logs/scheduler
+
+```bash
+cd /root/ApartmentPrice/services/airflow
+```
+
+```bash
+mkdir dags
+```
