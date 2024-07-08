@@ -5,3 +5,9 @@ venv
 outputs
 pytest.ini
 poetry-venv
+logs
+*.err
+*.out
+*.pid
+airflow.cfg
+airflow.db
