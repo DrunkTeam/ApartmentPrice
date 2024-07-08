@@ -139,3 +139,9 @@ poetry install
 Current Python version (3.11.0) is not allowed by the project (3.10.13).
 Please change python executable via the "env use" command.
 
+Из-за этой ошибки надо поменять в файле poetry.lock поменять в последней строчке версию python с 3.10.13 на 3.11.0
+
+```bash
+git pull
+```
+
