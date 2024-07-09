@@ -170,3 +170,82 @@ cd /root/ApartmentPrice/services/airflow
 ```bash
 mkdir dags
 ```
+
+```bash
+poetry lock --no-update
+```
+
+```bash
+poetry install
+```
+
+```bash
+sudo systemctl start postgresql
+sudo -u postgres psql
+```
+
+```bash
+CREATE USER ninel WITH PASSWORD 'ninel';
+CREATE DATABASE airflow;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ninel;
+show hba_file;
+\q
+```
+
+```bash
+sudo nano /etc/postgresql/14/main/pg_hba.conf
+```
+
+# 1. Open this file
+sudo nano /etc/postgresql/14/main/pg_hba.conf
+
+# 2. Add the following line to the end of this file
+host all all 0.0.0.0/0 trust
+
+# 3. Save the change and close it
+
+# 4. Open another file
+sudo nano /etc/postgresql/14/main/postgresql.conf
+
+# 5. Add the line as follows
+
+#------------------------------------------------------------------------------
+# CONNECTIONS AND AUTHENTICATION
+#------------------------------------------------------------------------------
+
+# - Connection Settings -
+
+listen_addresses = '*'
+
+# 6. Save the change and close it
+
+```bash
+sudo systemctl restart postgresql
+```
+
+```bash
+export AIRFLOW_HOME=$PWD/services/airflow
+poetry run airflow db init
+```
+
+```bash
+airflow users create --role Admin --username admin --email admin@example.org --firstname admin --lastname admin --password admin
+```
+
+```bash
+export PYTHONPATH=$PWD/src
+echo "export PYTHONPATH=$PWD/src" >> ~/.bashrc
+source ~/.bashrc
+conda activate mlops
+mkdir -p $AIRFLOW_HOME/logs $AIRFLOW_HOME/dags
+echo > $AIRFLOW_HOME/logs/scheduler.log
+echo > $AIRFLOW_HOME/logs/triggerer.log
+echo > $AIRFLOW_HOME/logs/webserver.log
+echo *.log >> $AIRFLOW_HOME/logs/.gitignore
+```
+
+```bash
+airflow scheduler --daemon --log-file services/airflow/logs/scheduler.log
+airflow webserver --daemon --log-file services/airflow/logs/webserver.log
+airflow triggerer --daemon --log-file services/airflow/logs/triggerer.log
+```
