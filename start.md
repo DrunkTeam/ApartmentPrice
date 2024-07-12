@@ -28,6 +28,10 @@ show hba_file;
 ```
 
 ```bash
+sudo systemctl restart postgresql
+```
+
+```bash
 export AIRFLOW_HOME=$PWD/services/airflow
 poetry run airflow db init
 ```
