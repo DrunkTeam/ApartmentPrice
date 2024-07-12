@@ -11,11 +11,20 @@ conda activate mlops
 ```
 
 ```bash
-cd root/ApartmentPrice/
+cd /root/ApartmentPrice/
 ```
 
 ```bash
 sudo systemctl start postgresql
+sudo -u postgres psql
+```
+
+```bash
+CREATE USER ninel WITH PASSWORD 'ninel';
+CREATE DATABASE airflow;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ninel;
+show hba_file;
+\q
 ```
 
 ```bash
