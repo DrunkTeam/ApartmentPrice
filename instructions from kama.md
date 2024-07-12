@@ -192,12 +192,10 @@ show hba_file;
 \q
 ```
 
+# 1. Open this file
 ```bash
 sudo nano /etc/postgresql/14/main/pg_hba.conf
 ```
-
-# 1. Open this file
-sudo nano /etc/postgresql/14/main/pg_hba.conf
 
 # 2. Add the following line to the end of this file
 host all all 0.0.0.0/0 trust
@@ -205,7 +203,9 @@ host all all 0.0.0.0/0 trust
 # 3. Save the change and close it
 
 # 4. Open another file
+```bash
 sudo nano /etc/postgresql/14/main/postgresql.conf
+```
 
 # 5. Add the line as follows
 
