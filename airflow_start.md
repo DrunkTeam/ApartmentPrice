@@ -42,6 +42,25 @@ airflow users create --role Admin --username admin --email admin@example.org --f
 
 ```bash
 airflow scheduler --daemon --log-file services/airflow/logs/scheduler.log
-airflow webserver --daemon --log-file services/airflow/logs/webserver.log
 airflow triggerer --daemon --log-file services/airflow/logs/triggerer.log
+```
+
+```bash
+tmux new -s airflow_session
+```
+
+```bash
+conda activate mlops
+```
+
+```bash
+airflow webserver --log-file services/airflow/logs/webserver.log
+```
+
+Чтобы оставить сессию tmux без закрытия после завершения SSH-соединения, нажмите Ctrl+b, затем d (отделение от сессии).
+
+При следующем подключении через SSH можно будет вернуться к сессии tmux:
+
+```bash
+tmux attach -t airflow_session
 ```
