@@ -48,6 +48,10 @@ airflow triggerer --daemon --log-file services/airflow/logs/triggerer.log
 ```
 
 ```bash
+tmux kill-session -t airflow_session
+```
+
+```bash
 tmux new -s airflow_session
 ```
 
