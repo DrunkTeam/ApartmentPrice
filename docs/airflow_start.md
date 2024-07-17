@@ -34,6 +34,7 @@ sudo systemctl restart postgresql
 ```bash
 export AIRFLOW_HOME=$PWD/services/airflow
 export AIRFLOW__CORE__DAGS_FOLDER=$PWD/services/airflow/dags
+export PYTHONPATH=$PYTHONPATH:$PWD
 poetry run airflow db init
 ```
 
