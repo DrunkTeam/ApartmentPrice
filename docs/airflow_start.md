@@ -64,7 +64,7 @@ airflow webserver --log-file services/airflow/logs/webserver.log
 ```
 
 На случай, если потребуется убить процесс airflow webserver. после убийства, надо запустить заново строчку выше
-```
+```bash
 sudo kill -9 (PID)
 ```
 
