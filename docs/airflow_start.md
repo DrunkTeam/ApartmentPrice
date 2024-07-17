@@ -35,6 +35,7 @@ sudo systemctl restart postgresql
 
 ```bash
 export AIRFLOW_HOME=$PWD/services/airflow
+export AIRFLOW__CORE__DAGS_FOLDER=$PWD/services/airflow/dags
 poetry run airflow db init
 ```
 
@@ -61,6 +62,11 @@ conda activate mlops
 
 ```bash
 airflow webserver --log-file services/airflow/logs/webserver.log
+```
+
+На случай, если потребуется убить процесс airflow webserver. после убийства, надо запустить заново строчку выше
+```
+sudo kill -9 (PID)
 ```
 
 Чтобы оставить сессию tmux без закрытия после завершения SSH-соединения, нажмите Ctrl+b, затем d (отделение от сессии).
