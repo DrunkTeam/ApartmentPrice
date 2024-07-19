@@ -173,19 +173,11 @@ config_file = /home/kama/ApartmentPrice/services/airflow/webserver_config.py
 child_process_log_directory = /home/kama/ApartmentPrice/services/airflow/logs/scheduler
 
 ```bash
-cd /root/ApartmentPrice/services/airflow
+cd /home/kama/ApartmentPrice/services/airflow
 ```
 
 ```bash
 mkdir dags
-```
-
-```bash
-poetry lock --no-update
-```
-
-```bash
-poetry install
 ```
 
 ```bash

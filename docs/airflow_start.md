@@ -43,8 +43,8 @@ airflow users create --role Admin --username admin --email admin@example.org --f
 ```
 
 ```bash
-airflow scheduler --daemon --log-file services/airflow/logs/scheduler.log
-airflow triggerer --daemon --log-file services/airflow/logs/triggerer.log
+airflow scheduler --log-file services/airflow/logs/scheduler.log
+airflow triggerer --log-file services/airflow/logs/triggerer.log
 ```
 
 ```bash
