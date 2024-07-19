@@ -11,7 +11,7 @@ conda activate mlops
 ```
 
 ```bash
-cd /root/ApartmentPrice/
+cd /home/kama/ApartmentPrice/
 ```
 
 ```bash
@@ -75,4 +75,3 @@ sudo kill -9 (PID)
 ```bash
 tmux attach -t airflow_session
 ```
->>>>>>> 33d3dabb81455c417ff5214a76453f6a52852f82:airflow_start.md

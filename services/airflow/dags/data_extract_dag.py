@@ -79,4 +79,6 @@ load_task = PythonOperator(
     dag=dag,
 )
 
-extract_task >> validate_task >> version_task >> load_task
+if __name__ == '__main__':
+    print("It work")
+    extract_task >> validate_task >> version_task >> load_task
