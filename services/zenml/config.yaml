@@ -1,0 +1,15 @@
+active_stack_id: 7f33c402-c8fa-4290-bc2a-51ebe45f53cf
+active_workspace_name: default
+analytics_opt_in: true
+store:
+  api_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MzdiMjViOC0wMjk2LTQ0ODctYTUwYi00ZGRjNDdhZTI0NGMiLCJpc3MiOiJhMWYyZjBkMC1kOTJkLTRlMTYtYjk2MS1iNDNiMGMzZWYzNWEiLCJhdWQiOiJhMWYyZjBkMC1kOTJkLTRlMTYtYjk2MS1iNDNiMGMzZWYzNWEifQ.Ux-lVXKgpCxmgny5MSyZU8FaxPci7GQVeRvXAtDLYoQ
+  http_timeout: 30
+  password: ''
+  secrets_store:
+    type: rest
+  type: rest
+  url: http://127.0.0.1:8237
+  username: default
+  verify_ssl: true
+user_id: a1f2f0d0-d92d-4e16-b961-b43b0c3ef35a
+version: 0.50.0
