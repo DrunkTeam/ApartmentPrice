@@ -1,5 +1,3 @@
-<<<<<<< HEAD:start.md
-=======
 ```bash
 bash
 ```
