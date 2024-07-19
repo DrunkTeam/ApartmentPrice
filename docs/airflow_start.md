@@ -11,7 +11,7 @@ conda activate mlops
 ```
 
 ```bash
-cd /root/ApartmentPrice/
+cd /home/kama/ApartmentPrice/
 ```
 
 ```bash
