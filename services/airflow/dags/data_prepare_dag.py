@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, date
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': date.today(),
+    'start_date': datetime(2023, 7, 19),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
