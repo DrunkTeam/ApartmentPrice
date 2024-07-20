@@ -4,7 +4,7 @@ import hydra
 import dvc.api
 
 # @hydra.main(config_path="../configs", config_name = "main", version_base=None)
-def init_hydra(config_path="../configs", config_name="main.yaml") -> DictConfig:
+def init_hydra(config_path="../configs", config_name="main.yaml"):
     """
     Initializes hydra
     """
