@@ -5,7 +5,7 @@ import os
 import subprocess
 import yaml
 
-# Импортируем функции из фазы 1
+# import function from phase 1
 from src.data import sample_data
 from src.validate_data import validate_initial_data
 
