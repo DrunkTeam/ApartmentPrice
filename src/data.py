@@ -2,9 +2,11 @@ import os
 import pandas as pd
 import hydra
 import dvc.api
+from hydra import initialize, compose
+from omegaconf import DictConfig
+from hydra.core.global_hydra import GlobalHydra
 
-# @hydra.main(config_path="../configs", config_name = "main", version_base=None)
-def init_hydra(config_path="../configs", config_name="main.yaml"):
+def init_hydra(config_path="../configs", config_name="main.yaml") -> DictConfig:
     """
     Initializes hydra
     """
@@ -17,6 +19,8 @@ def init_hydra(config_path="../configs", config_name="main.yaml"):
 
     return cfg
 cfg = init_hydra()
+
+# @hydra.main(config_path="../configs", config_name = "main", version_base=None)
 def sample_data(cfg = cfg):
     # import os
     # os.chdir("/home/kama/ApartmentPrice")
