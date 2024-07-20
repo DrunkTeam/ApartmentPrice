@@ -3,11 +3,23 @@ import pandas as pd
 import hydra
 import dvc.api
 
-@hydra.main(config_path="../configs", config_name = "main", version_base=None)
+# @hydra.main(config_path="../configs", config_name = "main", version_base=None)
+def init_hydra(config_path="../configs", config_name="main.yaml") -> DictConfig:
+    """
+    Initializes hydra
+    """
 
-def sample_data(cfg = None):
-    import os
-    os.chdir("/home/kama/ApartmentPrice")
+    if GlobalHydra.instance().is_initialized():
+        GlobalHydra.instance().clear()
+
+    initialize(config_path=config_path, version_base=None)
+    cfg = compose(config_name)
+
+    return cfg
+cfg = init_hydra()
+def sample_data(cfg = cfg):
+    # import os
+    # os.chdir("/home/kama/ApartmentPrice")
     data_url = dvc.api.get_url(
         path=cfg.data.path,
         remote=cfg.data.remote,
