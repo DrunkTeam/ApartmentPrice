@@ -11,3 +11,4 @@ logs
 airflow.cfg
 airflow.db
 .idea
+services/zenml/local_stores/
