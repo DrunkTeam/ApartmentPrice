@@ -34,11 +34,13 @@ def extract_data_task(**kwargs):
 def validate_data_task(**kwargs):
     validate_initial_data(csv_path='data/samples/sample.csv')
 
+
 def increment_version(version):
     """Увеличивает версию на 0.0.1"""
     major, minor, patch = map(int, version.strip('v').split('.'))
     patch += 1
     return f"v{major}.{minor}.{patch}"
+
 
 def version_data_task(**kwargs):
     config_path = '/home/kama/Documents/MLOps/ApartmentPrice/configs/data_version.yaml'
@@ -95,6 +97,5 @@ load_task = PythonOperator(
     python_callable=load_data_task,
     dag=dag,
 )
-
 
 extract_task >> validate_task >> version_task >> load_task

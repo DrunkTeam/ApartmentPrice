@@ -3,7 +3,7 @@
 import pandas as pd
 from typing_extensions import Tuple, Annotated
 from zenml import step, pipeline, ArtifactConfig
-from data import read_datastore, preprocess_data, validate_features, load_features
+from src.data import read_datastore, preprocess_data, validate_features, load_features
 # from utils import get_sample_version
 import os
 
@@ -16,7 +16,7 @@ def extract()-> Tuple[
                                        tags=["data_preparation"]
                                        )
                         ],
-                Annotated[int,
+                Annotated[str,
                         ArtifactConfig(name="data_version",
                                        tags=["data_preparation"])]
                     ]:

@@ -38,8 +38,6 @@ cfg = init_hydra()
 
 # @hydra.main(config_path="../configs", config_name = "main", version_base=None)
 def sample_data(cfg=cfg):
-    # import os
-    # os.chdir("/home/kama/ApartmentPrice")
     data_url = dvc.api.get_url(
         path=cfg.data.path,
         remote=cfg.data.remote,
@@ -114,7 +112,7 @@ def read_datastore():
     """
     # Initialize Hydra with config path (replace with your config file)
     # we have to read them from the datastore after the 1 task in this phase
-    initialize(config_path="../configs", version_base="1.1")
+    # initialize(config_path="../configs", version_base="1.1")
     cfg = compose(config_name="data_version")
     version_num = cfg.data_version
 

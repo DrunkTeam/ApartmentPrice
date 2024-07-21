@@ -1,13 +1,12 @@
-import os
+from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.sensors.external_task_sensor import ExternalTaskSensor
-from datetime import datetime, timedelta, date
+from airflow.utils.state import DagRunState
 
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2024, 7, 30),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
@@ -17,31 +16,28 @@ default_args = {
 dag = DAG(
     'data_prepare_dag',
     default_args=default_args,
-    description='DAG for data preparation',
+    description='Run ZenML pipeline after data extraction pipeline',
     schedule_interval=timedelta(minutes=5),
+    start_date=datetime(2024, 7, 30),
+    catchup=False,
 )
 
 wait_for_data_extraction = ExternalTaskSensor(
     task_id='wait_for_data_extraction',
     external_dag_id='data_extract_dag',
-    external_task_id=None,
-    check_existence=True,
-    timeout=600,
+    external_task_id=None,  # Wait for the entire DAG to complete
+    allowed_states=[DagRunState.SUCCESS],
+    failed_states=[DagRunState.FAILED],
     mode='poke',
     poke_interval=60,
+    timeout=3600,
     dag=dag,
 )
 
 run_zenml_pipeline = BashOperator(
     task_id='run_zenml_pipeline',
-    bash_command='zenml pipeline run',
+    bash_command='python /home/kama/Documents/MLOps/ApartmentPrice/services/airflow/dags/data_prepare.py',
     dag=dag,
 )
 
-load_features_to_store = BashOperator(
-    task_id='load_features_to_store',
-    bash_command='feast -c services/feast/feast_project/feature_repo apply',
-    dag=dag,
-)
-
-wait_for_data_extraction >> run_zenml_pipeline >> load_features_to_store
+wait_for_data_extraction >> run_zenml_pipeline
