@@ -11,7 +11,7 @@ conda activate mlops
 ```
 
 ```bash
-cd /home/kama/ApartmentPrice/
+cd /home/kama/Documents/MLOps/ApartmentPrice/
 ```
 
 ```bash
@@ -43,9 +43,12 @@ airflow users create --role Admin --username admin --email admin@example.org --f
 ```
 
 ```bash
-airflow scheduler --log-file services/airflow/logs/scheduler.log
-airflow triggerer --log-file services/airflow/logs/triggerer.log
+airflow scheduler --daemon --log-file services/airflow/logs/scheduler.log
+airflow triggerer --daemon --log-file services/airflow/logs/triggerer.log
+airflow webserver --daemon --log-file services/airflow/logs/webserver.log
 ```
+
+Это больше не нужно
 
 ```bash
 tmux kill-session -t airflow_session
