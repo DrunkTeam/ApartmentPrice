@@ -12,7 +12,7 @@ from src.validate_data import validate_initial_data
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 7, 19),
+    'start_date': datetime(2023, 7, 30),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
