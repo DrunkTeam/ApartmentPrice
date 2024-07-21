@@ -19,7 +19,7 @@ sudo apt install python3-pip
 ```
 
 ```bash
-cd /home/kama
+cd /home/kama/Documents/MLOps/
 ```
 
 ```bash
@@ -74,7 +74,7 @@ exit
 ```
 
 ```bash
-sudo apt  install curl
+sudo apt install curl
 ```
 
 ```bash
@@ -86,7 +86,7 @@ sudo -i
 ```
 
 ```bash
-export PATH="/root/anaconda3/bin:$PATH"
+export PATH="/home/kama/anaconda3/bin:$PATH"
 source ~/.bashrc
 ```
 
@@ -125,7 +125,7 @@ sudo apt-get install build-essential
 ```
 
 ```bash
-mkdir /home/kama/ApartmentPrice
+mkdir /home/kama/Documents/MLOps/ApartmentPrice
 ```
 
 ```bash
@@ -133,7 +133,11 @@ sudo -i
 ```
 
 ```bash
-cd /home/kama/ApartmentPrice
+conda activate mlops
+```
+
+```bash
+cd /home/kama/Documents/MLOps/ApartmentPrice
 ```
 
 ```bash
@@ -161,7 +165,7 @@ git pull
 ```
 
 ```bash
-cd /home/kama/ApartmentPrice/services/airflow/
+cd /home/kama/Documents/MLOps/ApartmentPrice/services/airflow/
 ```
 
 ```bash
@@ -177,7 +181,7 @@ config_file = /home/kama/ApartmentPrice/services/airflow/webserver_config.py
 child_process_log_directory = /home/kama/ApartmentPrice/services/airflow/logs/scheduler
 
 ```bash
-cd /home/kama/ApartmentPrice/services/airflow
+cd /home/kama/Documents/MLOps/ApartmentPrice/services/airflow
 ```
 
 ```bash
@@ -199,7 +203,7 @@ show hba_file;
 
 # 1. Open this file
 ```bash
-sudo nano /etc/postgresql/14/main/pg_hba.conf
+sudo nano /etc/postgresql/16/main/pg_hba.conf
 ```
 
 # 2. Add the following line to the end of this file
@@ -209,7 +213,7 @@ host all all 0.0.0.0/0 trust
 
 # 4. Open another file
 ```bash
-sudo nano /etc/postgresql/14/main/postgresql.conf
+sudo nano /etc/postgresql/16/main/postgresql.conf
 ```
 
 # 5. Add the line as follows
