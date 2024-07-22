@@ -1,0 +1,19 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "target_transform_expectation",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Price",
+        "max_value": 12091,
+        "min_value": 0
+      },
+      "meta": {}
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.18.19"
+  }
+}
