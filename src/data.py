@@ -272,166 +272,43 @@ def validate_features(X, y):
 
     """
 
-    # # validate_after_preprocessing(X,y)
-    # #execute it only once, not every time.
-    # #for x
+    #execute it only once, not every time.
+    #for x and y
 
-    # context = gx.get_context(project_root_dir = "services")
-    # ds_x = context.sources.add_or_update_pandas(name = "transformed_data")
-    # da_x = ds_x.add_dataframe_asset(name = "pandas_dataframe")
-    # batch_request_x = da_x.build_batch_request(dataframe = X)
+    context = gx.get_context(project_root_dir = "services")
+    ds_x = context.sources.add_or_update_pandas(name = "data_transform")
+    da_x = ds_x.add_dataframe_asset(name = "pandas_dataframe")
+    batch_request_x = da_x.build_batch_request(dataframe = X)
 
-    # # Create validator for X
-    # # validator_x = context.get_validator(
-    # #     batch_request=batch_request_x,
-    # #     expectation_suite_name='transformed_data_expectation',
-    # # )
-
-    # ds_y = context.sources.add_or_update_pandas(name = "transformed_target")
-    # da_y = ds_y.add_dataframe_asset(name = "pandas_dataframe")
-    # batch_request_y = da_y.build_batch_request(dataframe = y)
-
-    # # validator_y = context.get_validator(
-    # #     batch_request=batch_request_y,
-    # #     expectation_suite_name='transformed_target_expectation',
-    # # )
-
-    # # Create checkpoint
-    # checkpoint = context.add_or_update_checkpoint(
-    #     name="my_checkpoint",
-    #     validations=[
-    #     {
-    #         "batch_request": batch_request_x,
-    #         "expectation_suite_name": "transformed_data_expectation",
-    #     },
-    #     {
-    #         "batch_request": batch_request_y,
-    #         "expectation_suite_name": "transformed_target_expectation",
-    #     },
-    # ],
-    # )
-
-    # # checkpoint_x = context.add_or_update_checkpoint(
-    # #     name="checkpoint_x",
-    # #     validator=validator_x,
-    # # )
-
-    # # retrieved_checkpoint_x = context.get_checkpoint(name="checkpoint_x")
-
-    # result = checkpoint.run()
-
-    # assert checkpoint_result_x.success
-
-    # for y
-
-    # retrieved_checkpoint_y = context.get_checkpoint(name="checkpoint_y")
-
-    # checkpoint_result_y = retrieved_checkpoint_y.run()
-
-    # assert checkpoint_result_y.success
-
-    # initialize(config_path="../configs/data", version_base="1.1")
-    cfg = compose(config_name="ApartmentPrice")
-
-    context = gx.get_context()
-    ds_x = context.sources.add_or_update_pandas(name="transformed_data")
-    da_x = ds_x.add_dataframe_asset(name="pandas_dataframe")
-    batch_request_x = da_x.build_batch_request(dataframe=X)
-
-    # Create expectations suite
-    context.add_or_update_expectation_suite('transformed_data_expectation')
-
-    # Create validator for X
-    validator_x = context.get_validator(
-        batch_request=batch_request_x,
-        expectation_suite_name='transformed_data_expectation',
-    )
-
-    # Assume all ohe-transformed cols are 0 or 1
-    for col in list(cfg.ohe_cols):
-        validator_x.expect_column_values_to_be_in_set(
-            column=col,
-            value_set=[0, 1]
-        )
-
-    # all columns are not null
-    for col in list(cfg.validation_columns):
-        validator_x.expect_column_values_to_not_be_null(
-            column=col
-        )
-
-        # some columns should be float
-
-    for col in cfg.validation_columns:
-        validator_x.expect_column_values_to_be_of_type(
-            column=col,
-            type_="float"
-        )
-
-    # some columns should be int
-    for col in cfg.int_columns:
-        validator_x.expect_column_values_to_be_of_type(
-            column=col,
-            type_="int"
-        )
-
-        # Store expectation suite
-    validator_x.save_expectation_suite(
-        discard_failed_expectations=False
-    )
+    ds_y = context.sources.add_or_update_pandas(name = "target_transform")
+    da_y = ds_y.add_dataframe_asset(name = "pandas_dataframe")
+    batch_request_y = da_y.build_batch_request(dataframe = y)
 
     # Create checkpoint
-    checkpoint_x = context.add_or_update_checkpoint(
-        name="checkpoint_x",
-        validator=validator_x,
+    checkpoint = context.add_or_update_checkpoint(
+        name="my_checkpoint",
+        validations=[
+        {
+            "batch_request": batch_request_x,
+            "expectation_suite_name": "data_transform_expectation",
+        },
+        {
+            "batch_request": batch_request_y,
+            "expectation_suite_name": "target_transform_expectation",
+        },
+    ],
     )
 
-    # Run validation
-    checkpoint_result_x = checkpoint_x.run()
+    result = checkpoint.run()
 
-    ds_y = context.sources.add_or_update_pandas(name="transformed_target")
-    da_x = ds_y.add_dataframe_asset(name="pandas_dataframe")
-    batch_request_y = da_x.build_batch_request(dataframe=y)
-    # Create expectations suite
-    context.add_or_update_expectation_suite('transformed_target_expectation')
-
-    validator_y = context.get_validator(
-        batch_request=batch_request_y,
-        expectation_suite_name='transformed_target_expectation',
-    )
-    # Assume Price between 0 and 12091
-    validator_y.expect_column_values_to_be_between(
-        column='Price',
-        min_value=0,
-        max_value=12091,
-    )
-
-    # Store expectation suite
-    validator_y.save_expectation_suite(
-        discard_failed_expectations=False
-    )
-
-    # Create checkpoint
-    checkpoint_y = context.add_or_update_checkpoint(
-        name="checkpoint_y",
-        validator=validator_y,
-    )
-
-    # Run validation
-    checkpoint_result_y = checkpoint_y.run()
-
-    if checkpoint_result_x.success and checkpoint_result_y.success:
+    if result.success:
         return X, y
-
-    # if result.success:
-    #     return X, y
 
 
 def load_features(X, y, version):
     # concatinate and save like a one dataframe
     df = df = pd.concat([X, y], axis=1)
     zenml.save_artifact(data=df, name="features_target", tags=[version])
-    # zenml.save_artifact(data = y, name = "target", tags = [version])
 
 
 if __name__ == "__main__":
