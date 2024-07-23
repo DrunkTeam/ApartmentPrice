@@ -1,0 +1,16 @@
+active_stack_id: 7f33c402-c8fa-4290-bc2a-51ebe45f53cf
+active_workspace_name: default
+analytics_opt_in: true
+store:
+  database: /home/kama/Documents/MLOps/ApartmentPrice/services/zenml/local_stores/default_zen_store/zenml.db
+  driver: sqlite
+  max_overflow: 20
+  pool_pre_ping: true
+  pool_size: 20
+  secrets_store:
+    type: sql
+  ssl_verify_server_cert: false
+  type: sql
+  url: sqlite:////home/kama/Documents/MLOps/ApartmentPrice/services/zenml/local_stores/default_zen_store/zenml.db
+user_id: a1f2f0d0-d92d-4e16-b961-b43b0c3ef35a
+version: 0.50.0

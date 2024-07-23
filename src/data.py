@@ -38,8 +38,6 @@ cfg = init_hydra()
 
 # @hydra.main(config_path="../configs", config_name = "main", version_base=None)
 def sample_data(cfg=cfg):
-    # import os
-    # os.chdir("/home/kama/ApartmentPrice")
     data_url = dvc.api.get_url(
         path=cfg.data.path,
         remote=cfg.data.remote,
