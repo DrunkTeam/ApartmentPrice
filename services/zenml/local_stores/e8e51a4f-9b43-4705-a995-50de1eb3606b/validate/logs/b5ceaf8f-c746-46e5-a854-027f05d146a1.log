@@ -1,0 +1,232 @@
+Caching disabled explicitly for validate.
+
+Step validate has started.
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+Could not find local file-backed GX project
+
+Created temporary directory '/var/folders/99/bybl0ctd32x3c3zf2cv3mfk00000gn/T/tmpmfbl6bgp' for ephemeral docs site
+
+Loading 'datasources' ->
+[]
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 3095.43it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 608.44it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 834.24it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 485.51it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 564.52it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 461.84it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 614.06it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 565.20it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 558.62it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 527.01it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 3669.56it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 608.80it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 824.14it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 479.39it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 602.54it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 485.86it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 645.17it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 598.35it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 592.15it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 585.30it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 4185.93it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 636.95it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 875.15it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 490.37it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 615.92it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 498.66it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 670.47it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 618.29it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 610.84it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 603.27it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 4031.05it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 631.10it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 867.55it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 498.59it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 626.95it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 505.00it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 663.73it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 606.79it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 598.84it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 591.58it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 3787.18it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 561.15it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 757.37it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 456.40it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 580.51it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 474.29it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 626.80it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 577.32it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 571.64it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 565.21it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 3780.36it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 620.55it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 853.48it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 488.18it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 585.34it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 473.57it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 636.28it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 589.41it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 583.09it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 576.66it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 3962.50it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 617.67it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 849.16it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 491.00it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 625.16it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 505.05it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 661.31it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 609.67it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 602.19it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 594.88it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 4080.06it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 595.57it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 800.80it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 478.31it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 601.75it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 486.76it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 631.41it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 586.20it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 580.13it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 573.55it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/8 [00:00<?, ?it/s]
+Calculating Metrics:  25%|█████████████████████▌                                                                | 2/8 [00:00<00:00, 4132.32it/s]
+Calculating Metrics:  25%|█████████████████████▊                                                                 | 2/8 [00:00<00:00, 626.76it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 861.31it/s]
+Calculating Metrics:  38%|████████████████████████████████▋                                                      | 3/8 [00:00<00:00, 497.11it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 609.46it/s]
+Calculating Metrics:  62%|██████████████████████████████████████████████████████▍                                | 5/8 [00:00<00:00, 485.72it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 630.57it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 585.53it/s]
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 579.37it/s]
+
+Calculating Metrics: 100%|███████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 572.74it/s]
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py:1518: UserWarning: result_format configured at the Validator-level will not be persisted. Please add the configuration to your Checkpoint config or checkpoint_run() method instead.
+  warnings.warn(
+
+
+Calculating Metrics:   0%|                                                                                                | 0/1 [00:00<?, ?it/s]
+Calculating Metrics:   0%|                                                                                                | 0/1 [00:00<?, ?it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 2814.97it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 1817.29it/s]
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 1436.41it/s]
+
+Calculating Metrics: 100%|██████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 1173.56it/s]
+Failed to run step validate.
+
+list index out of range
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 230, in launch
+    self._run_step(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 460, in _run_step
+    self._run_step_without_step_operator(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 535, in _run_step_without_step_operator
+    runner.run(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 199, in run
+    return_values = step_instance.call_entrypoint(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/steps/base_step.py", line 606, in call_entrypoint
+    return self.entrypoint(**validated_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/airflow/dags/data_prepare.py", line 54, in validate
+    X, y = validate_features(X, y)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/src/data.py", line 304, in validate_features
+    validator_x.expect_column_values_to_be_of_type(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/validator/validator.py", line 590, in inst_expectation
+    raise err
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/validator/validator.py", line 553, in inst_expectation
+    validation_result = expectation.validate(
+                        ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py", line 1314, in validate
+    ] = validator.graph_validate(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/validator/validator.py", line 1089, in graph_validate
+    raise err
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/validator/validator.py", line 1073, in graph_validate
+    result = configuration.metrics_validate(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/core/expectation_configuration.py", line 1494, in metrics_validate
+    return expectation_impl(self).metrics_validate(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/expectation.py", line 1103, in metrics_validate
+    ] = self._validate(
+        ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/great_expectations/expectations/core/expect_column_values_to_be_of_type.py", line 516, in _validate
+    actual_column_type = [
+                         ^
+IndexError: list index out of range
+

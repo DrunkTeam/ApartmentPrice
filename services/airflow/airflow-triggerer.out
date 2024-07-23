@@ -1,0 +1,2 @@
+[[34m2024-07-09T01:35:13.901+0300[0m] {[34mtriggerer_job_runner.py:[0m171} INFO[0m - Setting up TriggererHandlerWrapper with handler <FileTaskHandler (NOTSET)>[0m
+[[34m2024-07-09T01:35:13.902+0300[0m] {[34mtriggerer_job_runner.py:[0m227} INFO[0m - Setting up logging queue listener with handlers [<RedirectStdHandler <stdout> (NOTSET)>, <NonCachingFileHandler /Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/airflow/logs/triggerer.log (NOTSET)>, <TriggererHandlerWrapper (NOTSET)>][0m
