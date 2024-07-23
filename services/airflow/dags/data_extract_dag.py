@@ -5,14 +5,14 @@ import os
 import subprocess
 import yaml
 
-# Импортируем функции из фазы 1
+# import function from phase 1
 from src.data import sample_data
 from src.validate_data import validate_initial_data
 
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 7, 19),
+    'start_date': datetime(2024, 7, 30),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
@@ -35,19 +35,38 @@ def validate_data_task(**kwargs):
     validate_initial_data(csv_path='data/samples/sample.csv')
 
 
-def version_data_task(**kwargs):
-    data_path = 'data/samples/sample.csv'
-    tag_name = "v1.0.0"
-    branch = "main"
+def increment_version(version):
+    """Увеличивает версию на 0.0.1"""
+    major, minor, patch = map(int, version.strip('v').split('.'))
+    patch += 1
+    return f"v{major}.{minor}.{patch}"
 
-    # Выполнение скрипта test_data.sh
-    subprocess.run(["bash", "scripts/test_data.sh", data_path, tag_name, branch], check=True)
+
+def version_data_task(**kwargs):
+    config_path = '/home/kama/Documents/MLOps/ApartmentPrice/configs/data_version.yaml'
+
+    # Чтение текущей версии из data_version.yaml
+    try:
+        with open(config_path, 'r') as f:
+            config = yaml.safe_load(f)
+    except FileNotFoundError:
+        # Если файл не найден, начинаем с версии 0.0.0
+        config = {'data_version': 'v0.0.0'}
+
+    current_version = config.get('data_version', 'v0.0.0')
+    new_version = increment_version(current_version)
+
+    data_path = 'data/samples/sample.csv'
+    branch = "dev-kama"
+
+    # Выполнение скрипта test_data.sh с новой версией
+    subprocess.run(["bash", "scripts/test_data.sh", data_path, new_version, branch], check=True)
 
     # Обновление файла с версией данных
-    version = tag_name
-    config_path = './configs/data_version.yaml'
     with open(config_path, 'w') as f:
-        yaml.dump({'data_version': version}, f)
+        yaml.dump({'data_version': new_version}, f)
+
+    print(f"Updated version to {new_version}")
 
 
 def load_data_task(**kwargs):
@@ -79,6 +98,4 @@ load_task = PythonOperator(
     dag=dag,
 )
 
-if __name__ == '__main__':
-    print("It work")
-    extract_task >> validate_task >> version_task >> load_task
+extract_task >> validate_task >> version_task >> load_task

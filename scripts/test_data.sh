@@ -24,7 +24,8 @@ data_valid=true
 if [ "$data_valid" = true ]; then
     # Version data with DVC
     dvc add "$data_path"
-    dvc commit -m "Versioning sample data"
+#    dvc commit  # Removed the -m flag
+    dvc commit -f
 fi
 
 # Step 4: Git operations
