@@ -16,7 +16,7 @@ def extract()-> Tuple[
                                        tags=["data_preparation"]
                                        )
                         ],
-                Annotated[int,
+                Annotated[str,
                         ArtifactConfig(name="data_version",
                                        tags=["data_preparation"])]
                     ]:
