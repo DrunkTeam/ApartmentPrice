@@ -10,5 +10,8 @@ logs
 *.pid
 airflow.cfg
 airflow.db
+mlruns
+data/clear_data
 .idea
 services/zenml/local_stores/
+

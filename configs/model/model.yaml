@@ -1,0 +1,24 @@
+defaults:
+  - _self_
+
+folds: 3
+
+evaluation_metric: "neg_root_mean_squared_error"  # Root Mean Squared Error
+# cv_evaluation_metric: "mean_test_rmse"
+cv_evaluation_metric: "mean_test_neg_mean_squared_error"
+
+pyfunc_predict_fn: "predict"  # For regression, typically use "predict" instead of "predict_proba"
+
+metrics:
+  # rmse: "mean_squared_error"  # Or another regression metric like "mean_absolute_error"
+  # mae: "mean_absolute_error"  # Mean Absolute Error
+  neg_root_mean_squared_error: "neg_root_mean_squared_error"
+  neg_mean_squared_error: "neg_mean_squared_error"
+  neg_mean_absolute_error: "neg_mean_absolute_error"
+  
+# hydra:
+#   sweeper:
+#       sampler:
+#         seed: 8888
+#       # n_trials: 20 # number of times to try to optimize the search space
+#       direction: maximize # minimize
