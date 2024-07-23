@@ -20,5 +20,7 @@ hydra:
   #   n_jobs: -1
   sweeper:
     params:
-      # +model: "lr"
-      +model: "pr, lr"
+      # +model: "decision_tree"
+      # +model: "gbr"
+      +model: "sn"
+      # +model: "pr, lr"
