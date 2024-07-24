@@ -17,6 +17,9 @@ data:
   random_state: 1
   target_cols: ["Price"]
 
+paths:
+  root_path: /Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice
+
 hydra:
   mode: MULTIRUN
   # launcher:
@@ -24,6 +27,18 @@ hydra:
   sweeper:
     params:
       # +model: "decision_tree"
-      # +model: "gbr"
-      +model: "sn"
-      # +model: "pr, lr"
+      +model: "gbr"
+      # +model: "sn"
+      # +model: "decision_tree, gbr, sn"
+
+reproducibility:
+  seeds:
+    - 42
+    - 20
+    - 1
+    - 4
+    - 7
+    - 10
+
+datasets:
+  target_col: "Price"

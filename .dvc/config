@@ -2,3 +2,4 @@
     remote = localstore
 ['remote "localstore"']
     url = /Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/datastore
+

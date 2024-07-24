@@ -3,13 +3,13 @@
 import pandas as pd
 from typing_extensions import Tuple, Annotated
 from zenml import step, pipeline, ArtifactConfig
-
+import os
 import sys
-sys.path.append('/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice')
-
+current_directory = os.getcwd()
+sys.path.append(current_directory)
 from src.data import read_datastore, preprocess_data, validate_features, load_features
 # from utils import get_sample_version
-import os
+
 
 # BASE_PATH = os.path.expandvars("$/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice")
 

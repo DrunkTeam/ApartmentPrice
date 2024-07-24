@@ -12,23 +12,69 @@ from skorch.callbacks import BatchScoring
 from skorch.regressor import NeuralNetRegressor
 from sklearn.model_selection import GridSearchCV
 import matplotlib.pyplot as plt
+from uuid import UUID
+from zenml import ExternalArtifact, pipeline, step, save_artifact, load_artifact
 
 from models import RMSELoss, WrappedNeuralNetRegressor
 
 def load_features(name, version, target_col='Price', size = 1):
-    df = pd.read_csv('data/clear_data/output.csv', index_col=0)
+    сlient = Client()
+    artifacts = сlient.list_artifacts(name=name, version=version)
+    artifacts = sorted(artifacts, key=lambda x: x.version, reverse=True)
+    # print("LEN: " + str(len(artifacts)))                                              
+    # print("Loading features from", name, version)
+    df = artifacts[0].load()
+
     df = df.sample(frac = size, random_state = 88)
-
-    print("size of df is ", df.shape)
-    print("df columns: ", df.columns)
-
-    # X = df[df.columns[1:]]
-    # y = df[['Price']]
     X = df.drop('Price', axis=1)
     y = df['Price']
     print("shapes of X,y = ", X.shape, y.shape)
 
     return X, y
+
+def plot_loss_claassic_ML(model, name, cfg, run,  X_val=None, y_val=None):
+    plt.figure(figsize=(12, 6))
+    
+    # Check if the model has the `train_score_` attribute
+    if hasattr(model, 'train_score_'):
+        # Plot training loss
+        train_losses = -np.array(model.train_score_)
+        plt.plot(train_losses, label="Train Loss")
+    else:
+        # Handle models without `train_score_` (e.g., DecisionTreeRegressor)
+        if X_val is not None and y_val is not None:
+            # Compute training loss manually for models without staged scoring
+            y_train_pred = model.predict(X_val)
+            train_loss = np.sqrt(np.mean((np.array(y_val) - np.array(y_train_pred)) ** 2))
+            plt.plot([0], [train_loss], 'ro', label="Train Loss")
+    
+    # Plot validation loss if applicable
+    if X_val is not None and y_val is not None:
+        if hasattr(model, 'staged_predict'):
+            val_losses = []
+            for y_pred in model.staged_predict(X_val):
+                val_loss = np.sqrt(np.mean((np.array(y_val) - np.array(y_pred)) ** 2))
+                val_losses.append(val_loss)
+            plt.plot(val_losses, label="Validation Loss")
+        else:
+            # Compute a single validation loss
+            y_val_pred = model.predict(X_val)
+            val_loss = np.sqrt(np.mean((np.array(y_val) - np.array(y_val_pred)) ** 2))
+            plt.plot([0], [val_loss], 'go', label="Validation Loss")
+
+    plt.xlabel("Iteration")
+    plt.ylabel("Loss")
+    plt.title(f"{cfg.model.model_name} Loss")
+    plt.legend()
+
+    path = f'{name}.png'
+    plt.savefig(path)
+    plt.close()
+
+    mlflow.log_artifact(path, artifact_path=cfg.model.artifact_path)
+    os.remove(path)
+
+    mlflow.artifacts.download_artifacts(run_id=run.info.run_id, artifact_path=f"{cfg.model.artifact_path}/{path}", dst_path="results")
 
 def plot_loss(model, name, cfg, run):
     train_losses = model.history[:, "train_loss"]
@@ -52,14 +98,24 @@ def plot_loss(model, name, cfg, run):
     mlflow.artifacts.download_artifacts(run_id=run.info.run_id, artifact_path=f"{cfg.model.artifact_path}/{path}", dst_path="results")
 
 def train(X_train, y_train, cfg):
+    # Define the model hyperparameters
+    params = cfg.model.params
+
+    # Train the model
+    module_name = cfg.model.module_name # e.g. "sklearn.linear_model"
+    class_name  = cfg.model.class_name # e.g. "LogisticRegression"
+    import importlib
     random.seed(cfg.random_state)
     np.random.seed(cfg.random_state)
     torch.manual_seed(cfg.random_state)
 
     class_instance = getattr(importlib.import_module(cfg.model.module_name), cfg.model.class_name)
-    optimizer = torch.optim.AdamW
-    estimator = WrappedNeuralNetRegressor(module=class_instance, optimizer=optimizer, verbose=0, 
+    if class_name == "SimpleNet":
+        optimizer = torch.optim.AdamW
+        estimator = WrappedNeuralNetRegressor(module=class_instance, optimizer=optimizer, verbose=0, 
                                           criterion=RMSELoss, batch_size=512)
+    else:
+        estimator = class_instance(**params)
 
     param_grid = dict(cfg.model.params)
 
@@ -141,7 +197,11 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
 
     # Parent run
     with mlflow.start_run(run_name=run_name, experiment_id=experiment_id) as run:
-        plot_loss(gs.best_estimator_, 'champion_loss', cfg, run)
+        if cfg.model.class_name == "SimpleNet":
+            plot_loss(gs.best_estimator_, 'champion_loss', cfg, run)
+        else:
+            df_t = df_test.iloc[:30]
+            plot_loss_claassic_ML(gs.best_estimator_, 'champion_loss', cfg, run, df_t.drop('Price', axis=1), df_t[['Price']])
         df_train_dataset = mlflow.data.pandas_dataset.from_pandas(df=df_train, targets='Price')  # type: ignore
         df_test_dataset = mlflow.data.pandas_dataset.from_pandas(df=df_test, targets='Price')  # type: ignore
         mlflow.log_input(df_train_dataset, "training")
@@ -225,34 +285,28 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                     importlib.import_module(module_name), class_name
                 )
 
-                optimizer = torch.optim.AdamW
-                estimator = WrappedNeuralNetRegressor(
-                    module=class_instance, optimizer=optimizer, 
-                    criterion=RMSELoss, batch_size=512, **ps
-                )
+                if class_name == "SimpleNet":
+                    optimizer = torch.optim.AdamW
+                    estimator = WrappedNeuralNetRegressor(
+                        module=class_instance, optimizer=optimizer, 
+                        criterion=RMSELoss, batch_size=512, **ps
+                    )
+                else:
+                    estimator = class_instance(**ps)
+                    estimator.fit(X_train, y_train)
 
                 estimator.fit(X_train, y_train)
 
-                plot_loss(estimator, f'run{index}_loss', cfg, child_run)
-                
-                train_losses = estimator.history[:, "train_loss"]
-                valid_losses = estimator.history[:, "valid_loss"]
+                if cfg.model.class_name == "SimpleNet":
+                    plot_loss(estimator, f'run{index}_loss', cfg, child_run)
+                    train_losses = estimator.history[:, "train_loss"]
+                    valid_losses = estimator.history[:, "valid_loss"]
 
-                for idx, train_loss in enumerate(train_losses):
-                    mlflow.log_metric("train_loss", train_loss, step=idx)
-                for idx, valid_loss in enumerate(valid_losses):
-                    mlflow.log_metric("valid_loss", valid_loss, step=idx)
+                    for idx, train_loss in enumerate(train_losses):
+                        mlflow.log_metric("train_loss", train_loss, step=idx)
+                    for idx, valid_loss in enumerate(valid_losses):
+                        mlflow.log_metric("valid_loss", valid_loss, step=idx)
 
-                if child_run.info.artifact_uri:
-                    print("Downloading run artifacts")
-                    try:
-                        path = os.path.join(cfg.paths.root_path, 'results', 'runs', f'{cfg.model.model_name}_{child_run.info.run_id}_{str(index)}')
-                        os.makedirs(path, exist_ok=True)
-                        mlflow.artifacts.download_artifacts(artifact_uri=child_run.info.artifact_uri, 
-                                                            dst_path=path)
-                    except Exception as ex:
-                        print('Download failed!')
-                        print(ex)
 
                 signature = mlflow.models.infer_signature(
                     X_train, estimator.predict(X_train)
