@@ -1,3 +1,12 @@
+defaults:
+  - _self_
+  - data_version
+  - test_config
+  - ApartmentPrice
+  - sample_data
+  - model/model
+  - experiment
+
 data:
   version: v1.0
   remote: localstore
@@ -7,12 +16,17 @@ data:
   random_state: 1
   target_cols: ["Price"]
 
+
+paths:
+  root_path: /home/kama/Documents/MLOps/ApartmentPrice
+
 defaults:
   - _self_
   - sample_data
   - data_version
   - model/model
   - experiment
+
 
 hydra:
   mode: MULTIRUN
@@ -21,6 +35,18 @@ hydra:
   sweeper:
     params:
       # +model: "decision_tree"
-      # +model: "gbr"
-      +model: "sn"
-      # +model: "pr, lr"
+      +model: "gbr"
+      # +model: "sn"
+      # +model: "decision_tree, gbr, sn"
+
+reproducibility:
+  seeds:
+    - 42
+    - 20
+    - 1
+    - 4
+    - 7
+    - 10
+
+datasets:
+  target_col: "Price"

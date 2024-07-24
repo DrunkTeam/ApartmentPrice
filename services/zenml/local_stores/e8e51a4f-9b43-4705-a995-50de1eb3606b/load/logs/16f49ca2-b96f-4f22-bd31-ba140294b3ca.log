@@ -1,0 +1,35 @@
+Caching disabled explicitly for load.
+
+Step load has started.
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+Failed to run step load.
+
+Wrong type for output 'output' of step 'load' (expected type: <class 'tuple'>, actual type: <class 'NoneType'>).
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 230, in launch
+    self._run_step(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 460, in _run_step
+    self._run_step_without_step_operator(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 535, in _run_step_without_step_operator
+    runner.run(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 237, in run
+    output_data = self._validate_outputs(
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 525, in _validate_outputs
+    raise StepInterfaceError(
+zenml.exceptions.StepInterfaceError: Wrong type for output 'output' of step 'load' (expected type: <class 'tuple'>, actual type: <class 'NoneType'>).
+

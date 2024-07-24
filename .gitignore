@@ -12,6 +12,8 @@ airflow.cfg
 airflow.db
 mlruns
 data/clear_data
+multirun
 .idea
 services/zenml/local_stores/
+configs/.DS_Store
 poetry.lock

@@ -1,0 +1,21 @@
+Caching disabled explicitly for extract.
+
+Step extract has started.
+
+Failed to run step extract.
+
+Wrong type for output 'data_version' of step 'extract' (expected type: <class 'int'>, actual type: <class 'str'>).
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 230, in launch
+    self._run_step(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 460, in _run_step
+    self._run_step_without_step_operator(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 535, in _run_step_without_step_operator
+    runner.run(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 237, in run
+    output_data = self._validate_outputs(
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 525, in _validate_outputs
+    raise StepInterfaceError(
+zenml.exceptions.StepInterfaceError: Wrong type for output 'data_version' of step 'extract' (expected type: <class 'int'>, actual type: <class 'str'>).
+

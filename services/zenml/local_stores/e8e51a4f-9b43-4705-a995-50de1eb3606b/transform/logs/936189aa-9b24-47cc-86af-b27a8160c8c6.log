@@ -1,0 +1,51 @@
+Caching disabled explicitly for transform.
+
+Step transform has started.
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+Failed to run step transform.
+
+0
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 0
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 230, in launch
+    self._run_step(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 460, in _run_step
+    self._run_step_without_step_operator(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 535, in _run_step_without_step_operator
+    runner.run(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 199, in run
+    return_values = step_instance.call_entrypoint(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/steps/base_step.py", line 606, in call_entrypoint
+    return self.entrypoint(**validated_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/airflow/dags/data_prepare.py", line 39, in transform
+    X, y = preprocess_data(df)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/src/data.py", line 170, in preprocess_data
+    print(df[todatetime_col][0])
+      ~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 0
+

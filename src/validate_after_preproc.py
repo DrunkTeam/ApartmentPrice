@@ -57,7 +57,7 @@ def validate_after_preprocessing(X, y):
         validator_x.expect_column_values_to_not_be_null(
             column=col
     )   
-        
+    #попробовать добавить expectation about NUMERIC 
     #some columns should be int
     for col in cfg.int_columns:
         validator_x.expect_column_values_to_be_of_type(

@@ -1,0 +1,9 @@
+[2024-07-09 01:34:46 +0300] [19045] [INFO] Starting gunicorn 22.0.0
+[2024-07-09 01:34:46 +0300] [19045] [INFO] Listening at: http://[::]:8793 (19045)
+[2024-07-09 01:34:46 +0300] [19045] [INFO] Using worker: sync
+[2024-07-09 01:34:46 +0300] [19047] [INFO] Booting worker with pid: 19047
+[2024-07-09 01:34:46 +0300] [19048] [INFO] Booting worker with pid: 19048
+[2024-07-19 11:27:35 +0300] [19045] [INFO] Handling signal: term
+[2024-07-19 11:27:35 +0300] [19047] [INFO] Worker exiting (pid: 19047)
+[2024-07-19 11:27:35 +0300] [19048] [INFO] Worker exiting (pid: 19048)
+[2024-07-19 11:27:40 +0300] [19045] [INFO] Shutting down: Master

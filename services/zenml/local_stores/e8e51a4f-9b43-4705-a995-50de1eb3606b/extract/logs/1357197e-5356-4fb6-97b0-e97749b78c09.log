@@ -1,0 +1,61 @@
+Caching disabled explicitly for extract.
+
+Step extract has started.
+
+Failed to run step extract.
+
+Key 'datasets' is not in struct
+    full_key: datasets
+    object_type=dict
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 230, in launch
+    self._run_step(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 460, in _run_step
+    self._run_step_without_step_operator(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 535, in _run_step_without_step_operator
+    runner.run(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 199, in run
+    return_values = step_instance.call_entrypoint(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/steps/base_step.py", line 606, in call_entrypoint
+    return self.entrypoint(**validated_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/airflow/dags/data_prepare.py", line 24, in extract
+    df, version = read_datastore()
+                  ^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/src/data.py", line 125, in read_datastore
+    path=os.path.join('data', 'samples', cfg.datasets.sample_filename),
+                                         ^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/dictconfig.py", line 359, in __getattr__
+    self._format_and_raise(key=key, value=None, cause=e)
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/base.py", line 231, in _format_and_raise
+    format_and_raise(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/_utils.py", line 819, in format_and_raise
+    _raise(ex, cause)
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/_utils.py", line 797, in _raise
+    raise ex.with_traceback(sys.exc_info()[2])  # set env var OC_CAUSE=1 for full trace
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/dictconfig.py", line 351, in __getattr__
+    return self._get_impl(
+           ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/dictconfig.py", line 442, in _get_impl
+    node = self._get_child(
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/basecontainer.py", line 73, in _get_child
+    child = self._get_node(
+            ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/dictconfig.py", line 475, in _get_node
+    self._validate_get(key)
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/dictconfig.py", line 164, in _validate_get
+    self._format_and_raise(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/base.py", line 231, in _format_and_raise
+    format_and_raise(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/_utils.py", line 899, in format_and_raise
+    _raise(ex, cause)
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/omegaconf/_utils.py", line 797, in _raise
+    raise ex.with_traceback(sys.exc_info()[2])  # set env var OC_CAUSE=1 for full trace
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+omegaconf.errors.ConfigAttributeError: Key 'datasets' is not in struct
+    full_key: datasets
+    object_type=dict
+
