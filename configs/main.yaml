@@ -6,6 +6,7 @@ defaults:
   - sample_data
   - model/model
   - experiment
+  - sample_data
 
 data:
   version: v1.0
@@ -18,15 +19,7 @@ data:
 
 
 paths:
-  root_path: /home/kama/Documents/MLOps/ApartmentPrice
-
-defaults:
-  - _self_
-  - sample_data
-  - data_version
-  - model/model
-  - experiment
-
+  root_path: /Users/ninelco/Documents/MLOps/ApartmentPrice
 
 hydra:
   mode: MULTIRUN
@@ -34,8 +27,8 @@ hydra:
   #   n_jobs: -1
   sweeper:
     params:
-      +model: "decision_tree"
-      # +model: "gbr"
+      # +model: "decision_tree"
+      +model: "gbr"
       # +model: "sn"
       # +model: "decision_tree, gbr, sn"
 
