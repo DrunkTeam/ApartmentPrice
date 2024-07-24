@@ -17,13 +17,14 @@ from zenml import ExternalArtifact, pipeline, step, save_artifact, load_artifact
 
 from models import RMSELoss, WrappedNeuralNetRegressor
 
-def load_features(name, version, target_col='Price', size = 1):
-    сlient = Client()
-    artifacts = сlient.list_artifacts(name=name, version=version)
-    artifacts = sorted(artifacts, key=lambda x: x.version, reverse=True)
-    # print("LEN: " + str(len(artifacts)))                                              
-    # print("Loading features from", name, version)
-    df = artifacts[0].load()
+def load_features(name, version, target_col='Price', size = 0.2):
+    # сlient = Client()
+    # artifacts = сlient.list_artifacts(name=name, version=version)
+    # artifacts = sorted(artifacts, key=lambda x: x.version, reverse=True)
+    # # print("LEN: " + str(len(artifacts)))                                              
+    # # print("Loading features from", name, version)
+    # df = artifacts[0].load()
+    df = pd.read_csv('data/clear_data/output.csv', index_col=0)
 
     df = df.sample(frac = size, random_state = 88)
     X = df.drop('Price', axis=1)
@@ -126,7 +127,7 @@ def train(X_train, y_train, cfg):
         estimator=estimator,
         param_grid=param_grid,
         scoring=scoring,
-        n_jobs=cfg.cv_n_jobs,
+        n_jobs=8,
         refit=evaluation_metric,
         cv=cfg.model.folds,
         verbose=1,
