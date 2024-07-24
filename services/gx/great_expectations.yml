@@ -103,6 +103,18 @@ fluent_datasources:
       asset01:
         type: csv
         filepath_or_buffer: ../data/raw/Equity_Apartments_Data.csv
+  data_transform:
+    type: pandas
+    assets:
+      pandas_dataframe:
+        type: dataframe
+        batch_metadata: {}
+  target_transform:
+    type: pandas
+    assets:
+      pandas_dataframe:
+        type: dataframe
+        batch_metadata: {}
 notebooks:
 include_rendered_content:
   globally: false

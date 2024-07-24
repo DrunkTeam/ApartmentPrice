@@ -15,6 +15,11 @@ sudo apt upgrade
 ```bash
 sudo apt install python3.11
 sudo apt install python3.11-venv
+sudo apt install python3-pip
+```
+
+```bash
+cd /home/kama/Documents/MLOps/
 ```
 
 ```bash
@@ -69,6 +74,10 @@ exit
 ```
 
 ```bash
+sudo apt install curl
+```
+
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -77,19 +86,22 @@ sudo -i
 ```
 
 ```bash
-conda create -n mlops python=3.11.0
+export PATH="/home/kama/anaconda3/bin:$PATH"
+source ~/.bashrc
 ```
+
+```bash
+conda create -n mlops python=3.11.9
+```
+
+```bash
+conda init
+```
+
+Нужно перезагрузить консоль - открыть новую консоль
 
 ```bash
 conda activate mlops
-```
-
-```bash
-pip install poetry==1.8.1
-```
-
-```bash
-poetry install
 ```
 
 ```bash
@@ -113,11 +125,19 @@ sudo apt-get install build-essential
 ```
 
 ```bash
-mkdir ~/ApartmentPrice
+mkdir /home/kama/Documents/MLOps/ApartmentPrice
 ```
 
 ```bash
-cd ~/ApartmentPrice
+sudo -i
+```
+
+```bash
+conda activate mlops
+```
+
+```bash
+cd /home/kama/Documents/MLOps/ApartmentPrice
 ```
 
 ```bash
@@ -133,22 +153,19 @@ pip install poetry==1.8.1
 ```
 
 ```bash
-poetry install
+poetry lock
 ```
 
-Current Python version (3.11.0) is not allowed by the project (3.10.13).
-Please change python executable via the "env use" command.
-
-Из-за этой ошибки надо поменять в файле poetry.lock поменять в последней строчке версию python с 3.10.13 на 3.11.0
+```bash
+poetry install
+```
 
 ```bash
 git pull
 ```
 
-Ошибка не ушла, но мы пошли дальше
-
 ```bash
-cd /root/ApartmentPrice/services/airflow/
+cd /home/kama/Documents/MLOps/ApartmentPrice/services/airflow/
 ```
 
 ```bash
@@ -156,27 +173,19 @@ nano airflow.cfg
 ```
 
 Меняем пути на 
-dags_folder = /root/ApartmentPrice/services/airflow/dags
-plugins_folder = /root/ApartmentPrice/services/airflow/plugins
-base_log_folder = /root/ApartmentPrice/services/airflow/logs
-dag_processor_manager_log_location = /root/ApartmentPrice/services/airflow/logs/dag_processor_manager/dag_processor_man>
-config_file = /root/ApartmentPrice/services/airflow/webserver_config.py
-child_process_log_directory = /root/ApartmentPrice/services/airflow/logs/scheduler
+dags_folder = /home/kama/ApartmentPrice/services/airflow/dags
+plugins_folder = /home/kama/ApartmentPrice/services/airflow/plugins
+base_log_folder = /home/kama/ApartmentPrice/services/airflow/logs
+dag_processor_manager_log_location = /home/kama/ApartmentPrice/services/airflow/logs/dag_processor_manager/dag_processor_man>
+config_file = /home/kama/ApartmentPrice/services/airflow/webserver_config.py
+child_process_log_directory = /home/kama/ApartmentPrice/services/airflow/logs/scheduler
 
 ```bash
-cd /root/ApartmentPrice/services/airflow
+cd /home/kama/Documents/MLOps/ApartmentPrice/services/airflow
 ```
 
 ```bash
 mkdir dags
-```
-
-```bash
-poetry lock --no-update
-```
-
-```bash
-poetry install
 ```
 
 ```bash
@@ -194,7 +203,7 @@ show hba_file;
 
 # 1. Open this file
 ```bash
-sudo nano /etc/postgresql/14/main/pg_hba.conf
+sudo nano /etc/postgresql/16/main/pg_hba.conf
 ```
 
 # 2. Add the following line to the end of this file
@@ -204,7 +213,7 @@ host all all 0.0.0.0/0 trust
 
 # 4. Open another file
 ```bash
-sudo nano /etc/postgresql/14/main/postgresql.conf
+sudo nano /etc/postgresql/16/main/postgresql.conf
 ```
 
 # 5. Add the line as follows

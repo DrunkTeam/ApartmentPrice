@@ -1,11 +1,12 @@
 import great_expectations as gx
 from great_expectations.data_context import FileDataContext
 
+
 def validate_initial_data(csv_path, name_suit="my_expectation_suite"):
     context = FileDataContext(project_root_dir="../services")
     ds = context.sources.add_or_update_pandas(name="my_pandas_ds")
     da = ds.add_csv_asset(
-        name = "csv_asset",
+        name="csv_asset",
         filepath_or_buffer=csv_path,
     )
     batch_request = da.build_batch_request()

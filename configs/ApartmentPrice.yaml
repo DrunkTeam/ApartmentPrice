@@ -1,0 +1,51 @@
+dublicate_cols: ['unit_id','Apartment Name', 'URL','building_id']
+
+clean_rn_columns: 'Address'
+
+clean_description_columns: 'Amenity'
+
+clean_string_columns: 'Unique_ID'
+
+todatatime_columns: 'Day_Recorded'
+
+col_for_imputing_date: 'Days_Till_Available'
+
+columns_most_frequent: ['Days_Till_Available', 'Northern_Exposure', 'Southern_Exposure', 'Eastern_Exposure', 'Western_Exposure', 'Balcony', 'Walk_In_Closet', 'Fireplace', 
+                          'City_Skyline', 'Kitchen_Island', 'Stainless_Appliances', 'Renovated', 'Office_Space', 'Unique_ID']
+
+col_for_new_date: 'Move_in_date_new'
+
+col_for_old_date: 'Move_in_date'
+
+col_for_extracting_date: []
+
+ohe_columns: 'City'
+
+columns_for_label_enc: 'Day_of_the_week_recorded'
+
+label_encoding: {'Tuesday': 1, 'Saturday': 2,'Friday': 3, 'Sunday': 4, 'Monday': 5, 'Wednesday': 6, 'Thursday': 7}
+
+for_scaling: ['Beds', 'Baths', 'sq.ft', 'Floor', 'Days_Till_Available', 'Units', 'Estiamted_Vacancy', 'Move_in_date_day', 'Move_in_date_month']
+
+columns_to_split: ['clean_string_col_vector','clean_description_col_vector', 'clean_rn_col_vector']
+
+target_col: 'Price'
+
+ohe_cols: ['Boston', 'Denver','Los Angeles', 'New York City','Orange County', 'San Diego', 'San Francisco', 'Seattle', 'Washington DC']
+
+validation_columns: ['Beds', 'Baths', 'sq.ft', 'Floor', 'Units',
+       'Northern_Exposure', 'Southern_Exposure', 'Eastern_Exposure',
+       'Western_Exposure', 'Balcony', 'Walk_In_Closet', 'Fireplace',
+       'City_Skyline', 'Kitchen_Island', 'Stainless_Appliances', 'Renovated',
+       'Office_Space', 'Days_Till_Available',
+       'Estiamted_Vacancy', 'Boston', 'Denver', 'Los Angeles', 'New York City',
+       'Orange County', 'San Diego', 'San Francisco', 'Seattle',
+       'Washington DC', 'Move_in_date_day',
+       'Move_in_date_month', 'clean_description_col_vector_0',
+       'clean_description_col_vector_1', 'clean_description_col_vector_2', 'clean_description_col_vector_3',
+       'clean_description_col_vector_4', 'clean_description_col_vector_5', 'clean_description_col_vector_6',
+       'clean_description_col_vector_7', 'clean_description_col_vector_8', 'clean_description_col_vector_9','clean_string_col_vector_0', 'clean_string_col_vector_1',
+       'clean_rn_col_vector_0', 'clean_rn_col_vector_1', 'clean_rn_col_vector_2']
+
+int_columns: ['Day_of_the_week_recorded']
+# 'clean_string_col_vector','clean_description_col_vector', 'clean_rn_col_vector'

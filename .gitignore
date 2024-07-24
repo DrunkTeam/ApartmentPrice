@@ -1,4 +1,3 @@
-#datastore
 datastore
 __pycache__/
 venv
@@ -14,3 +13,5 @@ airflow.db
 mlruns
 data/clear_data
 multirun
+.idea
+services/zenml/local_stores/

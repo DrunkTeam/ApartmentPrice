@@ -11,7 +11,7 @@ conda activate mlops
 ```
 
 ```bash
-cd /home/kama/ApartmentPrice/
+cd /home/kama/Documents/MLOps/ApartmentPrice/
 ```
 
 ```bash
@@ -21,8 +21,11 @@ sudo -u postgres psql
 
 ```bash
 CREATE USER ninel WITH PASSWORD 'ninel';
+CREATE ROLE ninel WITH LOGIN PASSWORD 'ninel';
+ALTER ROLE ninel WITH SUPERUSER;
 CREATE DATABASE airflow;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ninel;
+GRANT ALL PRIVILEGES ON DATABASE airflow TO ninel;
 show hba_file;
 \q
 ```
@@ -43,9 +46,22 @@ airflow users create --role Admin --username admin --email admin@example.org --f
 ```
 
 ```bash
-airflow scheduler --daemon --log-file services/airflow/logs/scheduler.log
-airflow triggerer --daemon --log-file services/airflow/logs/triggerer.log
+airflow scheduler --log-file services/airflow/logs/scheduler.log
+airflow triggerer --log-file services/airflow/logs/triggerer.log
+airflow webserver --log-file services/airflow/logs/webserver.log
 ```
+
+If you want to kill all Airflow processes/daemons in the background, run as follows:
+```bash
+kill $(ps -ef | grep "airflow" | awk '{print $2}')
+```
+
+```bash
+sudo lsof -i :8793
+sudo lsof -i :8794
+```
+
+Это больше не нужно
 
 ```bash
 tmux kill-session -t airflow_session
