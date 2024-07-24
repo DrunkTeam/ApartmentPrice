@@ -15,3 +15,13 @@ data/clear_data
 .idea
 services/zenml/local_stores/
 
+.DS_Store
+.dvc/config
+configs/main.yaml
+services/zenml/config.yaml
+services/zenml/local_stores/default_zen_store/zenml.db
+services/zenml/zen_server/local/.zenconfig/config.yaml
+services/zenml/zen_server/local/service.json
+services/zenml/zen_server/local/service.log
+services/zenml/zen_server/local/service.pid
+
