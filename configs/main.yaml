@@ -11,13 +11,22 @@ data:
   version: v1.0
   remote: localstore
   repo: "."
-  path: data/raw/Equity_Apartments_Data.csv 
+  path: data/raw/Equity_Apartments_Data.csv
   sample_size: 0.2
   random_state: 1
   target_cols: ["Price"]
 
+
 paths:
-  root_path: /Users/ninelco/Documents/MLOps/ApartmentPrice
+  root_path: /home/kama/Documents/MLOps/ApartmentPrice
+
+defaults:
+  - _self_
+  - sample_data
+  - data_version
+  - model/model
+  - experiment
+
 
 hydra:
   mode: MULTIRUN

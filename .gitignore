@@ -16,3 +16,4 @@ multirun
 .idea
 services/zenml/local_stores/
 configs/.DS_Store
+poetry.lock
