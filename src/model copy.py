@@ -230,54 +230,28 @@ def train(X_train, y_train, cfg):
                                           criterion=RMSELoss, batch_size=512)
     else:
         estimator = class_instance(**params)
-    # if class_name == "SimpleNet":
-    #     estimator = skorch.NeuralNetClassifier(
-    #         SimpleNet,
-    #         max_epochs=params.max_epochs,
-    #         criterion=torch.nn.CrossEntropyLoss(),
-    #         # device=device,
-    #         iterator_train__shuffle=True,
-    #         optimizer=torch.optim.AdamW
-    #     )
-    # else:
-    #     estimator = class_instance(**params)
     
     # Grid search with cross validation
     from sklearn.model_selection import StratifiedKFold
     cv = StratifiedKFold(n_splits=cfg.model.folds, random_state=cfg.random_state, shuffle=True)
 
-    # param_grid = dict(params)
+    param_grid = dict(params)
 
-    # scoring = list(cfg.model.metrics.values()) # ['balanced_accuracy', 'f1_weighted', 'precision', 'recall', 'roc_auc']
+    scoring = list(cfg.model.metrics.values()) # ['balanced_accuracy', 'f1_weighted', 'precision', 'recall', 'roc_auc']
 
-    # evaluation_metric = cfg.model.evaluation_metric
-
-    # gs = GridSearchCV(
-    #     estimator = estimator,
-    #     param_grid = param_grid,
-    #     scoring = scoring,
-    #     n_jobs = cfg.cv_n_jobs,
-    #     refit = evaluation_metric,
-    #     cv = cv,
-    #     verbose = 1,
-    #     return_train_score = True
-    # )
-
-    param_grid = dict(cfg.model.params)
-
-    scoring = list(cfg.model.metrics.values())
     evaluation_metric = cfg.model.evaluation_metric
 
     gs = GridSearchCV(
-        estimator=estimator,
-        param_grid=param_grid,
-        scoring=scoring,
-        n_jobs=cfg.cv_n_jobs,
-        refit=evaluation_metric,
-        cv=cfg.model.folds,
-        verbose=1,
-        return_train_score=True,
+        estimator = estimator,
+        param_grid = param_grid,
+        scoring = scoring,
+        n_jobs = cfg.cv_n_jobs,
+        refit = evaluation_metric,
+        cv = cv,
+        verbose = 1,
+        return_train_score = True
     )
+
 
     gs.fit(X_train, y_train)
 
