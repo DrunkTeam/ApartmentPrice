@@ -43,12 +43,12 @@ def main(cfg: DictConfig):
         torch.manual_seed(seed)
 
         cfg.random_state = seed
-        cfg.model.params.module__seed = [seed]
+        # cfg.model.params.module__seed = [seed]
 
         X_train, y_train = load_features(name="features_target", version=cfg.train_data_version, target_col=cfg.datasets.target_col)
         X_test, y_test = load_features(name="features_target", version=cfg.test_data_version, target_col=cfg.datasets.target_col)
 
-        cfg.model.params.module__input_size = [X_train.shape[1]]
+        # cfg.model.params.module__input_size = [X_train.shape[1]]
         gs = train(X_train, y_train, cfg=cfg)
 
         eval = evaluate_model(gs, X_test, y_test, metrics_fns)

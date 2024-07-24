@@ -20,7 +20,6 @@ from zenml.client import Client
 
 
 
-
 def init_hydra(config_path="../configs", config_name="main.yaml") -> DictConfig:
     """
     Initializes hydra

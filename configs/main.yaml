@@ -3,6 +3,9 @@ defaults:
   - data_version
   - test_config
   - ApartmentPrice
+  - sample_data
+  - model/model
+  - experiment
 
 data:
   version: v1.0
@@ -13,20 +16,28 @@ data:
   random_state: 1
   target_cols: ["Price"]
 
-defaults:
-  - _self_
-  - sample_data
-  - data_version
-  - model/model
-  - experiment
-  
+paths:
+  root_path: /Users/ninelco/Documents/MLOps/ApartmentPrice
+
 hydra:
   mode: MULTIRUN
   # launcher:
   #   n_jobs: -1
   sweeper:
     params:
-      +model: "decision_tree"
-      # +model: "gbr"
+      # +model: "decision_tree"
+      +model: "gbr"
       # +model: "sn"
       # +model: "decision_tree, gbr, sn"
+
+reproducibility:
+  seeds:
+    - 42
+    - 20
+    - 1
+    - 4
+    - 7
+    - 10
+
+datasets:
+  target_col: "Price"

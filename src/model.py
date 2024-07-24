@@ -12,18 +12,20 @@ from skorch.callbacks import BatchScoring
 from skorch.regressor import NeuralNetRegressor
 from sklearn.model_selection import GridSearchCV
 import matplotlib.pyplot as plt
+from uuid import UUID
+from zenml import ExternalArtifact, pipeline, step, save_artifact, load_artifact
 
 from models import RMSELoss, WrappedNeuralNetRegressor
 
 def load_features(name, version, target_col='Price', size = 1):
-    df = pd.read_csv('data/clear_data/output.csv', index_col=0)
+    сlient = Client()
+    artifacts = сlient.list_artifacts(name=name, version=version)
+    artifacts = sorted(artifacts, key=lambda x: x.version, reverse=True)
+    # print("LEN: " + str(len(artifacts)))                                              
+    # print("Loading features from", name, version)
+    df = artifacts[0].load()
+
     df = df.sample(frac = size, random_state = 88)
-
-    print("size of df is ", df.shape)
-    print("df columns: ", df.columns)
-
-    # X = df[df.columns[1:]]
-    # y = df[['Price']]
     X = df.drop('Price', axis=1)
     y = df['Price']
     print("shapes of X,y = ", X.shape, y.shape)
