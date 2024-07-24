@@ -1,0 +1,13 @@
+model_name: gradient_boosting_regressor
+artifact_path: basic_gbr
+
+tag_key: "model"
+tag_value: "basic GBR"
+
+module_name: "sklearn.ensemble"
+class_name: "GradientBoostingRegressor"
+
+params:
+  loss: ["squared_error", "absolute_error", "huber"]
+  learning_rate: [0.0, 0.1, 0.2]
+  subsample: [0.5, 0.8, 1.0]

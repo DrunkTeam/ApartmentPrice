@@ -1,0 +1,23 @@
+model_name: polynomial_regression
+artifact_path: basic_poly
+
+tag_key: "model"
+tag_value: "basic Polynomial Regression"
+
+module_name: "sklearn.pipeline"
+class_name: "Pipeline"
+
+params:
+  - step_name: "poly"
+    class: "sklearn.preprocessing.PolynomialFeatures"
+    params:
+      degree: [2, 3, 4]  # Example degrees of the polynomial features
+      include_bias: [True, False]
+      interaction_only: [False]
+  - step_name: "linear"
+    class: "sklearn.linear_model.LinearRegression"
+    params:
+      fit_intercept: [True, False]
+      # normalize: [True, False]  # Deprecated in some versions
+      # copy_X: [True, False]
+      n_jobs: [-1]

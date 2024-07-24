@@ -3,7 +3,11 @@
 import pandas as pd
 from typing_extensions import Tuple, Annotated
 from zenml import step, pipeline, ArtifactConfig
-from data import read_datastore, preprocess_data, validate_features, load_features
+
+import sys
+sys.path.append('/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice')
+
+from src.data import read_datastore, preprocess_data, validate_features, load_features
 # from utils import get_sample_version
 import os
 
@@ -56,21 +60,33 @@ def validate(X:pd.DataFrame,
     return X, y
 
 
-@step(enable_cache=False)
-def load(X:pd.DataFrame, y:pd.DataFrame, version: str):
+# @step(enable_cache=False)
+# def load(X:pd.DataFrame, y:pd.DataFrame, version: str):
     
-    load_features(X, y, version)
+#     load_features(X, y, version)
 
-#     return X, y
+# #     return X, y
+@step(enable_cache=False)
+def load(X:pd.DataFrame, y:pd.DataFrame, version: str)-> Tuple[
+                    Annotated[pd.DataFrame, 
+                            ArtifactConfig(name="features",
+                                           tags=["data_preparation"])],
+                    Annotated[pd.DataFrame,
+                            ArtifactConfig(name="target",
+                                           tags=["data_preparation"])]
+                                    ]:
+    
+    X, y = load_features(X, y, version)
 
+    return X, y
 
 @pipeline()
 def prepare_data_pipeline():
     df, version = extract()
     X, y = transform(df)
     X, y = validate(X, y)
-#     X, y = load(X, y, version)
-    load(X, y, version)             
+    X, y = load(X, y, version)
+         
 
 
 if __name__=="__main__":

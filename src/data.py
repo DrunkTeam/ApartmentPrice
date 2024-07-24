@@ -16,6 +16,8 @@ from sklearn.preprocessing import StandardScaler
 from gensim.models import Word2Vec
 from gensim.utils import simple_preprocess
 from pathlib import Path
+from zenml.client import Client
+
 
 
 
@@ -38,8 +40,6 @@ cfg = init_hydra()
 
 # @hydra.main(config_path="../configs", config_name = "main", version_base=None)
 def sample_data(cfg=cfg):
-    # import os
-    # os.chdir("/home/kama/ApartmentPrice")
     data_url = dvc.api.get_url(
         path=cfg.data.path,
         remote=cfg.data.remote,
@@ -181,10 +181,21 @@ def preprocess_data(df):
 
     # cols_most_frequent = ['Days_Till_Available', 'Northern_Exposure', 'Southern_Exposure', 'Eastern_Exposure', 'Western_Exposure', 'Balcony', 'Walk_In_Closet', 'Fireplace',
     #                       'City_Skyline', 'Kitchen_Island', 'Stainless_Appliances', 'Renovated', 'Office_Space', 'building_id', 'Unique_ID']
+    print(df.isnull().sum())
 
     cols_most_frequent = cfg.columns_most_frequent
     for i in cols_most_frequent:
         df[[i]] = imp_most_frequent.fit_transform(df[[i]])
+
+    # print(df['Unique_ID'].mode()[0])
+
+    # print(df.isnull().sum())
+
+    df[clean_string_col] = df[clean_string_col].fillna(df[clean_string_col].mode()[0])
+
+
+    # print(df.isnull().sum())
+
 
     New_date = []
 
@@ -235,6 +246,8 @@ def preprocess_data(df):
         lambda x: sum([word_vectors_Amenity[word] for word in x if word in word_vectors_Amenity] or [0]) / len(x))
 
     # Splitting each line into two tokens: numbers and letters
+
+    # print(df[clean_string_col])
 
     df['clean_string_col_processed'] = df[clean_string_col].apply(tokenize)
     tokens = df['clean_string_col_processed'].tolist()
@@ -322,9 +335,21 @@ def validate_features(X, y):
 
 
 def load_features(X, y, version):
+    cfg = compose(config_name="ApartmentPrice")
     # concatinate and save like a one dataframe
-    df = df = pd.concat([X, y], axis=1)
+    df = pd.concat([X, y], axis=1)
     zenml.save_artifact(data=df, name="features_target", tags=[version])
+
+    client = Client()
+
+    l = client.list_artifacts(name="features_target", sort_by="version").items
+    l.reverse()
+    df = l[0].load()
+
+    saved_X = df.drop(cfg.target_col, axis=1)
+    saved_y = df[[cfg.target_col]]
+
+    return saved_X, saved_y
 
 
 if __name__ == "__main__":

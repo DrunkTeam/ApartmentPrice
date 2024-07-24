@@ -1,4 +1,4 @@
 [core]
     remote = localstore
 ['remote "localstore"']
-    url = /Users/ninelco/Documents/MLOps/ApartmentPrice/datastore
+    url = /home/kama/Documents/MLOps/ApartmentPrice/datastore
