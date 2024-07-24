@@ -1,0 +1,3 @@
+
+2024-07-09 01:35:13,901 INFO - Setting up TriggererHandlerWrapper with handler <FileTaskHandler (NOTSET)>
+2024-07-09 01:35:13,902 INFO - Setting up logging queue listener with handlers [<RedirectStdHandler <stdout> (NOTSET)>, <NonCachingFileHandler /Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/airflow/logs/triggerer.log (NOTSET)>, <TriggererHandlerWrapper (NOTSET)>]

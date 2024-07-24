@@ -1,0 +1,14 @@
+Caching disabled explicitly for transform.
+
+Step transform has started.
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+Day_Recorded   2021-08-06
+Name: 0, dtype: datetime64[ns]
+Day_Recorded   2021-07-22
+Name: 1, dtype: datetime64[ns]

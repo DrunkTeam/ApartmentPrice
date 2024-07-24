@@ -1,0 +1,171 @@
+Caching disabled explicitly for transform.
+
+Step transform has started.
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+collecting all words and their counts
+
+PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+
+PROGRESS: at sentence #10000, processed 46432 words, keeping 320 word types
+
+collected 320 word types from a corpus of 58294 raw words and 12562 sentences
+
+Creating a fresh vocabulary
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 retains 320 unique words (100.00% of original 320, drops 0)', 'datetime': '2024-07-20T01:40:21.800773', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 leaves 58294 word corpus (100.00% of original 58294, drops 0)', 'datetime': '2024-07-20T01:40:21.800891', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+deleting the raw counts dictionary of 320 items
+
+sample=0.001 downsamples 79 most-common words
+
+Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 30361.279602895538 word corpus (52.1%% of prior 58294)', 'datetime': '2024-07-20T01:40:21.802286', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+estimated required memory for 320 words and 10 dimensions: 185600 bytes
+
+resetting layer weights
+
+Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2024-07-20T01:40:21.803942', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'build_vocab'}
+
+Word2Vec lifecycle event {'msg': 'training model with 4 workers on 320 vocabulary and 10 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2024-07-20T01:40:21.804045', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+EPOCH 0: training on 58294 raw words (30396 effective words) took 0.0s, 1642398 effective words/s
+
+EPOCH 1: training on 58294 raw words (30464 effective words) took 0.0s, 1618790 effective words/s
+
+EPOCH 2: training on 58294 raw words (30328 effective words) took 0.0s, 3216218 effective words/s
+
+EPOCH 3: training on 58294 raw words (30304 effective words) took 0.0s, 2761394 effective words/s
+
+EPOCH 4: training on 58294 raw words (30495 effective words) took 0.0s, 2511616 effective words/s
+
+Word2Vec lifecycle event {'msg': 'training on 291470 raw words (151987 effective words) took 0.1s, 1533014 effective words/s', 'datetime': '2024-07-20T01:40:21.903283', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+Word2Vec lifecycle event {'params': 'Word2Vec<vocab=320, vector_size=10, alpha=0.025>', 'datetime': '2024-07-20T01:40:21.903441', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'created'}
+
+collecting all words and their counts
+
+PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+
+PROGRESS: at sentence #10000, processed 19145 words, keeping 3477 word types
+
+collected 3790 word types from a corpus of 24075 raw words and 12562 sentences
+
+Creating a fresh vocabulary
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 retains 3790 unique words (100.00% of original 3790, drops 0)', 'datetime': '2024-07-20T01:40:22.120330', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 leaves 24075 word corpus (100.00% of original 24075, drops 0)', 'datetime': '2024-07-20T01:40:22.120510', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+deleting the raw counts dictionary of 3790 items
+
+sample=0.001 downsamples 57 most-common words
+
+Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 21626.328701985825 word corpus (89.8%% of prior 24075)', 'datetime': '2024-07-20T01:40:22.133000', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+estimated required memory for 3790 words and 2 dimensions: 1955640 bytes
+
+resetting layer weights
+
+Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2024-07-20T01:40:22.147380', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'build_vocab'}
+
+Word2Vec lifecycle event {'msg': 'training model with 4 workers on 3790 vocabulary and 2 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2024-07-20T01:40:22.147484', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+EPOCH 0: training on 24075 raw words (21621 effective words) took 0.0s, 1413141 effective words/s
+
+EPOCH 1: training on 24075 raw words (21639 effective words) took 0.0s, 2225882 effective words/s
+
+EPOCH 2: training on 24075 raw words (21597 effective words) took 0.0s, 2546891 effective words/s
+
+EPOCH 3: training on 24075 raw words (21641 effective words) took 0.0s, 1381932 effective words/s
+
+EPOCH 4: training on 24075 raw words (21592 effective words) took 0.0s, 1361101 effective words/s
+
+Word2Vec lifecycle event {'msg': 'training on 120375 raw words (108090 effective words) took 0.1s, 1286081 effective words/s', 'datetime': '2024-07-20T01:40:22.231611', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+Word2Vec lifecycle event {'params': 'Word2Vec<vocab=3790, vector_size=2, alpha=0.025>', 'datetime': '2024-07-20T01:40:22.231759', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'created'}
+
+collecting all words and their counts
+
+PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+
+PROGRESS: at sentence #10000, processed 46432 words, keeping 320 word types
+
+collected 320 word types from a corpus of 58294 raw words and 12562 sentences
+
+Creating a fresh vocabulary
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 retains 320 unique words (100.00% of original 320, drops 0)', 'datetime': '2024-07-20T01:40:22.465995', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 leaves 58294 word corpus (100.00% of original 58294, drops 0)', 'datetime': '2024-07-20T01:40:22.466086', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+deleting the raw counts dictionary of 320 items
+
+sample=0.001 downsamples 79 most-common words
+
+Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 30361.279602895538 word corpus (52.1%% of prior 58294)', 'datetime': '2024-07-20T01:40:22.467365', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+estimated required memory for 320 words and 3 dimensions: 167680 bytes
+
+resetting layer weights
+
+Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2024-07-20T01:40:22.468960', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'build_vocab'}
+
+Word2Vec lifecycle event {'msg': 'training model with 4 workers on 320 vocabulary and 3 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2024-07-20T01:40:22.469043', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+EPOCH 0: training on 58294 raw words (30396 effective words) took 0.0s, 1740096 effective words/s
+
+EPOCH 1: training on 58294 raw words (30358 effective words) took 0.0s, 2567282 effective words/s
+
+EPOCH 2: training on 58294 raw words (30568 effective words) took 0.0s, 2642024 effective words/s
+
+EPOCH 3: training on 58294 raw words (30329 effective words) took 0.0s, 2401742 effective words/s
+
+EPOCH 4: training on 58294 raw words (30354 effective words) took 0.0s, 4118473 effective words/s
+
+Word2Vec lifecycle event {'msg': 'training on 291470 raw words (152005 effective words) took 0.1s, 1545099 effective words/s', 'datetime': '2024-07-20T01:40:22.567497', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+Word2Vec lifecycle event {'params': 'Word2Vec<vocab=320, vector_size=3, alpha=0.025>', 'datetime': '2024-07-20T01:40:22.567666', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'created'}
+
+['clean_string_col_vector', 'clean_description_col_vector', 'clean_rn_col_vector']
+Failed to run step transform.
+
+"[('clean_string_col_vector', 'clean_description_col_vector', 'clean_rn_col_vector')] not found in axis"
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 230, in launch
+    self._run_step(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 460, in _run_step
+    self._run_step_without_step_operator(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 535, in _run_step_without_step_operator
+    runner.run(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 199, in run
+    return_values = step_instance.call_entrypoint(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/steps/base_step.py", line 606, in call_entrypoint
+    return self.entrypoint(**validated_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/airflow/dags/data_prepare.py", line 39, in transform
+    X, y = preprocess_data(df)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/src/data.py", line 263, in preprocess_data
+    df.drop([cfg.columns_to_split], axis=1, inplace=True)
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/frame.py", line 5581, in drop
+    return super().drop(
+           ^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/generic.py", line 4788, in drop
+    obj = obj._drop_axis(labels, axis, level=level, errors=errors)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/generic.py", line 4830, in _drop_axis
+    new_axis = axis.drop(labels, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 7070, in drop
+    raise KeyError(f"{labels[mask].tolist()} not found in axis")
+KeyError: "[('clean_string_col_vector', 'clean_description_col_vector', 'clean_rn_col_vector')] not found in axis"
+

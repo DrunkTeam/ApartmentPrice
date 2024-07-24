@@ -1,0 +1,63 @@
+Caching disabled explicitly for transform.
+
+Step transform has started.
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+Address
+ 
+ 
+0        5000 Eisenhower Avenue\r\n\r\nAlexandria VA 22304
+1        425 Massachusetts Avenue NW\r\n\r\nWashington ...
+2          1200 N Herndon Street\r\n\r\nArlington VA 22201
+3                      50 Malden St\r\n\r\nBoston MA 02118
+4                99 Vista Montana\r\n\r\nSan Jose CA 95134
+                               ...                        
+12557            8102 161st Ave NE\r\n\r\nRedmond WA 98052
+12558      1200 N Herndon Street\r\n\r\nArlington VA 22201
+12559            4885 Edgemoor Ln\r\n\r\nBethesda MD 20814
+12560      11727 Fairfax Woods Way\r\n\r\nFairfax VA 22030
+12561            2201 Mill Road\r\n\r\nAlexandria VA 22314
+Name: Address, Length: 12562, dtype: object
+Failed to run step transform.
+
+2
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 230, in launch
+    self._run_step(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 460, in _run_step
+    self._run_step_without_step_operator(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_launcher.py", line 535, in _run_step_without_step_operator
+    runner.run(
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/orchestrators/step_runner.py", line 199, in run
+    return_values = step_instance.call_entrypoint(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/steps/base_step.py", line 606, in call_entrypoint
+    return self.entrypoint(**validated_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/airflow/dags/data_prepare.py", line 39, in transform
+    X, y = preprocess_data(df)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/src/data.py", line 155, in preprocess_data
+    df[cols_most_frequent] = imp_most_frequent.fit_transform(df[cols_most_frequent])
+    ~~^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/frame.py", line 4311, in __setitem__
+    self._set_item(key, value)
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/frame.py", line 4524, in _set_item
+    value, refs = self._sanitize_column(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/frame.py", line 5267, in _sanitize_column
+    arr = sanitize_array(value, self.index, copy=True, allow_2d=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/construction.py", line 606, in sanitize_array
+    subarr = maybe_infer_to_datetimelike(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/pandas/core/dtypes/cast.py", line 1182, in maybe_infer_to_datetimelike
+    raise ValueError(value.ndim)  # pragma: no cover
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 2
+

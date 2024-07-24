@@ -16,6 +16,8 @@ from sklearn.preprocessing import StandardScaler
 from gensim.models import Word2Vec
 from gensim.utils import simple_preprocess
 from pathlib import Path
+from zenml.client import Client
+
 
 
 
@@ -113,11 +115,25 @@ def read_datastore():
     # Initialize Hydra with config path (replace with your config file)
     # we have to read them from the datastore after the 1 task in this phase
     # initialize(config_path="../configs", version_base="1.1")
-    cfg = compose(config_name="data_version")
-    version_num = cfg.data_version
+    # cfg = compose(config_name="data_version")
+    # version_num = cfg.data_version
 
-    sample_path = Path("data") / "samples" / "sample.csv"
-    df = pd.read_csv(sample_path)
+    # sample_path = Path("data") / "samples" / "sample.csv"
+    # df = pd.read_csv(sample_path)
+    # return df, version_num
+    # relative_path = os.path.join('data', 'samples', cfg.data.sample_filename)
+    # path=Path("data")
+    data_url = dvc.api.get_url(
+        path=cfg.data.path,
+        remote=cfg.data.remote,
+        repo=cfg.data.repo,
+        rev=str(cfg.data.version)
+    )
+    version_num = str(cfg.data.version)
+
+    # Take a sample of the data
+    df = pd.read_csv(data_url)
+
     return df, version_num
 
 
@@ -165,10 +181,21 @@ def preprocess_data(df):
 
     # cols_most_frequent = ['Days_Till_Available', 'Northern_Exposure', 'Southern_Exposure', 'Eastern_Exposure', 'Western_Exposure', 'Balcony', 'Walk_In_Closet', 'Fireplace',
     #                       'City_Skyline', 'Kitchen_Island', 'Stainless_Appliances', 'Renovated', 'Office_Space', 'building_id', 'Unique_ID']
+    print(df.isnull().sum())
 
     cols_most_frequent = cfg.columns_most_frequent
     for i in cols_most_frequent:
         df[[i]] = imp_most_frequent.fit_transform(df[[i]])
+
+    # print(df['Unique_ID'].mode()[0])
+
+    # print(df.isnull().sum())
+
+    df[clean_string_col] = df[clean_string_col].fillna(df[clean_string_col].mode()[0])
+
+
+    # print(df.isnull().sum())
+
 
     New_date = []
 
@@ -219,6 +246,8 @@ def preprocess_data(df):
         lambda x: sum([word_vectors_Amenity[word] for word in x if word in word_vectors_Amenity] or [0]) / len(x))
 
     # Splitting each line into two tokens: numbers and letters
+
+    # print(df[clean_string_col])
 
     df['clean_string_col_processed'] = df[clean_string_col].apply(tokenize)
     tokens = df['clean_string_col_processed'].tolist()
@@ -306,9 +335,21 @@ def validate_features(X, y):
 
 
 def load_features(X, y, version):
+    cfg = compose(config_name="ApartmentPrice")
     # concatinate and save like a one dataframe
-    df = df = pd.concat([X, y], axis=1)
+    df = pd.concat([X, y], axis=1)
     zenml.save_artifact(data=df, name="features_target", tags=[version])
+
+    client = Client()
+
+    l = client.list_artifacts(name="features_target", sort_by="version").items
+    l.reverse()
+    df = l[0].load()
+
+    saved_X = df.drop(cfg.target_col, axis=1)
+    saved_y = df[[cfg.target_col]]
+
+    return saved_X, saved_y
 
 
 if __name__ == "__main__":

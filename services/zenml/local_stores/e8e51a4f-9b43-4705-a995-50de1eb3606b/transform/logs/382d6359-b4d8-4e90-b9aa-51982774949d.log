@@ -1,0 +1,172 @@
+Caching disabled explicitly for transform.
+
+Step transform has started.
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+/opt/homebrew/anaconda3/envs/mlops_9/lib/python3.11/site-packages/zenml/materializers/pandas_materializer.py:94: UserWarning: Could not infer format, so each element will be parsed individually, falling back to dateutil. To ensure parsing is consistent and as-expected, please specify a format.
+  df = pd.read_csv(f, index_col=0, parse_dates=True)
+
+
+collecting all words and their counts
+
+PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+
+PROGRESS: at sentence #10000, processed 74099 words, keeping 553 word types
+
+PROGRESS: at sentence #20000, processed 166039 words, keeping 572 word types
+
+PROGRESS: at sentence #30000, processed 257355 words, keeping 574 word types
+
+PROGRESS: at sentence #40000, processed 347347 words, keeping 580 word types
+
+PROGRESS: at sentence #50000, processed 437715 words, keeping 583 word types
+
+PROGRESS: at sentence #60000, processed 529089 words, keeping 595 word types
+
+collected 595 word types from a corpus of 553775 raw words and 62810 sentences
+
+Creating a fresh vocabulary
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 retains 595 unique words (100.00% of original 595, drops 0)', 'datetime': '2024-07-24T00:04:08.363745', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 leaves 553775 word corpus (100.00% of original 553775, drops 0)', 'datetime': '2024-07-24T00:04:08.379665', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+deleting the raw counts dictionary of 595 items
+
+sample=0.001 downsamples 82 most-common words
+
+Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 283908.711213479 word corpus (51.3%% of prior 553775)', 'datetime': '2024-07-24T00:04:08.381177', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+estimated required memory for 595 words and 10 dimensions: 345100 bytes
+
+resetting layer weights
+
+Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2024-07-24T00:04:08.383274', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'build_vocab'}
+
+Word2Vec lifecycle event {'msg': 'training model with 4 workers on 595 vocabulary and 10 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2024-07-24T00:04:08.383344', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+EPOCH 0: training on 553775 raw words (284038 effective words) took 0.1s, 5018823 effective words/s
+
+EPOCH 1: training on 553775 raw words (284080 effective words) took 0.1s, 5382924 effective words/s
+
+EPOCH 2: training on 553775 raw words (283997 effective words) took 0.1s, 5392271 effective words/s
+
+EPOCH 3: training on 553775 raw words (284504 effective words) took 0.1s, 5424018 effective words/s
+
+EPOCH 4: training on 553775 raw words (283828 effective words) took 0.1s, 5333876 effective words/s
+
+Word2Vec lifecycle event {'msg': 'training on 2768875 raw words (1420447 effective words) took 0.3s, 4996760 effective words/s', 'datetime': '2024-07-24T00:04:08.667659', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+Word2Vec lifecycle event {'params': 'Word2Vec<vocab=595, vector_size=10, alpha=0.025>', 'datetime': '2024-07-24T00:04:08.667882', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'created'}
+
+collecting all words and their counts
+
+PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+
+PROGRESS: at sentence #10000, processed 19137 words, keeping 3190 word types
+
+PROGRESS: at sentence #20000, processed 38397 words, keeping 3597 word types
+
+PROGRESS: at sentence #30000, processed 57572 words, keeping 3743 word types
+
+PROGRESS: at sentence #40000, processed 76758 words, keeping 4005 word types
+
+PROGRESS: at sentence #50000, processed 95968 words, keeping 4155 word types
+
+PROGRESS: at sentence #60000, processed 115136 words, keeping 4493 word types
+
+collected 4530 word types from a corpus of 120498 raw words and 62810 sentences
+
+Creating a fresh vocabulary
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 retains 4530 unique words (100.00% of original 4530, drops 0)', 'datetime': '2024-07-24T00:04:09.210246', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 leaves 120498 word corpus (100.00% of original 120498, drops 0)', 'datetime': '2024-07-24T00:04:09.210369', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+deleting the raw counts dictionary of 4530 items
+
+sample=0.001 downsamples 61 most-common words
+
+Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 108393.68826707787 word corpus (90.0%% of prior 120498)', 'datetime': '2024-07-24T00:04:09.216158', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+estimated required memory for 4530 words and 2 dimensions: 2337480 bytes
+
+resetting layer weights
+
+Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2024-07-24T00:04:09.226087', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'build_vocab'}
+
+Word2Vec lifecycle event {'msg': 'training model with 4 workers on 4530 vocabulary and 2 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2024-07-24T00:04:09.226149', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+EPOCH 0: training on 120498 raw words (108353 effective words) took 0.0s, 5855152 effective words/s
+
+EPOCH 1: training on 120498 raw words (108363 effective words) took 0.0s, 6242872 effective words/s
+
+EPOCH 2: training on 120498 raw words (108285 effective words) took 0.0s, 6333274 effective words/s
+
+EPOCH 3: training on 120498 raw words (108474 effective words) took 0.0s, 5982489 effective words/s
+
+EPOCH 4: training on 120498 raw words (108416 effective words) took 0.0s, 6201771 effective words/s
+
+Word2Vec lifecycle event {'msg': 'training on 602490 raw words (541891 effective words) took 0.1s, 4382967 effective words/s', 'datetime': '2024-07-24T00:04:09.349827', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+Word2Vec lifecycle event {'params': 'Word2Vec<vocab=4530, vector_size=2, alpha=0.025>', 'datetime': '2024-07-24T00:04:09.349902', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'created'}
+
+collecting all words and their counts
+
+PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+
+PROGRESS: at sentence #10000, processed 45339 words, keeping 319 word types
+
+PROGRESS: at sentence #20000, processed 92155 words, keeping 321 word types
+
+PROGRESS: at sentence #30000, processed 138473 words, keeping 321 word types
+
+PROGRESS: at sentence #40000, processed 185126 words, keeping 321 word types
+
+PROGRESS: at sentence #50000, processed 231634 words, keeping 321 word types
+
+PROGRESS: at sentence #60000, processed 278199 words, keeping 321 word types
+
+collected 321 word types from a corpus of 291252 raw words and 62810 sentences
+
+Creating a fresh vocabulary
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 retains 321 unique words (100.00% of original 321, drops 0)', 'datetime': '2024-07-24T00:04:09.695839', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+Word2Vec lifecycle event {'msg': 'effective_min_count=1 leaves 291252 word corpus (100.00% of original 291252, drops 0)', 'datetime': '2024-07-24T00:04:09.695897', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+deleting the raw counts dictionary of 321 items
+
+sample=0.001 downsamples 75 most-common words
+
+Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 152039.25429755164 word corpus (52.2%% of prior 291252)', 'datetime': '2024-07-24T00:04:09.696493', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'prepare_vocab'}
+
+estimated required memory for 321 words and 3 dimensions: 168204 bytes
+
+resetting layer weights
+
+Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2024-07-24T00:04:09.697589', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'build_vocab'}
+
+Word2Vec lifecycle event {'msg': 'training model with 4 workers on 321 vocabulary and 3 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2024-07-24T00:04:09.697663', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+EPOCH 0: training on 291252 raw words (152322 effective words) took 0.0s, 4718633 effective words/s
+
+EPOCH 1: training on 291252 raw words (151799 effective words) took 0.0s, 4900127 effective words/s
+
+EPOCH 2: training on 291252 raw words (151939 effective words) took 0.0s, 4745356 effective words/s
+
+EPOCH 3: training on 291252 raw words (151897 effective words) took 0.0s, 4898554 effective words/s
+
+EPOCH 4: training on 291252 raw words (151966 effective words) took 0.0s, 4959105 effective words/s
+
+Word2Vec lifecycle event {'msg': 'training on 1456260 raw words (759923 effective words) took 0.2s, 4233850 effective words/s', 'datetime': '2024-07-24T00:04:09.877198', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'train'}
+
+Word2Vec lifecycle event {'params': 'Word2Vec<vocab=321, vector_size=3, alpha=0.025>', 'datetime': '2024-07-24T00:04:09.877285', 'gensim': '4.3.2', 'python': '3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]', 'platform': 'macOS-14.5-arm64-arm-64bit', 'event': 'created'}
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+By default, the PandasMaterializer stores data as a .csv file. If you want to store data more efficiently, you can install pyarrow by running 'pip install pyarrow'. This will allow PandasMaterializer to automatically store the data as a .parquet file instead.
+
+Step transform has finished in 5.162s.
+
