@@ -15,7 +15,9 @@ metrics:
   neg_root_mean_squared_error: "neg_root_mean_squared_error"
   neg_mean_squared_error: "neg_mean_squared_error"
   neg_mean_absolute_error: "neg_mean_absolute_error"
-  
+
+num_challengers: 3
+
 # hydra:
 #   sweeper:
 #       sampler:

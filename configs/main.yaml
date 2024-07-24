@@ -19,7 +19,7 @@ data:
 
 
 paths:
-  root_path: /Users/ninelco/Documents/MLOps/ApartmentPrice
+  root_path: /home/kama/Documents/MLOps/ApartmentPrice
 
 hydra:
   mode: MULTIRUN

@@ -16,3 +16,5 @@ data/clear_data
 services/zenml/local_stores/
 poetry.lock
 multirun
+results
+services/airflow/airflow.cfg
