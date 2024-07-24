@@ -1,0 +1,5 @@
+user_name: jackogozaly
+dataset_name: equity-residential-apartment-data
+path: data/raw/Equity_Apartments_Data.csv
+sample_size: 0.2
+sample_num: 5

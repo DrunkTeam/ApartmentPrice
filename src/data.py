@@ -7,6 +7,8 @@ import great_expectations as gx
 import dvc.api
 import datetime as dt
 import re
+from subprocess import run
+from zipfile import ZipFile
 
 from omegaconf import DictConfig
 from hydra.core.global_hydra import GlobalHydra
@@ -36,9 +38,78 @@ def init_hydra(config_path="../configs", config_name="main.yaml") -> DictConfig:
 
 cfg = init_hydra()
 
+def download_dataset():
+
+    cfg = compose(config_name="sample_data")
+
+    #  #Define the dataset path
+    # dataset_path = Path(cfg.path)
+    # dataset_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # # Check if the dataset already exists
+    # if not dataset_path.exists():
+    #     try:
+    #         # Run the kaggle command to download the dataset using poetry
+    #         run(
+    #             [
+    #                 "poetry",
+    #                 "run",
+    #                 "kaggle",
+    #                 "datasets",
+    #                 "download",
+    #                 f"{cfg.user_name}/{cfg.dataset_name}",
+    #             ],
+    #             check=True,
+    #         )
+
+    #         # Extract the contents of the downloaded zip file
+    #         with ZipFile(f"{cfg.dataset_name}.zip", 'r') as zip_ref:
+    #             zip_ref.extractall(dataset_path.parent)
+
+    #         # Find and rename the extracted CSV file to the target path
+    #         extracted_files = list(dataset_path.parent.glob("*.csv"))
+    #         if extracted_files:
+    #             extracted_files[0].rename(dataset_path)
+
+    #         # Remove the zip file after extraction
+    #         os.remove(f"{cfg.dataset_name}.zip")
+
+    #     except subprocess.CalledProcessError as e:
+    #         print(f"Error occurred while downloading the dataset: {e}")
+
+    # else:
+    #     print(f"Dataset already exists at {dataset_path}")
+
+    data_path = Path(cfg.path)
+    data_path.parent.mkdir(exist_ok=True, parents=True)
+    if not data_path.exists():
+        run(
+            [
+                "poetry",
+                "run",
+                "kaggle",
+                "datasets",
+                "download",
+                f"{cfg.user_name}/{cfg.dataset_name}",
+            ],
+            check=True,
+        )
+        with ZipFile(f"{cfg.dataset_name}.zip", 'r') as zip_file:
+            # Assuming there's only one CSV file in the archive
+            csv_file = zip_file.namelist()[0]
+            zip_file.extract(csv_file, data_path.parent)
+            (data_path.parent / csv_file).rename(data_path)
+        os.remove(Path(f"{cfg.dataset_name}.zip"))
+
+    else:
+        print(f"Data already exists: {data_path}")
+
 
 # @hydra.main(config_path="../configs", config_name = "main", version_base=None)
 def sample_data(cfg=cfg):
+    cfg = compose(config_name="sample_data")
+
+    download_dataset()
     data_url = dvc.api.get_url(
         path=cfg.data.path,
         remote=cfg.data.remote,
@@ -178,22 +249,15 @@ def preprocess_data(df):
 
     imp_most_frequent = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
 
-    # cols_most_frequent = ['Days_Till_Available', 'Northern_Exposure', 'Southern_Exposure', 'Eastern_Exposure', 'Western_Exposure', 'Balcony', 'Walk_In_Closet', 'Fireplace',
-    #                       'City_Skyline', 'Kitchen_Island', 'Stainless_Appliances', 'Renovated', 'Office_Space', 'building_id', 'Unique_ID']
-    print(df.isnull().sum())
 
     cols_most_frequent = cfg.columns_most_frequent
     for i in cols_most_frequent:
         df[[i]] = imp_most_frequent.fit_transform(df[[i]])
 
-    # print(df['Unique_ID'].mode()[0])
-
-    # print(df.isnull().sum())
 
     df[clean_string_col] = df[clean_string_col].fillna(df[clean_string_col].mode()[0])
 
 
-    # print(df.isnull().sum())
 
 
     New_date = []
@@ -246,7 +310,6 @@ def preprocess_data(df):
 
     # Splitting each line into two tokens: numbers and letters
 
-    # print(df[clean_string_col])
 
     df['clean_string_col_processed'] = df[clean_string_col].apply(tokenize)
     tokens = df['clean_string_col_processed'].tolist()
@@ -285,7 +348,11 @@ def preprocess_data(df):
     split_dfs = pd.DataFrame(df_split)
     df = pd.concat([df, split_dfs], axis=1)
 
+
+
     df.drop(cfg.columns_to_split, axis=1, inplace=True)
+
+
 
     X = df.drop(cfg.target_col, axis=1)
     y = df[[cfg.target_col]]
@@ -328,6 +395,7 @@ def validate_features(X, y):
     )
 
     result = checkpoint.run()
+
 
     if result.success:
         return X, y
