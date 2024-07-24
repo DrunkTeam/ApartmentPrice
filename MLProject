@@ -3,20 +3,14 @@ name: apartment_price
 # python_env: python_env.yaml
 
 entry_points:
-
   main:
     command: "python src/main.py"
 
-
-entry_points:
   validate:
     command: "python src/validate.py"
 
-entry_points:
   transform:
     command: "zenml pipeline run transform_pipeline"
 
-
-entry_points:
   extract:
     command: "airflow dags test <dag-id>"
