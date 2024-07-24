@@ -1,6 +1,6 @@
 {
     "type": "zenml.zen_server.deploy.local.local_zen_server.LocalZenServer",
-    "uuid": "55bb5531-d314-4189-adc5-c96311a872eb",
+    "uuid": "03228890-1072-41b1-8f77-c9177476fd3b",
     "admin_state": "active",
     "config": {
         "type": "zenml.zen_server.deploy.local.local_zen_server.LocalZenServerConfig",
@@ -10,7 +10,7 @@
         "pipeline_step_name": "",
         "run_name": "",
         "silent_daemon": false,
-        "root_runtime_path": "/home/kama/Documents/MLOps/ApartmentPrice/services/zenml/zen_server/local",
+        "root_runtime_path": "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/zenml/zen_server/local",
         "singleton": true,
         "blocking": false,
         "server": {
@@ -27,7 +27,7 @@
         "state": "inactive",
         "last_state": "inactive",
         "last_error": "",
-        "runtime_path": "/home/kama/Documents/MLOps/ApartmentPrice/services/zenml/zen_server/local",
+        "runtime_path": "/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/zenml/zen_server/local",
         "silent_daemon": false
     },
     "endpoint": {

@@ -3,6 +3,10 @@ defaults:
   - data_version
   - test_config
   - ApartmentPrice
+  - sample_data
+  - data_version
+  - model/model
+  - experiment
 
 data:
   version: v1.0
@@ -13,13 +17,6 @@ data:
   random_state: 1
   target_cols: ["Price"]
 
-defaults:
-  - _self_
-  - sample_data
-  - data_version
-  - model/model
-  - experiment
-  
 hydra:
   mode: MULTIRUN
   # launcher:
