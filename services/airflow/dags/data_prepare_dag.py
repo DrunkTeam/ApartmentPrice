@@ -36,7 +36,7 @@ wait_for_data_extraction = ExternalTaskSensor(
 
 run_zenml_pipeline = BashOperator(
     task_id='run_zenml_pipeline',
-    bash_command='python /home/kama/Documents/MLOps/ApartmentPrice/services/airflow/dags/data_prepare.py',
+    bash_command='python /Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/services/airflow/dags/data_prepare.py',
     dag=dag,
 )
 

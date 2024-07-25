@@ -25,7 +25,7 @@ def load_features(name, version, target_col='Price', size = 1):
     # print("Loading features from", name, version)
     df = artifacts[0].load()
 
-    df = df.sample(frac = size, random_state = 88)
+    df = df.sample(frac = 0.1, random_state = 88)
     X = df.drop('Price', axis=1)
     y = df['Price']
     print("shapes of X,y = ", X.shape, y.shape)

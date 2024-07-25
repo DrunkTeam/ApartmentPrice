@@ -43,7 +43,7 @@ def increment_version(version):
 
 
 def version_data_task(**kwargs):
-    config_path = '/home/kama/Documents/MLOps/ApartmentPrice/configs/data_version.yaml'
+    config_path = '/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice/configs/data_version.yaml'
 
     # Чтение текущей версии из data_version.yaml
     try:
