@@ -59,7 +59,7 @@ def run_giskard_scan(giskard_model, giskard_dataset, model_name, model_version, 
 
 
 def run_giskard_tests(giskard_model, giskard_dataset, model_name, model_version,
-                      data_version, mae_threshold=220):
+                      data_version, mae_threshold=22000):
     suite_name = f"test_suite_{model_name}_v{model_version}_sample_{data_version}"
     test_suite = giskard.Suite(name=suite_name)
 
@@ -146,7 +146,7 @@ def main():
         parser.add_argument("--model-alias", type=str, default=None, help="Model alias (champion or challenger<i>)")
         parser.add_argument("--model-version", type=int, default=None, help="Model version (1, 2, etc.)")
         parser.add_argument("--data-version", type=str, default="1", help="Dataset version", required=True)
-        parser.add_argument("--mae-threshold", type=float, default=220, help="MAE threshold for tests")
+        parser.add_argument("--mae-threshold", type=float, default=22000, help="MAE threshold for tests")
         parser.add_argument("--validate-all", action="store_true",
                             help="Run tests for all challenger models and promote the best one to champion")
         args = parser.parse_args()

@@ -17,3 +17,36 @@ INFO:     127.0.0.1:44084 - "GET /api/v1/stacks/7f33c402-c8fa-4290-bc2a-51ebe45f
 INFO:     127.0.0.1:44084 - "GET /api/v1/info HTTP/1.1" 200 OK
 INFO:     127.0.0.1:44084 - "GET /api/v1/current-user?hydrate=True HTTP/1.1" 200 OK
 INFO:     127.0.0.1:44084 - "GET /api/v1/info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41158 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41158 - "GET /js/2.c7557a74.chunk.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41166 - "GET /css/2.5b37d44a.chunk.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:41194 - "GET /js/main.c3b195bc.chunk.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41182 - "GET /css/main.0b8f9a9b.chunk.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:41210 - "GET /api/v1/workspaces/default/statistics HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:41166 - "GET /api/v1/users?hydrate=true&size=1000&page=1 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:41158 - "GET /api/v1/workspaces HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:41182 - "GET /media/logo_small.4204397d.svg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:41194 - "GET /api/v1/info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41182 - "GET /media/Rubik-Medium.c87313aa.ttf HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:41194 - "GET /media/Rubik-Regular.b3d0902b.ttf HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:41194 - "GET /api/v1/workspaces HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:41194 - "GET /api/v1/info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37068 - "GET /login?route=%2Fworkspaces%2Fdefault%3F HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37068 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37068 - "GET /api/v1/info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37080 - "POST /api/v1/login HTTP/1.1" 200 OK
+[1;35mGot token from cookie[0m
+[1;35mGot token from cookie[0m
+[1;35mGot token from cookie[0m
+INFO:     127.0.0.1:50648 - "GET /api/v1/component-types HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37080 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50654 - "GET /api/v1/current-user HTTP/1.1" 200 OK
+[1;35mGot token from cookie[0m
+[1;35mGot token from cookie[0m
+INFO:     127.0.0.1:37080 - "GET /api/v1/info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50654 - "GET /api/v1/workspaces HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50648 - "GET /api/v1/users?hydrate=true&size=1000&page=1 HTTP/1.1" 200 OK
+[1;35mGot token from cookie[0m
+[1;35mGot token from cookie[0m
+INFO:     127.0.0.1:50648 - "GET /api/v1/users?hydrate=true&size=1000&page=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50654 - "GET /api/v1/workspaces/default/statistics HTTP/1.1" 200 OK
