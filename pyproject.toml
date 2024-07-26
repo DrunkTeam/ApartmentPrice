@@ -30,6 +30,8 @@ torchvision = "^0.18.1"
 torchaudio = "^2.3.1"
 skorch = "^1.0.0"
 giskard = "2.14.0"
+flask = "2.2.5"
+gradio = "3.50.2"
 
 [build-system]
 requires = ["poetry-core"]
