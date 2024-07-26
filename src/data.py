@@ -21,7 +21,6 @@ from pathlib import Path
 from zenml.client import Client
 
 
-
 def init_hydra(config_path="../configs", config_name="main.yaml") -> DictConfig:
     """
     Initializes hydra
@@ -38,8 +37,8 @@ def init_hydra(config_path="../configs", config_name="main.yaml") -> DictConfig:
 
 cfg = init_hydra()
 
-def download_dataset():
 
+def download_dataset():
     cfg = compose(config_name="sample_data")
 
     #  #Define the dataset path
@@ -249,16 +248,11 @@ def preprocess_data(df):
 
     imp_most_frequent = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
 
-
     cols_most_frequent = cfg.columns_most_frequent
     for i in cols_most_frequent:
         df[[i]] = imp_most_frequent.fit_transform(df[[i]])
 
-
     df[clean_string_col] = df[clean_string_col].fillna(df[clean_string_col].mode()[0])
-
-
-
 
     New_date = []
 
@@ -287,10 +281,48 @@ def preprocess_data(df):
     df.drop([cfg.col_for_new_date, cfg.todatatime_columns, "Move_in_date_year"], axis=1, inplace=True)
 
     # One-hot encoding
+    # ohe_col = cfg.ohe_columns
+    # # ohe_col = cfg.ohe_columns
+    # # print(ohe_col)
+    # # cities = list(cfg.ohe_cols)
+    # print(f"df = {df}")
+    # ohe_cols = ['Boston', 'Denver', 'Los Angeles', 'New York City', 'Orange County', 'San Diego', 'San Francisco',
+    #             'Seattle', 'Washington DC']
+    #
+    # # cities = pd.get_dummies(df[ohe_col], dtype=float).drop(df[ohe_col].value_counts().tail(1).index[0], axis=1)
+    # print(f"cities = {ohe_cols}")
+    # df = pd.concat([df, pd.DataFrame(ohe_cols)], axis=1)
+    # df.drop([ohe_col], axis=1, inplace=True)
+    # print("AAAAAAAAAAA")
+    # print(df.columns)
+
+    # Преобразование ohe_columns из конфигурации
     ohe_col = cfg.ohe_columns
-    cities = pd.get_dummies(df[ohe_col], dtype=float).drop(df[ohe_col].value_counts().tail(1).index[0], axis=1)
-    df = pd.concat([df, cities], axis=1)
-    df.drop([ohe_col], axis=1, inplace=True)
+
+    # Преобразование ohe_cols из конфигурации в список
+    ohe_cols = ['Boston', 'Denver', 'Los Angeles', 'New York City', 'Orange County', 'San Diego', 'San Francisco',
+                'Seattle', 'Washington DC']
+
+    # Применение One-Hot Encoding
+    # Создание DataFrame с пустыми столбцами для всех возможных значений
+    empty_ohe_df = pd.DataFrame(0, index=df.index, columns=ohe_cols)
+
+    # Заполнение One-Hot Encoded значениями для столбца 'City'
+    cities_df = pd.get_dummies(df['City'], dtype=float)
+
+    # Объединение с пустым DataFrame, чтобы гарантировать, что все столбцы будут присутствовать
+    cities_df = empty_ohe_df.combine_first(cities_df)
+
+    print(f"One-Hot Encoded DataFrame:\n{cities_df}")
+
+    # Объединение оригинального DataFrame с One-Hot Encoded DataFrame
+    df = pd.concat([df, cities_df], axis=1)
+
+    # Удаление оригинальных колонок, использованных для One-Hot Encoding
+    df.drop(columns=['City'], axis=1, inplace=True)
+
+    print("Результирующий DataFrame:")
+    print(df)
 
     # Label encoding
     # label_encoding = {'Tuesday': 1, 'Saturday': 2,'Friday': 3, 'Sunday': 4, 'Monday': 5, 'Wednesday': 6, 'Thursday': 7}
@@ -309,7 +341,6 @@ def preprocess_data(df):
         lambda x: sum([word_vectors_Amenity[word] for word in x if word in word_vectors_Amenity] or [0]) / len(x))
 
     # Splitting each line into two tokens: numbers and letters
-
 
     df['clean_string_col_processed'] = df[clean_string_col].apply(tokenize)
     tokens = df['clean_string_col_processed'].tolist()
@@ -348,11 +379,7 @@ def preprocess_data(df):
     split_dfs = pd.DataFrame(df_split)
     df = pd.concat([df, split_dfs], axis=1)
 
-
-
     df.drop(cfg.columns_to_split, axis=1, inplace=True)
-
-
 
     X = df.drop(cfg.target_col, axis=1)
     y = df[[cfg.target_col]]
@@ -367,35 +394,34 @@ def validate_features(X, y):
 
     """
 
-    #execute it only once, not every time.
-    #for x and y
+    # execute it only once, not every time.
+    # for x and y
 
-    context = gx.get_context(project_root_dir = "services")
-    ds_x = context.sources.add_or_update_pandas(name = "data_transform")
-    da_x = ds_x.add_dataframe_asset(name = "pandas_dataframe")
-    batch_request_x = da_x.build_batch_request(dataframe = X)
+    context = gx.get_context(project_root_dir="services")
+    ds_x = context.sources.add_or_update_pandas(name="data_transform")
+    da_x = ds_x.add_dataframe_asset(name="pandas_dataframe")
+    batch_request_x = da_x.build_batch_request(dataframe=X)
 
-    ds_y = context.sources.add_or_update_pandas(name = "target_transform")
-    da_y = ds_y.add_dataframe_asset(name = "pandas_dataframe")
-    batch_request_y = da_y.build_batch_request(dataframe = y)
+    ds_y = context.sources.add_or_update_pandas(name="target_transform")
+    da_y = ds_y.add_dataframe_asset(name="pandas_dataframe")
+    batch_request_y = da_y.build_batch_request(dataframe=y)
 
     # Create checkpoint
     checkpoint = context.add_or_update_checkpoint(
         name="my_checkpoint",
         validations=[
-        {
-            "batch_request": batch_request_x,
-            "expectation_suite_name": "data_transform_expectation",
-        },
-        {
-            "batch_request": batch_request_y,
-            "expectation_suite_name": "target_transform_expectation",
-        },
-    ],
+            {
+                "batch_request": batch_request_x,
+                "expectation_suite_name": "data_transform_expectation",
+            },
+            {
+                "batch_request": batch_request_y,
+                "expectation_suite_name": "target_transform_expectation",
+            },
+        ],
     )
 
     result = checkpoint.run()
-
 
     if result.success:
         return X, y
