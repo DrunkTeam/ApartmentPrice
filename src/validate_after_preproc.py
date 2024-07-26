@@ -45,7 +45,7 @@ def validate_after_preprocessing(X, y):
 
 
     # Assume all ohe-transformed cols are 0 or 1
-    for col in list(cfg.ohe_cols):
+    for col in (list(cfg.ohe_cols)+ list(cfg.binary_cols)):
         validator_x.expect_column_values_to_be_in_set(
             column=col,
             value_set=[0, 1]

@@ -46,6 +46,9 @@ validation_columns: ['Beds', 'Baths', 'sq.ft', 'Floor', 'Units',
        'clean_description_col_vector_4', 'clean_description_col_vector_5', 'clean_description_col_vector_6',
        'clean_description_col_vector_7', 'clean_description_col_vector_8', 'clean_description_col_vector_9','clean_string_col_vector_0', 'clean_string_col_vector_1',
        'clean_rn_col_vector_0', 'clean_rn_col_vector_1', 'clean_rn_col_vector_2']
-
+binary_cols: ['Northern_Exposure', 'Southern_Exposure', 'Eastern_Exposure',
+       'Western_Exposure', 'Balcony', 'Walk_In_Closet', 'Fireplace',
+       'City_Skyline', 'Kitchen_Island', 'Stainless_Appliances', 'Renovated',
+       'Office_Space']
 int_columns: ['Day_of_the_week_recorded']
 # 'clean_string_col_vector','clean_description_col_vector', 'clean_rn_col_vector'
