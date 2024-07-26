@@ -22,8 +22,7 @@ raw_df, _ = read_datastore()
 raw_df: pd.DataFrame = raw_df
 
 # You need to define a parameter for each column in your raw dataset
-def predict(Unnamed_0=None,
-            Beds=None,
+def predict(Beds=None,
             Baths=None,
             sq_ft=None,
             Floor=None,
@@ -56,7 +55,8 @@ def predict(Unnamed_0=None,
             ):
     # This will be a dict of column values for input data sample
     features = {
-        'Unnamed: 0': Unnamed_0,
+        'Unnamed: 0': None,
+        'Price': None,
         'Beds': Beds,
         'Baths': Baths,
         'sq.ft': sq_ft,
@@ -96,7 +96,6 @@ def predict(Unnamed_0=None,
     print(raw_df)
     # This will read the saved transformers "v4" from ZenML artifact store
     # And only transform the input data (no fit here).
-    raw_df["Price"] = 0
     X, _ = transform_data(
         df=raw_df
     )
@@ -138,7 +137,6 @@ demo = gr.Interface(
     # will populated from the values of these input components
     inputs=[
         # Select proper components for data types of the columns in your raw dataset
-        gr.Number(label="Unnamed: 0"),
         gr.Number(label="Beds"),
         gr.Number(label="Baths"),
         gr.Number(label="sq.ft"),
