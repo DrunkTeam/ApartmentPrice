@@ -24,7 +24,7 @@ class TestReadDatastore(unittest.TestCase):
 
         # Mock configuration
         mock_cfg = MagicMock()
-        mock_cfg.data.path = "ata/raw/Equity_Apartments_Data.csv"
+        mock_cfg.data.path = "data/raw/Equity_Apartments_Data.csv"
         mock_cfg.data.remote = "localstore"
         mock_cfg.data.repo = "."
         mock_cfg.data.version = "v1.0"
