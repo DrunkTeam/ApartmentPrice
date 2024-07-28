@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/61243b57735349bf9975fc2c1d91a480/artifacts
+end_time: 1721758408239
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 61243b57735349bf9975fc2c1d91a480
+run_name: entertaining-cat-909
+run_uuid: 61243b57735349bf9975fc2c1d91a480
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721758404282
+status: 4
+tags: []
+user_id: ninelco

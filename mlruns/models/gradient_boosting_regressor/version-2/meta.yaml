@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1721753146803
+current_stage: None
+description: null
+last_updated_timestamp: 1721753146803
+name: gradient_boosting_regressor
+run_id: 4094a7ac0b094e7086cabbab7ebf9019
+run_link: null
+source: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/692880088296356437/4094a7ac0b094e7086cabbab7ebf9019/artifacts/basic_gbr
+status: READY
+status_message: null
+storage_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/692880088296356437/4094a7ac0b094e7086cabbab7ebf9019/artifacts/basic_gbr
+user_id: null
+version: 2

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/748e6ddf1aad4270b1a935db36bccd12/artifacts
+end_time: 1721765273847
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 748e6ddf1aad4270b1a935db36bccd12
+run_name: honorable-grub-589
+run_uuid: 748e6ddf1aad4270b1a935db36bccd12
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721765260739
+status: 4
+tags: []
+user_id: ninelco

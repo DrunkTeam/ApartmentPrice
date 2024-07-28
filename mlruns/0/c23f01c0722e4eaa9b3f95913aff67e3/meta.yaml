@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/c23f01c0722e4eaa9b3f95913aff67e3/artifacts
+end_time: 1721765359209
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c23f01c0722e4eaa9b3f95913aff67e3
+run_name: mercurial-dove-431
+run_uuid: c23f01c0722e4eaa9b3f95913aff67e3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721765355865
+status: 4
+tags: []
+user_id: ninelco

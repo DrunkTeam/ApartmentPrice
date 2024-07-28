@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/882a0c21b7764e12af8cae0be2a88fbb/artifacts
+end_time: 1721753577889
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 882a0c21b7764e12af8cae0be2a88fbb
+run_name: handsome-rat-49
+run_uuid: 882a0c21b7764e12af8cae0be2a88fbb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721753002296
+status: 3
+tags: []
+user_id: ninelco

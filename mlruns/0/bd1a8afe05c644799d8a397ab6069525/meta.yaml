@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/bd1a8afe05c644799d8a397ab6069525/artifacts
+end_time: 1721838897983
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: bd1a8afe05c644799d8a397ab6069525
+run_name: industrious-rat-89
+run_uuid: bd1a8afe05c644799d8a397ab6069525
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721838895177
+status: 4
+tags: []
+user_id: root

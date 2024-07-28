@@ -1,0 +1,16 @@
+aliases:
+- champion
+- challenger1
+creation_timestamp: 1721840393278
+current_stage: Production
+description: null
+last_updated_timestamp: 1721990398341
+name: gradient_boosting_regressor
+run_id: e870f88bbc1c4c039f20affc889cdef4
+run_link: null
+source: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/692880088296356437/e870f88bbc1c4c039f20affc889cdef4/artifacts/basic_gbr
+status: READY
+status_message: null
+storage_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/692880088296356437/e870f88bbc1c4c039f20affc889cdef4/artifacts/basic_gbr
+user_id: null
+version: 84

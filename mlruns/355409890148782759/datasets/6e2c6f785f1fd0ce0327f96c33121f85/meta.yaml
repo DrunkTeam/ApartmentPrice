@@ -1,0 +1,8 @@
+digest: c3135bb4
+name: dataset
+profile: '{"num_rows": 2512, "num_elements": 5024}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "label", "required": true},
+  {"type": "double", "name": "predictions", "required": true}]}'
+source: '{"tags": {"mlflow.user": "root", "mlflow.source.name": "src/main.py", "mlflow.source.type":
+  "LOCAL", "mlflow.source.git.commit": "e39f40daab5067040d02ad0eba4f5dd963b8f8e5"}}'
+source_type: code

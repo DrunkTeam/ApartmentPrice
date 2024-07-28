@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/843028575033645948/895a954cdefb4cf4b01068ee94da5e0f/artifacts
+end_time: 1721425572276
+entry_point_name: ''
+experiment_id: '843028575033645948'
+lifecycle_stage: active
+run_id: 895a954cdefb4cf4b01068ee94da5e0f
+run_name: run-01
+run_uuid: 895a954cdefb4cf4b01068ee94da5e0f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721425570508
+status: 3
+tags: []
+user_id: ninelco

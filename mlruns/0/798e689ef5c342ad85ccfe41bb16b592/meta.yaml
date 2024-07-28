@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/798e689ef5c342ad85ccfe41bb16b592/artifacts
+end_time: 1721474289310
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 798e689ef5c342ad85ccfe41bb16b592
+run_name: casual-dog-560
+run_uuid: 798e689ef5c342ad85ccfe41bb16b592
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721474286786
+status: 4
+tags: []
+user_id: ninelco

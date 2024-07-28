@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/fda54424c173411e815fbf0a10109ac5/artifacts
+end_time: 1721770908802
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fda54424c173411e815fbf0a10109ac5
+run_name: ambitious-steed-808
+run_uuid: fda54424c173411e815fbf0a10109ac5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721770808287
+status: 4
+tags: []
+user_id: ninelco

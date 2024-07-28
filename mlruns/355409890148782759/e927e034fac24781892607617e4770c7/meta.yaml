@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/355409890148782759/e927e034fac24781892607617e4770c7/artifacts
+end_time: 1721748824817
+entry_point_name: ''
+experiment_id: '355409890148782759'
+lifecycle_stage: active
+run_id: e927e034fac24781892607617e4770c7
+run_name: multi_run_decision_tree_regressor_neg_root_mean_squared_error_-7631_978988623887
+run_uuid: e927e034fac24781892607617e4770c7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721748818206
+status: 4
+tags: []
+user_id: ninelco

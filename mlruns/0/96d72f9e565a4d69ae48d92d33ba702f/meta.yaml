@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/96d72f9e565a4d69ae48d92d33ba702f/artifacts
+end_time: 1721752943083
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 96d72f9e565a4d69ae48d92d33ba702f
+run_name: wise-dog-936
+run_uuid: 96d72f9e565a4d69ae48d92d33ba702f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721751409247
+status: 3
+tags: []
+user_id: ninelco

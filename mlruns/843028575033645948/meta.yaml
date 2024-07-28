@@ -1,0 +1,6 @@
+artifact_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/843028575033645948
+creation_time: 1721425569005
+experiment_id: '843028575033645948'
+last_update_time: 1721425569005
+lifecycle_stage: active
+name: MLflow-experiment-01

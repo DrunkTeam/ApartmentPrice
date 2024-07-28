@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/183349fa556d47ec8b0b54c47a597115/artifacts
+end_time: 1721881534481
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 183349fa556d47ec8b0b54c47a597115
+run_name: salty-loon-875
+run_uuid: 183349fa556d47ec8b0b54c47a597115
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721881526095
+status: 4
+tags: []
+user_id: root

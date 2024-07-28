@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/1550f16c25ec4e78bedf5a95667fbd4b/artifacts
+end_time: 1721829257509
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1550f16c25ec4e78bedf5a95667fbd4b
+run_name: adventurous-lynx-472
+run_uuid: 1550f16c25ec4e78bedf5a95667fbd4b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721829234490
+status: 4
+tags: []
+user_id: root

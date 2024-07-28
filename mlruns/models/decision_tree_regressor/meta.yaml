@@ -1,0 +1,9 @@
+aliases:
+  challenger1: '68'
+  challenger2: '69'
+  challenger3: '70'
+  champion: '68'
+creation_timestamp: 1721747777480
+description: null
+last_updated_timestamp: 1721990478687
+name: decision_tree_regressor

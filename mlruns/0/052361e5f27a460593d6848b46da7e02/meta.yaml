@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/052361e5f27a460593d6848b46da7e02/artifacts
+end_time: 1721756482341
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 052361e5f27a460593d6848b46da7e02
+run_name: rogue-stag-476
+run_uuid: 052361e5f27a460593d6848b46da7e02
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721756478466
+status: 4
+tags: []
+user_id: ninelco

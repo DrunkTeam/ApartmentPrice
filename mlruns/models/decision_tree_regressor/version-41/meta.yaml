@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1721830104462
+current_stage: None
+description: null
+last_updated_timestamp: 1721830104462
+name: decision_tree_regressor
+run_id: 93d13b92836c4251ab5c4d16d3ddca2b
+run_link: null
+source: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/355409890148782759/93d13b92836c4251ab5c4d16d3ddca2b/artifacts/basic_dtr
+status: READY
+status_message: null
+storage_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/355409890148782759/93d13b92836c4251ab5c4d16d3ddca2b/artifacts/basic_dtr
+user_id: null
+version: 41

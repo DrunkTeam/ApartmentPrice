@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/7cadceb970b240edb52b73c6b1f87ee3/artifacts
+end_time: 1721765955999
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7cadceb970b240edb52b73c6b1f87ee3
+run_name: rambunctious-sow-590
+run_uuid: 7cadceb970b240edb52b73c6b1f87ee3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721765947247
+status: 4
+tags: []
+user_id: ninelco

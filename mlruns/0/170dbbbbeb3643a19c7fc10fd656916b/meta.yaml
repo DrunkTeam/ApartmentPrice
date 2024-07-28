@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/170dbbbbeb3643a19c7fc10fd656916b/artifacts
+end_time: 1721750585946
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 170dbbbbeb3643a19c7fc10fd656916b
+run_name: defiant-hen-230
+run_uuid: 170dbbbbeb3643a19c7fc10fd656916b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721750583500
+status: 4
+tags: []
+user_id: ninelco

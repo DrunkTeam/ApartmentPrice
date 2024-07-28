@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1721766547273
+current_stage: None
+description: null
+last_updated_timestamp: 1721766547273
+name: SimpleNet
+run_id: b0dd8506611c45e095550feaea0487ec
+run_link: null
+source: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/314371891438461188/b0dd8506611c45e095550feaea0487ec/artifacts/net_model
+status: READY
+status_message: null
+storage_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/314371891438461188/b0dd8506611c45e095550feaea0487ec/artifacts/net_model
+user_id: null
+version: 3

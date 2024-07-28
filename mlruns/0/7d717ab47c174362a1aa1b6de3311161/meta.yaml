@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/7d717ab47c174362a1aa1b6de3311161/artifacts
+end_time: 1721758358831
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7d717ab47c174362a1aa1b6de3311161
+run_name: gregarious-auk-432
+run_uuid: 7d717ab47c174362a1aa1b6de3311161
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721758354886
+status: 4
+tags: []
+user_id: ninelco

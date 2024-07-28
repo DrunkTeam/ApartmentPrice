@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/f1e87d39a4d04f93be2402bbf30d7406/artifacts
+end_time: 1721751366934
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f1e87d39a4d04f93be2402bbf30d7406
+run_name: delicate-whale-892
+run_uuid: f1e87d39a4d04f93be2402bbf30d7406
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721751288007
+status: 4
+tags: []
+user_id: ninelco

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/e215c614c0014970b0d4850b2a492196/artifacts
+end_time: 1721773116929
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e215c614c0014970b0d4850b2a492196
+run_name: overjoyed-pig-977
+run_uuid: e215c614c0014970b0d4850b2a492196
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721772983998
+status: 4
+tags: []
+user_id: ninelco

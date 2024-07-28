@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/900909f4e7d3472b85d2b21957b35210/artifacts
+end_time: 1721764042292
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 900909f4e7d3472b85d2b21957b35210
+run_name: bemused-shrike-429
+run_uuid: 900909f4e7d3472b85d2b21957b35210
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721764030946
+status: 4
+tags: []
+user_id: ninelco

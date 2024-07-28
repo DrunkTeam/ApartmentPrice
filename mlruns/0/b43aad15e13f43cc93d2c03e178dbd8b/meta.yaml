@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/b43aad15e13f43cc93d2c03e178dbd8b/artifacts
+end_time: 1721759208255
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b43aad15e13f43cc93d2c03e178dbd8b
+run_name: respected-deer-515
+run_uuid: b43aad15e13f43cc93d2c03e178dbd8b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721759197988
+status: 4
+tags: []
+user_id: ninelco

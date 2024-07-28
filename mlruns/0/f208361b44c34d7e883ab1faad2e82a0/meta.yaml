@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/f208361b44c34d7e883ab1faad2e82a0/artifacts
+end_time: 1721767797755
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f208361b44c34d7e883ab1faad2e82a0
+run_name: classy-boar-384
+run_uuid: f208361b44c34d7e883ab1faad2e82a0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721767370431
+status: 3
+tags: []
+user_id: ninelco

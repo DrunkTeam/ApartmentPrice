@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/13bc7d50272f49d59e819e35341c1764/artifacts
+end_time: 1721474160547
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 13bc7d50272f49d59e819e35341c1764
+run_name: brawny-vole-272
+run_uuid: 13bc7d50272f49d59e819e35341c1764
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721474157343
+status: 4
+tags: []
+user_id: ninelco

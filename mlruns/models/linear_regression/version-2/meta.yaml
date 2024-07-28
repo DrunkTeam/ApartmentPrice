@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1721475002779
+current_stage: None
+description: null
+last_updated_timestamp: 1721475002779
+name: linear_regression
+run_id: 7a821b20f6de42c28c20aef951bfa780
+run_link: null
+source: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/925879884035368439/7a821b20f6de42c28c20aef951bfa780/artifacts/basic_lr
+status: READY
+status_message: null
+storage_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/925879884035368439/7a821b20f6de42c28c20aef951bfa780/artifacts/basic_lr
+user_id: null
+version: 2

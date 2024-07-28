@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/9ba8944274344e64a39698b544022c36/artifacts
+end_time: 1721839053971
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9ba8944274344e64a39698b544022c36
+run_name: powerful-lark-390
+run_uuid: 9ba8944274344e64a39698b544022c36
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721839049501
+status: 4
+tags: []
+user_id: root

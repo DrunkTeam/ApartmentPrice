@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/d5eebc7deef447b2a4062026f1548802/artifacts
+end_time: 1721772097461
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d5eebc7deef447b2a4062026f1548802
+run_name: amazing-panda-952
+run_uuid: d5eebc7deef447b2a4062026f1548802
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721771979757
+status: 4
+tags: []
+user_id: ninelco

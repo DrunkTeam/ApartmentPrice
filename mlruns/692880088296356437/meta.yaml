@@ -1,0 +1,6 @@
+artifact_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/692880088296356437
+creation_time: 1721753127692
+experiment_id: '692880088296356437'
+last_update_time: 1721753127692
+lifecycle_stage: active
+name: gradient_boosting_regressor_mlops_experiment

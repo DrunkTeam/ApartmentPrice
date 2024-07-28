@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/bfc87818da7842798b87a1160689f6fc/artifacts
+end_time: 1721751062519
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: bfc87818da7842798b87a1160689f6fc
+run_name: gifted-cow-841
+run_uuid: bfc87818da7842798b87a1160689f6fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721750986924
+status: 4
+tags: []
+user_id: ninelco

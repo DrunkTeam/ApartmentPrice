@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/f55d0aa19079408da9a1887cd1c4967a/artifacts
+end_time: 1721474732403
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f55d0aa19079408da9a1887cd1c4967a
+run_name: efficient-jay-497
+run_uuid: f55d0aa19079408da9a1887cd1c4967a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721474729850
+status: 4
+tags: []
+user_id: ninelco

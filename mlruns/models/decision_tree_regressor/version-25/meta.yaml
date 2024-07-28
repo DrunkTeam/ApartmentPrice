@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1721752799312
+current_stage: None
+description: null
+last_updated_timestamp: 1721752799312
+name: decision_tree_regressor
+run_id: 24ab8d139e90435299b6bd9c2dedbe74
+run_link: null
+source: file:///home/kama/Documents/MLOps/ApartmentPrice/mlruns/355409890148782759/24ab8d139e90435299b6bd9c2dedbe74/artifacts/basic_dtr
+status: READY
+status_message: null
+storage_location: file:///home/kama/Documents/MLOps/ApartmentPrice/mlruns/355409890148782759/24ab8d139e90435299b6bd9c2dedbe74/artifacts/basic_dtr
+user_id: null
+version: 25

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/1b16170f951344ee87a3db14733b1ab2/artifacts
+end_time: 1721832228493
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1b16170f951344ee87a3db14733b1ab2
+run_name: polite-turtle-206
+run_uuid: 1b16170f951344ee87a3db14733b1ab2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721832137551
+status: 3
+tags: []
+user_id: root

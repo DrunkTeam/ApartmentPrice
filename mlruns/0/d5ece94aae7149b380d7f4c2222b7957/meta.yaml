@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/d5ece94aae7149b380d7f4c2222b7957/artifacts
+end_time: 1721766909868
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d5ece94aae7149b380d7f4c2222b7957
+run_name: clumsy-mouse-476
+run_uuid: d5ece94aae7149b380d7f4c2222b7957
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721766827161
+status: 4
+tags: []
+user_id: ninelco

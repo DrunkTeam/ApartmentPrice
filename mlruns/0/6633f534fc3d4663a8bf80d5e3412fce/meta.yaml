@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/6633f534fc3d4663a8bf80d5e3412fce/artifacts
+end_time: 1721766550081
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6633f534fc3d4663a8bf80d5e3412fce
+run_name: mysterious-elk-276
+run_uuid: 6633f534fc3d4663a8bf80d5e3412fce
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721766466874
+status: 4
+tags: []
+user_id: ninelco

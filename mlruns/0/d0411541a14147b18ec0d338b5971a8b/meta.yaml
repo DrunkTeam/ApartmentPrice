@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/d0411541a14147b18ec0d338b5971a8b/artifacts
+end_time: 1721767156914
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d0411541a14147b18ec0d338b5971a8b
+run_name: whimsical-shark-218
+run_uuid: d0411541a14147b18ec0d338b5971a8b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721767154285
+status: 4
+tags: []
+user_id: ninelco

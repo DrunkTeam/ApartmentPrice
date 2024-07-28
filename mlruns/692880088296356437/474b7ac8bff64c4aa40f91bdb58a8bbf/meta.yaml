@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/692880088296356437/474b7ac8bff64c4aa40f91bdb58a8bbf/artifacts
+end_time: 1721846582235
+entry_point_name: ''
+experiment_id: '692880088296356437'
+lifecycle_stage: active
+run_id: 474b7ac8bff64c4aa40f91bdb58a8bbf
+run_name: child_multi_run_gradient_boosting_regressor_neg_root_mean_squared_error_-112162_75144019704_26
+run_uuid: 474b7ac8bff64c4aa40f91bdb58a8bbf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721846578851
+status: 3
+tags: []
+user_id: root

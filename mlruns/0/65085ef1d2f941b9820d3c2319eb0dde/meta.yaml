@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/65085ef1d2f941b9820d3c2319eb0dde/artifacts
+end_time: 1721756546341
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 65085ef1d2f941b9820d3c2319eb0dde
+run_name: thundering-smelt-741
+run_uuid: 65085ef1d2f941b9820d3c2319eb0dde
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721756542529
+status: 4
+tags: []
+user_id: ninelco

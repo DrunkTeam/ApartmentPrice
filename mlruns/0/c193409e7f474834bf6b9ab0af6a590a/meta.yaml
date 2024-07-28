@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/c193409e7f474834bf6b9ab0af6a590a/artifacts
+end_time: 1721774630884
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c193409e7f474834bf6b9ab0af6a590a
+run_name: defiant-zebra-854
+run_uuid: c193409e7f474834bf6b9ab0af6a590a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721774492235
+status: 4
+tags: []
+user_id: ninelco

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/f59498973772440498bcc5677916725a/artifacts
+end_time: 1721763830620
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f59498973772440498bcc5677916725a
+run_name: sneaky-mole-72
+run_uuid: f59498973772440498bcc5677916725a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721763819611
+status: 4
+tags: []
+user_id: ninelco

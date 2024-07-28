@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/67d2d20461164be7918d9834e6768f1e/artifacts
+end_time: 1721832114016
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 67d2d20461164be7918d9834e6768f1e
+run_name: stately-dog-658
+run_uuid: 67d2d20461164be7918d9834e6768f1e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721832112797
+status: 4
+tags: []
+user_id: root

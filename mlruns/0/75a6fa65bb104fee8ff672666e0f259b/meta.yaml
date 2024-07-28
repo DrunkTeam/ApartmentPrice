@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/75a6fa65bb104fee8ff672666e0f259b/artifacts
+end_time: 1721475016792
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 75a6fa65bb104fee8ff672666e0f259b
+run_name: sneaky-trout-924
+run_uuid: 75a6fa65bb104fee8ff672666e0f259b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721474990164
+status: 4
+tags: []
+user_id: ninelco

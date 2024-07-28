@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/c779080522ef48b5aea6e87c66e4ae97/artifacts
+end_time: 1721772896165
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c779080522ef48b5aea6e87c66e4ae97
+run_name: orderly-hare-724
+run_uuid: c779080522ef48b5aea6e87c66e4ae97
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721772760978
+status: 4
+tags: []
+user_id: ninelco

@@ -1,0 +1,6 @@
+artifact_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/925879884035368439
+creation_time: 1721474816263
+experiment_id: '925879884035368439'
+last_update_time: 1721474816263
+lifecycle_stage: active
+name: linear_regression_mlops_experiment

@@ -1,0 +1,64 @@
+artifact_path: basic_lr
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.0
+mlflow_version: 2.14.3
+model_size_bytes: 2476
+model_uuid: 063cc9c56e6b498e8712f1638b6f2c33
+run_id: a026ff26b9c547de9d35c13c5e97870d
+saved_input_example_info:
+  artifact_path: input_example.json
+  format: tf-serving
+  type: ndarray
+signature:
+  inputs: '[{"type": "double", "name": "Beds", "required": true}, {"type": "double",
+    "name": "Baths", "required": true}, {"type": "double", "name": "sq.ft", "required":
+    true}, {"type": "double", "name": "Floor", "required": true}, {"type": "double",
+    "name": "Units", "required": true}, {"type": "double", "name": "Northern_Exposure",
+    "required": true}, {"type": "double", "name": "Southern_Exposure", "required":
+    true}, {"type": "double", "name": "Eastern_Exposure", "required": true}, {"type":
+    "double", "name": "Western_Exposure", "required": true}, {"type": "double", "name":
+    "Balcony", "required": true}, {"type": "double", "name": "Walk_In_Closet", "required":
+    true}, {"type": "double", "name": "Fireplace", "required": true}, {"type": "double",
+    "name": "City_Skyline", "required": true}, {"type": "double", "name": "Kitchen_Island",
+    "required": true}, {"type": "double", "name": "Stainless_Appliances", "required":
+    true}, {"type": "double", "name": "Renovated", "required": true}, {"type": "double",
+    "name": "Office_Space", "required": true}, {"type": "double", "name": "Days_Till_Available",
+    "required": true}, {"type": "long", "name": "Day_of_the_week_recorded", "required":
+    true}, {"type": "double", "name": "Estiamted_Vacancy", "required": true}, {"type":
+    "double", "name": "Boston", "required": true}, {"type": "double", "name": "Denver",
+    "required": true}, {"type": "double", "name": "Los Angeles", "required": true},
+    {"type": "double", "name": "New York City", "required": true}, {"type": "double",
+    "name": "Orange County", "required": true}, {"type": "double", "name": "San Diego",
+    "required": true}, {"type": "double", "name": "San Francisco", "required": true},
+    {"type": "double", "name": "Seattle", "required": true}, {"type": "double", "name":
+    "Washington DC", "required": true}, {"type": "double", "name": "Move_in_date_day",
+    "required": true}, {"type": "double", "name": "Move_in_date_month", "required":
+    true}, {"type": "double", "name": "Amenity_vector_0", "required": true}, {"type":
+    "double", "name": "Amenity_vector_1", "required": true}, {"type": "double", "name":
+    "Amenity_vector_2", "required": true}, {"type": "double", "name": "Amenity_vector_3",
+    "required": true}, {"type": "double", "name": "Amenity_vector_4", "required":
+    true}, {"type": "double", "name": "Amenity_vector_5", "required": true}, {"type":
+    "double", "name": "Amenity_vector_6", "required": true}, {"type": "double", "name":
+    "Amenity_vector_7", "required": true}, {"type": "double", "name": "Amenity_vector_8",
+    "required": true}, {"type": "double", "name": "Amenity_vector_9", "required":
+    true}, {"type": "double", "name": "Unique_ID_vector_0", "required": true}, {"type":
+    "double", "name": "Unique_ID_vector_1", "required": true}, {"type": "double",
+    "name": "Address_vector_0", "required": true}, {"type": "double", "name": "Address_vector_1",
+    "required": true}, {"type": "double", "name": "Address_vector_2", "required":
+    true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1,
+    1]}}]'
+  params: null
+utc_time_created: '2024-07-20 11:41:23.249934'

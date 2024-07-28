@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/3be19742bf604b31a7217050575016ab/artifacts
+end_time: 1721829901981
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3be19742bf604b31a7217050575016ab
+run_name: sassy-donkey-312
+run_uuid: 3be19742bf604b31a7217050575016ab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721829780639
+status: 4
+tags: []
+user_id: root

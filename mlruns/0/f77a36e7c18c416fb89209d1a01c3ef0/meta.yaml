@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/f77a36e7c18c416fb89209d1a01c3ef0/artifacts
+end_time: 1721767132507
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f77a36e7c18c416fb89209d1a01c3ef0
+run_name: dazzling-steed-871
+run_uuid: f77a36e7c18c416fb89209d1a01c3ef0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721767126047
+status: 4
+tags: []
+user_id: ninelco

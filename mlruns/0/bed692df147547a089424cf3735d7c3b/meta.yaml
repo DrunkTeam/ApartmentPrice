@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/bed692df147547a089424cf3735d7c3b/artifacts
+end_time: 1721767270177
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: bed692df147547a089424cf3735d7c3b
+run_name: rebellious-bat-600
+run_uuid: bed692df147547a089424cf3735d7c3b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721767194319
+status: 4
+tags: []
+user_id: ninelco

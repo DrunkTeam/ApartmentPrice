@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/314371891438461188/9656fda09f0e4591b01588e6fe6caacf/artifacts
+end_time: 1721767716439
+entry_point_name: ''
+experiment_id: '314371891438461188'
+lifecycle_stage: active
+run_id: 9656fda09f0e4591b01588e6fe6caacf
+run_name: child_multi_run_SimpleNet_neg_root_mean_squared_error_-9245802_375525357_20
+run_uuid: 9656fda09f0e4591b01588e6fe6caacf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721767702883
+status: 3
+tags: []
+user_id: ninelco

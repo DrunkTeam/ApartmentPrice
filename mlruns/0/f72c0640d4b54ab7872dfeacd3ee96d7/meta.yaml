@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/f72c0640d4b54ab7872dfeacd3ee96d7/artifacts
+end_time: 1721829984844
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f72c0640d4b54ab7872dfeacd3ee96d7
+run_name: suave-smelt-693
+run_uuid: f72c0640d4b54ab7872dfeacd3ee96d7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721829910178
+status: 4
+tags: []
+user_id: root

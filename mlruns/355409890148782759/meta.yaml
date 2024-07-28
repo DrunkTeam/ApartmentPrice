@@ -1,0 +1,6 @@
+artifact_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/355409890148782759
+creation_time: 1721747770479
+experiment_id: '355409890148782759'
+last_update_time: 1721747770479
+lifecycle_stage: active
+name: decision_tree_regressor_mlops_experiment

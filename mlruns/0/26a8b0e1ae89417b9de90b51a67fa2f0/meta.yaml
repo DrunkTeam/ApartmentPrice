@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/26a8b0e1ae89417b9de90b51a67fa2f0/artifacts
+end_time: 1721473802143
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 26a8b0e1ae89417b9de90b51a67fa2f0
+run_name: selective-fly-917
+run_uuid: 26a8b0e1ae89417b9de90b51a67fa2f0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721473800056
+status: 4
+tags: []
+user_id: ninelco

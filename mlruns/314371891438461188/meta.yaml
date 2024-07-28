@@ -1,0 +1,6 @@
+artifact_location: file:///Users/ninelco/Documents/MLOps/ApartmentPrice/mlruns/314371891438461188
+creation_time: 1721763355945
+experiment_id: '314371891438461188'
+last_update_time: 1721763355945
+lifecycle_stage: active
+name: SimpleNet_mlops_experiment

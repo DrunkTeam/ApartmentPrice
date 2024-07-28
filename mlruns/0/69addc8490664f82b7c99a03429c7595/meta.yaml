@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/69addc8490664f82b7c99a03429c7595/artifacts
+end_time: 1721756447977
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 69addc8490664f82b7c99a03429c7595
+run_name: chill-horse-513
+run_uuid: 69addc8490664f82b7c99a03429c7595
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721756443986
+status: 4
+tags: []
+user_id: ninelco
