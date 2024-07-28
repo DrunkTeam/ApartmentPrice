@@ -3,7 +3,7 @@ name: Code testing
 on:
   push:
     branches:
-      - main
+      - dev-kama
     paths:
       - 'src/**'
       - 'scripts/**'
