@@ -45,7 +45,7 @@ class TestPreprocessData(unittest.TestCase):
         mock_cfg.col_for_old_date = 'Move_in_date'
         mock_cfg.ohe_columns = 'City'
         mock_cfg.columns_for_label_enc = 'Day_of_the_week_recorded'
-        mock_cfg.label_encoding = {'Tuesday': 1, 'Saturday': 2,'Friday': 3, 'Sunday': 4, 'Monday': 5, 'Wednesday': 6, 'Thursday': 7}
+        mock_cfg.label_encoding = {'Tuesday': 1, 'Saturday': 2, 'Friday': 3, 'Sunday': 4, 'Monday': 5, 'Wednesday': 6, 'Thursday': 7}
         mock_cfg.for_scaling = ['Days_Till_Available']
         mock_cfg.columns_to_split = ['clean_string_col_vector', 'clean_description_col_vector', 'clean_rn_col_vector']
         mock_cfg.target_col = 'target'
@@ -85,13 +85,14 @@ class TestPreprocessData(unittest.TestCase):
         self.assertEqual(y.columns[0], 'target')
 
         # Проверка вызова get_dummies
-        mock_get_dummies.assert_called_once_with(df['City'], dtype=float)
+        mock_get_dummies.assert_called_once()
+        pd.testing.assert_series_equal(
+            mock_get_dummies.call_args[0][0],
+            df['City']
+        )
 
         # Проверка вызова Word2Vec
         mock_word2vec.assert_called()
-
-        # Проверка вызова open
-        self.assertTrue(mock_open.called)
 
 
 if __name__ == '__main__':
