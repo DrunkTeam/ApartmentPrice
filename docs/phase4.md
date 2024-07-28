@@ -4,5 +4,5 @@ mlflow run . -e transform
 mlflow run . -e extract
 
 ```bash
-python src/validate.py --model-name gradient_boosting_regressor --data-version 1 --validate-all
+python src/validate.py --model-name decision_tree_regressor --data-version 1 --validate-all
 ```
