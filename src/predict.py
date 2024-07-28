@@ -1,21 +1,7 @@
-from collections import defaultdict
-import os
-import random
-from pathlib import Path
-import importlib
-
-import numpy as np
 import requests
-import sklearn.metrics
-import torch
-import zenml
 import hydra
 from model import load_features
-from hydra import compose, initialize
-from hydra.core.global_hydra import GlobalHydra
 from omegaconf import DictConfig
-from omegaconf import open_dict
-import sklearn
 import json
 
 

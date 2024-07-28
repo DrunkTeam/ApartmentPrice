@@ -41,44 +41,6 @@ cfg = init_hydra()
 def download_dataset():
     cfg = compose(config_name="sample_data")
 
-    #  #Define the dataset path
-    # dataset_path = Path(cfg.path)
-    # dataset_path.parent.mkdir(parents=True, exist_ok=True)
-
-    # # Check if the dataset already exists
-    # if not dataset_path.exists():
-    #     try:
-    #         # Run the kaggle command to download the dataset using poetry
-    #         run(
-    #             [
-    #                 "poetry",
-    #                 "run",
-    #                 "kaggle",
-    #                 "datasets",
-    #                 "download",
-    #                 f"{cfg.user_name}/{cfg.dataset_name}",
-    #             ],
-    #             check=True,
-    #         )
-
-    #         # Extract the contents of the downloaded zip file
-    #         with ZipFile(f"{cfg.dataset_name}.zip", 'r') as zip_ref:
-    #             zip_ref.extractall(dataset_path.parent)
-
-    #         # Find and rename the extracted CSV file to the target path
-    #         extracted_files = list(dataset_path.parent.glob("*.csv"))
-    #         if extracted_files:
-    #             extracted_files[0].rename(dataset_path)
-
-    #         # Remove the zip file after extraction
-    #         os.remove(f"{cfg.dataset_name}.zip")
-
-    #     except subprocess.CalledProcessError as e:
-    #         print(f"Error occurred while downloading the dataset: {e}")
-
-    # else:
-    #     print(f"Dataset already exists at {dataset_path}")
-
     data_path = Path(cfg.path)
     data_path.parent.mkdir(exist_ok=True, parents=True)
     if not data_path.exists():
@@ -104,7 +66,6 @@ def download_dataset():
         print(f"Data already exists: {data_path}")
 
 
-# @hydra.main(config_path="../configs", config_name = "main", version_base=None)
 def sample_data(cfg=cfg):
     cfg = compose(config_name="sample_data")
 
@@ -181,17 +142,7 @@ def read_datastore():
     Read sample and return in dataframe format to ZenML pipeline
 
     """
-    # Initialize Hydra with config path (replace with your config file)
-    # we have to read them from the datastore after the 1 task in this phase
-    # initialize(config_path="../configs", version_base="1.1")
-    # cfg = compose(config_name="data_version")
-    # version_num = cfg.data_version
 
-    # sample_path = Path("data") / "samples" / "sample.csv"
-    # df = pd.read_csv(sample_path)
-    # return df, version_num
-    # relative_path = os.path.join('data', 'samples', cfg.data.sample_filename)
-    # path=Path("data")
     data_url = dvc.api.get_url(
         path=cfg.data.path,
         remote=cfg.data.remote,
@@ -208,14 +159,11 @@ def read_datastore():
 
 # all columns name should be in the configs
 # small function should be separate from the function 'preprocess_data'
-
 def preprocess_data(df):
     """
     Preprocess data step in ZenML pipeline
 
     """
-    # client = zenml.client.Client()
-    # initialize(config_path="../configs/data", version_base="1.1")
     cfg = compose(config_name="ApartmentPrice")
 
     # column contains just index of the row
@@ -225,8 +173,6 @@ def preprocess_data(df):
     # dublicate_cols = ['unit_id','Apartment Name', 'URL','building_id']
     dublicate_cols = cfg.dublicate_cols
     df = df.drop(dublicate_cols, axis=1)
-
-    # Remove unnecessary characters from remaining text features
 
     clean_rn_col = cfg.clean_rn_columns
 
@@ -280,52 +226,35 @@ def preprocess_data(df):
 
     df.drop([cfg.col_for_new_date, cfg.todatatime_columns, "Move_in_date_year"], axis=1, inplace=True)
 
-    # One-hot encoding
-    # ohe_col = cfg.ohe_columns
-    # # ohe_col = cfg.ohe_columns
-    # # print(ohe_col)
-    # # cities = list(cfg.ohe_cols)
-    # print(f"df = {df}")
-    # ohe_cols = ['Boston', 'Denver', 'Los Angeles', 'New York City', 'Orange County', 'San Diego', 'San Francisco',
-    #             'Seattle', 'Washington DC']
-    #
-    # # cities = pd.get_dummies(df[ohe_col], dtype=float).drop(df[ohe_col].value_counts().tail(1).index[0], axis=1)
-    # print(f"cities = {ohe_cols}")
-    # df = pd.concat([df, pd.DataFrame(ohe_cols)], axis=1)
-    # df.drop([ohe_col], axis=1, inplace=True)
-    # print("AAAAAAAAAAA")
-    # print(df.columns)
-
-    # Преобразование ohe_columns из конфигурации
+    # Convert ohe_columns from config
     ohe_col = cfg.ohe_columns
 
-    # Преобразование ohe_cols из конфигурации в список
+    # Convert ohe_cols from config to list
     ohe_cols = ['Boston', 'Denver', 'Los Angeles', 'New York City', 'Orange County', 'San Diego', 'San Francisco',
                 'Seattle', 'Washington DC']
 
-    # Применение One-Hot Encoding
-    # Создание DataFrame с пустыми столбцами для всех возможных значений
+    # Applying One-Hot Encoding
+    # Creating a DataFrame with empty columns for all possible values
     empty_ohe_df = pd.DataFrame(0, index=df.index, columns=ohe_cols)
 
-    # Заполнение One-Hot Encoded значениями для столбца 'City'
+    # Populate One-Hot Encoded values ​​for the 'City' column
     cities_df = pd.get_dummies(df['City'], dtype=float)
 
-    # Объединение с пустым DataFrame, чтобы гарантировать, что все столбцы будут присутствовать
+    # Merge with an empty DataFrame to ensure all columns are present
     cities_df = empty_ohe_df.combine_first(cities_df)
 
     print(f"One-Hot Encoded DataFrame:\n{cities_df}")
 
-    # Объединение оригинального DataFrame с One-Hot Encoded DataFrame
+    # Merge Original DataFrame with One-Hot Encoded DataFrame
     df = pd.concat([df, cities_df], axis=1)
 
-    # Удаление оригинальных колонок, использованных для One-Hot Encoding
+    # Remove original columns used for One-Hot Encoding
     df.drop(columns=['City'], axis=1, inplace=True)
 
     print("Результирующий DataFrame:")
     print(df)
 
     # Label encoding
-    # label_encoding = {'Tuesday': 1, 'Saturday': 2,'Friday': 3, 'Sunday': 4, 'Monday': 5, 'Wednesday': 6, 'Thursday': 7}
     df[cfg.columns_for_label_enc] = df[cfg.columns_for_label_enc].apply(lambda x: cfg.label_encoding.get(x))
 
     # Encoding text features using embeddings
@@ -393,9 +322,6 @@ def validate_features(X, y):
     Validate features for ZenML pipeline
 
     """
-
-    # execute it only once, not every time.
-    # for x and y
 
     context = gx.get_context(project_root_dir="services")
     ds_x = context.sources.add_or_update_pandas(name="data_transform")
