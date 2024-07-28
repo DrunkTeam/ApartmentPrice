@@ -3,7 +3,7 @@ name: Champion model validation
 on:
   push:
     branches:
-      - dev-kama
+      - main
     paths:
       - 'src/**'
       - 'scripts/**'
