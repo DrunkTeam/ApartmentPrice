@@ -100,9 +100,9 @@ fluent_datasources:
   my_pandas_ds:
     type: pandas
     assets:
-      asset01:
+      csv_asset:
         type: csv
-        filepath_or_buffer: ../data/raw/Equity_Apartments_Data.csv
+        filepath_or_buffer: mock_data.csv
   data_transform:
     type: pandas
     assets:

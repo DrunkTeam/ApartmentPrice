@@ -43,3 +43,12 @@ def validate_initial_data(csv_path, name_suit="my_expectation_suite"):
     validator.expect_column_values_to_not_be_null(column="unit_id")
     validator.expect_column_values_to_be_unique(column="unit_id")
     validator.save_expectation_suite(discard_failed_expectations=False)
+
+    result = context.run_checkpoint(name="my_checkpoint", validations=[
+        {
+            "batch_request": batch_request,
+            "expectation_suite_name": name_suit,
+        },
+    ])
+
+    return result.success
