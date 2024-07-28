@@ -30,8 +30,8 @@ hydra:
       # +model: "decision_tree"
       # +model: "gbr"
       # +model: "sn"
-      +model: "regnet"
-      # +model: "decision_tree, gbr, sn, regnet"
+      # +model: "regnet"
+      +model: "decision_tree, gbr, sn, regnet"
 
 reproducibility:
   seeds:
