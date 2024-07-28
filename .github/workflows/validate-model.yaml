@@ -76,5 +76,5 @@ jobs:
           #source $(poetry env info --path)/bin/activate 
           #which python3.11
           #PYTHONPATH=$PWD/src python3.11 src/validate.py
-          #Test test
+          #Test test test
           poetry run python src/validate.py --model-name decision_tree_regressor --data-version 1 --validate-all
