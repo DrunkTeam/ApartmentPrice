@@ -71,7 +71,7 @@ jobs:
           export ZENML_CONFIG_PATH=$PWD/services/zenml
           export PROJECTPATH=$PWD
           export AIRFLOW_HOME=$PWD/services/airflow
-          export PYTHONPATH=$PWD/src
+          export PYTHONPATH=$PWD/src 
 
       - name: Run ZenML server  
         run: poetry run zenml down && poetry run zenml up

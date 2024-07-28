@@ -18,5 +18,4 @@ poetry.lock
 multirun
 results
 services/airflow/airflow.cfg
-services/zenml/zen_server/local/*.log
 flagged
