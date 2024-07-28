@@ -1,4 +1,5 @@
 ![Test code workflow](https://github.com/DrunkTeam/ApartmentPrice/actions/workflows/test-code.yaml/badge.svg)
+![Validate model workflow](https://github.com/Palandr123/MLOps-Project/actions/workflows/validate-model.yaml/badge.svg)
 # ApartmentPrice
 For Equity Residential, the challenge lies in accurately adjusting rental prices for their apartments on a daily basis to maximize revenue while maintaining competitive occupancy rates.
 
