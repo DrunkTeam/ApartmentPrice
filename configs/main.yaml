@@ -31,6 +31,7 @@ hydra:
 #       +model: "gbr"
       # +model: "sn"
       # +model: "decision_tree, gbr, sn"
+#       +model: "regnet"
 
 reproducibility:
   seeds:
