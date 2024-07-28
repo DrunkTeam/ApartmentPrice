@@ -10,7 +10,7 @@ from hydra.core.global_hydra import GlobalHydra
 from hydra import compose, initialize
 
 import sys
-from data import read_datastore, preprocess_data
+from src.data import read_datastore, preprocess_data
 
 
 from subprocess import run
