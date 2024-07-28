@@ -1,48 +1,64 @@
-import os
-import pytest
+import unittest
+from unittest.mock import patch, MagicMock
 import pandas as pd
-from hydra import initialize, compose
-from unittest.mock import patch
+import os
+
 from src.data import sample_data
-from src.validate_data import validate_initial_data
 
-def mock_system(command):
-    if command.startswith('dvc add') or command.startswith('dvc push'):
-        return 0  # Mock success for DVC commands
-    return os.system(command)
+# Пример конфигурации, которую вы используете в функции
+mock_cfg = MagicMock()
+mock_cfg.data.path = 'data/samples/sample.csv'
+mock_cfg.data.remote = "localstore"
+mock_cfg.data.repo = "."
+mock_cfg.data.version = "v1.0"
+mock_cfg.data.sample_size = 0.1
+mock_cfg.data.random_state = 42
 
-def test_sample_data_creates_file(tmp_path):
-    # Change working directory to a temporary path
-    os.chdir(tmp_path)
-    
-    # Ensure the required directory structure
-    os.makedirs('data/samples', exist_ok=True)
-    
-    with initialize(config_path="../configs", job_name="test_app"):
-        cfg = compose(config_name="test_config")
-        
-        with patch('os.system', side_effect=mock_system):
-            sample_data(cfg)
-        
-        assert os.path.exists('data/samples/sample.csv'), "Sample file was not created."
 
-def test_sample_data_not_empty(tmp_path):
-    # Change working directory to a temporary path
-    os.chdir(tmp_path)
-    
-    # Ensure the required directory structure
-    os.makedirs('data/samples', exist_ok=True)
-    
-    with initialize(config_path="../configs", job_name="test_app"):
-        cfg = compose(config_name="test_config")
-        
-        with patch('os.system', side_effect=mock_system):
-            sample_data(cfg)
-        
-        sample_df = pd.read_csv('data/samples/sample.csv')
-        
-        assert not sample_df.empty, "Sample file is empty."
+class TestSampleData(unittest.TestCase):
 
-def test_validate_initial_data():
-    csv_path = "../data/samples/sample.csv"
-    validate_initial_data(csv_path)
+    @patch('src.data.compose')
+    @patch('src.data.download_dataset')
+    @patch('src.data.dvc.api.get_url')
+    @patch('src.data.pd.read_csv')
+    @patch('src.data.os.system')
+    def test_sample_data(self, mock_system, mock_read_csv, mock_get_url, mock_download_dataset, mock_compose):
+        # Настройка мока для compose
+        mock_compose.return_value = mock_cfg
+
+        # Настройка мока для dvc.api.get_url
+        mock_get_url.return_value = 'mock_data_url'
+
+        # Создание фейковых данных для pandas.read_csv
+        fake_data = pd.DataFrame({'col1': range(100)})
+        mock_read_csv.return_value = fake_data
+
+        # Вызов тестируемой функции
+        sample_data(mock_cfg)
+
+        # Проверка вызовов
+        mock_download_dataset.assert_called_once()
+        mock_get_url.assert_called_once_with(
+            path=mock_cfg.data.path,
+            remote=mock_cfg.data.remote,
+            repo=mock_cfg.data.repo,
+            rev=mock_cfg.data.version
+        )
+        mock_read_csv.assert_called_once_with('mock_data_url')
+
+        # Проверка правильности сэмплирования данных
+        expected_sample = fake_data.sample(frac=mock_cfg.data.sample_size, random_state=mock_cfg.data.random_state)
+        pd.testing.assert_frame_equal(
+            mock_read_csv.return_value.sample(frac=mock_cfg.data.sample_size, random_state=mock_cfg.data.random_state),
+            expected_sample)
+
+        # Проверка, что директория и файл были созданы
+        self.assertTrue(os.path.exists('data/samples/sample.csv'))
+
+        # Проверка вызовов os.system
+        mock_system.assert_any_call('dvc add data/samples/sample.csv')
+        mock_system.assert_any_call('dvc push')
+
+
+if __name__ == '__main__':
+    unittest.main()
