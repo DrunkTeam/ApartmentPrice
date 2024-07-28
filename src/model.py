@@ -1,23 +1,18 @@
 import importlib
 import os
 import random
-import giskard
 import mlflow
 import numpy as np
 import pandas as pd
-from sklearn.base import BaseEstimator, RegressorMixin
 from zenml.client import Client
 import torch
-from skorch.callbacks import BatchScoring
-from skorch.regressor import NeuralNetRegressor
 from sklearn.model_selection import GridSearchCV
 import matplotlib.pyplot as plt
-from uuid import UUID
-from zenml import ExternalArtifact, pipeline, step, save_artifact, load_artifact
 
 from models import RMSELoss, WrapperNN
 
-def load_features(name, version, target_col='Price', size = 0.2):
+
+def load_features(name, version, target_col='Price', size=0.2):
     сlient = Client()
     artifacts = сlient.list_artifacts(name=name, version=version)
     print(artifacts)
@@ -29,21 +24,21 @@ def load_features(name, version, target_col='Price', size = 0.2):
     else:
         df = pd.read_csv("artifacts/artifact.csv")
 
-    # df = pd.read_csv('data/clear_data/output.csv', index_col=0)
-
-    df = df.sample(frac = size, random_state = 88)
+    df = df.sample(frac=size, random_state=88)
     X = df.drop('Price', axis=1)
     y = df['Price']
     print("shapes of X,y = ", X.shape, y.shape)
 
     return X, y
 
+
 if __name__ == "__main__":
     load_features(name="features_target", version=1)
 
-def plot_loss_claassic_ML(model, name, cfg, run,  X_val=None, y_val=None):
+
+def plot_loss_claassic_ML(model, name, cfg, run, X_val=None, y_val=None):
     plt.figure(figsize=(12, 6))
-    
+
     # Check if the model has the `train_score_` attribute
     if hasattr(model, 'train_score_'):
         # Plot training loss
@@ -56,7 +51,7 @@ def plot_loss_claassic_ML(model, name, cfg, run,  X_val=None, y_val=None):
             y_train_pred = model.predict(X_val)
             train_loss = np.sqrt(np.mean((np.array(y_val) - np.array(y_train_pred)) ** 2))
             plt.plot([0], [train_loss], 'ro', label="Train Loss")
-    
+
     # Plot validation loss if applicable
     if X_val is not None and y_val is not None:
         if hasattr(model, 'staged_predict'):
@@ -83,7 +78,9 @@ def plot_loss_claassic_ML(model, name, cfg, run,  X_val=None, y_val=None):
     mlflow.log_artifact(path, artifact_path=cfg.model.artifact_path)
     os.remove(path)
 
-    mlflow.artifacts.download_artifacts(run_id=run.info.run_id, artifact_path=f"{cfg.model.artifact_path}/{path}", dst_path="results")
+    mlflow.artifacts.download_artifacts(run_id=run.info.run_id, artifact_path=f"{cfg.model.artifact_path}/{path}",
+                                        dst_path="results")
+
 
 def plot_loss(model, name, cfg, run):
     train_losses = model.history[:, "train_loss"]
@@ -104,15 +101,17 @@ def plot_loss(model, name, cfg, run):
     mlflow.log_artifact(path, artifact_path=cfg.model.artifact_path)
     os.remove(path)
 
-    mlflow.artifacts.download_artifacts(run_id=run.info.run_id, artifact_path=f"{cfg.model.artifact_path}/{path}", dst_path="results")
+    mlflow.artifacts.download_artifacts(run_id=run.info.run_id, artifact_path=f"{cfg.model.artifact_path}/{path}",
+                                        dst_path="results")
+
 
 def train(X_train, y_train, cfg):
     # Define the model hyperparameters
     params = cfg.model.params
 
     # Train the model
-    module_name = cfg.model.module_name # e.g. "sklearn.linear_model"
-    class_name  = cfg.model.class_name # e.g. "LogisticRegression"
+    module_name = cfg.model.module_name  # e.g. "sklearn.linear_model"
+    class_name = cfg.model.class_name  # e.g. "LogisticRegression"
     import importlib
     random.seed(cfg.random_state)
     np.random.seed(cfg.random_state)
@@ -122,7 +121,7 @@ def train(X_train, y_train, cfg):
     if class_name in ["SimpleNet", "RegressionNet"]:
         optimizer = torch.optim.AdamW
         estimator = WrapperNN(module=class_instance, optimizer=optimizer, verbose=0,
-                                          criterion=RMSELoss, batch_size=512)
+                              criterion=RMSELoss, batch_size=512)
     else:
         estimator = class_instance(**params)
 
@@ -146,19 +145,20 @@ def train(X_train, y_train, cfg):
 
     return gs
 
-def retrieve_model_with_alias(model_name, model_alias = "champion") -> mlflow.pyfunc.PyFuncModel:
 
-    best_model:mlflow.pyfunc.PyFuncModel = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}@{model_alias}")
+def retrieve_model_with_alias(model_name, model_alias="champion") -> mlflow.pyfunc.PyFuncModel:
+    best_model: mlflow.pyfunc.PyFuncModel = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}@{model_alias}")
+
+    # best_model
+    return best_model
+
+
+def retrieve_model_with_version(model_name, model_version="v1") -> mlflow.pyfunc.PyFuncModel:
+    best_model: mlflow.pyfunc.PyFuncModel = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
 
     # best_model
     return best_model
 
-def retrieve_model_with_version(model_name, model_version = "v1") -> mlflow.pyfunc.PyFuncModel:
-
-    best_model:mlflow.pyfunc.PyFuncModel = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
-
-    # best_model
-    return best_model
 
 def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
     cv_results = (
@@ -176,8 +176,6 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
         if "mean" in k or "std" in k
     }
 
-    # print(cv_results, cv_results.columns)
-
     params = best_metrics_dict
 
     df_train = pd.concat([X_train, y_train], axis=1)
@@ -194,7 +192,8 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
     print("experiment-id : ", experiment_id)
 
     cv_evaluation_metric = cfg.model.cv_evaluation_metric
-    run_name = "_".join([cfg.run_name, cfg.model.model_name, cfg.model.evaluation_metric, str(params[cv_evaluation_metric]).replace(".", "_")])  # type: ignore
+    run_name = "_".join([cfg.run_name, cfg.model.model_name, cfg.model.evaluation_metric,
+                         str(params[cv_evaluation_metric]).replace(".", "_")])  # type: ignore
     print("run name: ", run_name)
 
     if mlflow.active_run():
@@ -210,7 +209,8 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
             plot_loss(gs.best_estimator_, 'champion_loss', cfg, run)
         else:
             df_t = df_test.iloc[:30]
-            plot_loss_claassic_ML(gs.best_estimator_, 'champion_loss', cfg, run, df_t.drop('Price', axis=1), df_t[['Price']])
+            plot_loss_claassic_ML(gs.best_estimator_, 'champion_loss', cfg, run, df_t.drop('Price', axis=1),
+                                  df_t[['Price']])
         df_train_dataset = mlflow.data.pandas_dataset.from_pandas(df=df_train, targets='Price')  # type: ignore
         df_test_dataset = mlflow.data.pandas_dataset.from_pandas(df=df_test, targets='Price')  # type: ignore
         mlflow.log_input(df_train_dataset, "training")
@@ -261,7 +261,6 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
             evaluators=["default"],
         )
 
-        
         mlflow.log_metrics(results.metrics)
 
         print(f"Best model metrics:\n{results.metrics}")
@@ -270,7 +269,7 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
 
             child_run_name = "_".join(["child", run_name, str(index)])  # type: ignore
             with mlflow.start_run(
-                run_name=child_run_name, experiment_id=experiment_id, nested=True
+                    run_name=child_run_name, experiment_id=experiment_id, nested=True
             ) as child_run:  # , tags=best_metrics_dict):
                 ps = result.filter(regex="param_").to_dict()
                 ms = result.filter(regex="mean_").to_dict()
@@ -297,7 +296,7 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                 if class_name in ["SimpleNet", "RegressionNet"]:
                     optimizer = torch.optim.AdamW
                     estimator = WrapperNN(
-                        module=class_instance, optimizer=optimizer, 
+                        module=class_instance, optimizer=optimizer,
                         criterion=RMSELoss, batch_size=512, **ps
                     )
                 else:
@@ -316,7 +315,6 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                     for idx, valid_loss in enumerate(valid_losses):
                         mlflow.log_metric("valid_loss", valid_loss, step=idx)
 
-
                 signature = mlflow.models.infer_signature(
                     X_train, estimator.predict(X_train)
                 )
@@ -330,7 +328,6 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                     pyfunc_predict_fn=cfg.model.pyfunc_predict_fn,
                     code_paths=["src/models.py"]
                 )
-
 
                 model_uri = model_info.model_uri
                 loaded_model = mlflow.sklearn.load_model(model_uri=model_uri)

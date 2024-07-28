@@ -1,5 +1,4 @@
 # src/validate.py
-
 import giskard
 import mlflow
 import os
@@ -87,8 +86,6 @@ def validate_model(model_name, model_alias, model_version,
 
     client = mlflow.MlflowClient()
     if model_alias is not None and model_alias != "":
-        print("AAAAAAAAAA")
-        print(client.get_latest_versions(model_name))
         model_version = client.get_model_version_by_alias(model_name, model_alias).version
 
     feature_cols = giskard_dataset.df.columns.tolist()

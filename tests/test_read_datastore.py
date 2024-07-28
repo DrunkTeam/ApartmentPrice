@@ -1,7 +1,6 @@
 import unittest
-from unittest.mock import patch, MagicMock
 import pandas as pd
-
+from unittest.mock import patch, MagicMock
 from src.data import read_datastore
 
 

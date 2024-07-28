@@ -1,29 +1,23 @@
-import mlflow
-
-# mlflow.set_tracking_uri(uri="http://localhost:5000")
-
-# MLFLOW_TRACKING_URI  environment variable
-
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-
+from mlflow.models import infer_signature
+import mlflow.exceptions
 
 # Load the Iris dataset
 X, y = datasets.load_iris(return_X_y=True)
 
-
 # Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(
-  X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.2, random_state=42
 )
 
 # Define the model hyperparameters
 params = {
-  "solver": "lbfgs",
-  "penalty": "l2",
-  "random_state": 8888,
+    "solver": "lbfgs",
+    "penalty": "l2",
+    "random_state": 8888,
 }
 
 # Train the model
@@ -41,14 +35,7 @@ f1 = f1_score(y_test, y_pred, average="macro")
 
 print(accuracy, precision, recall, f1)
 
-import mlflow
-from mlflow.models import infer_signature
-import mlflow.sklearn
-import mlflow.exceptions
-
 # Set our tracking server uri for logging
-# mlflow.set_tracking_uri(uri = "http://localhost:5000")
-
 experiment_name = "MLflow-experiment-01"
 
 try:
@@ -59,16 +46,14 @@ except mlflow.exceptions.MlflowException as e:
 
 print(experiment_id)
 
-
 # Start an MLflow run
 with mlflow.start_run(run_name="run-01", experiment_id=experiment_id) as run:
-
     # Log the hyperparameters
     mlflow.log_params(params=params)
 
     # Log the performance metrics
-    mlflow.log_metric("accuracy", accuracy) # type: ignore
-    mlflow.log_metric("f1", f1) # type: ignore
+    mlflow.log_metric("accuracy", accuracy)  # type: ignore
+    mlflow.log_metric("f1", f1)  # type: ignore
     mlflow.log_metrics({
         "accuracy": accuracy,
         "f1": f1
@@ -79,7 +64,6 @@ with mlflow.start_run(run_name="run-01", experiment_id=experiment_id) as run:
 
     # Infer the model signature
     signature = infer_signature(X_test, y_test)
-
 
     # Log the model
     model_info = mlflow.sklearn.log_model(

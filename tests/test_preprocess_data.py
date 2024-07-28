@@ -1,13 +1,10 @@
 import unittest
-from unittest.mock import patch, MagicMock, mock_open
 import pandas as np
 import pandas as pd
 from datetime import datetime
-
-# Предполагается, что функции и модули src.data импортированы здесь
 from src.data import preprocess_data
+from unittest.mock import patch, MagicMock, mock_open
 
-# Пример данных для тестирования
 DATA = {
     'Unnamed: 0': [0, 1, 2],
     'unit_id': ['U1', 'U2', 'U3'],
@@ -32,7 +29,6 @@ class TestPreprocessData(unittest.TestCase):
     @patch('src.data.Word2Vec')
     @patch('builtins.open', new_callable=mock_open)
     def test_preprocess_data(self, mock_open, mock_word2vec, mock_get_dummies, mock_compose):
-        # Настройка мока для конфигурации
         mock_cfg = MagicMock()
         mock_cfg.dublicate_cols = ['unit_id', 'Apartment Name', 'URL', 'building_id']
         mock_cfg.clean_rn_columns = 'clean_rn_col'
@@ -51,27 +47,22 @@ class TestPreprocessData(unittest.TestCase):
         mock_cfg.target_col = 'target'
         mock_compose.return_value = mock_cfg
 
-        # Настройка мока для get_dummies
         mock_get_dummies.return_value = pd.DataFrame({
             'Boston': [1, 0, 0],
             'Denver': [0, 1, 0],
             'New York City': [0, 0, 1],
         })
 
-        # Настройка мока для Word2Vec
         mock_w2v_model = MagicMock()
         mock_w2v_model.wv = MagicMock()
         mock_w2v_model.wv.__contains__.side_effect = lambda x: True
         mock_w2v_model.wv.__getitem__.side_effect = lambda x: np.array([1, 1, 1])
         mock_word2vec.return_value = mock_w2v_model
 
-        # Создание DataFrame
         df = pd.DataFrame(DATA)
 
-        # Вызов тестируемой функции
         X, y = preprocess_data(df)
 
-        # Проверка результатов
         self.assertNotIn('Unnamed: 0', X.columns)
         self.assertNotIn('unit_id', X.columns)
         self.assertNotIn('Apartment Name', X.columns)
@@ -84,14 +75,12 @@ class TestPreprocessData(unittest.TestCase):
         self.assertEqual(y.shape[1], 1)
         self.assertEqual(y.columns[0], 'target')
 
-        # Проверка вызова get_dummies
         mock_get_dummies.assert_called_once()
         pd.testing.assert_series_equal(
             mock_get_dummies.call_args[0][0],
             df['City']
         )
 
-        # Проверка вызова Word2Vec
         mock_word2vec.assert_called()
 
 

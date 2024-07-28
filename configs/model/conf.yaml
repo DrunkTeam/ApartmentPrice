@@ -3,4 +3,3 @@ model:
     name: your_model_name_1
   challenger2:
     name: your_model_name_2
-  # Продолжайте для остальных моделей

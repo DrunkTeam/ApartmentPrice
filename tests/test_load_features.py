@@ -1,8 +1,6 @@
+import pandas as pd
 import unittest
 from unittest.mock import patch
-
-import pandas as pd
-
 from src.data import load_features
 
 X_data = {
@@ -71,6 +69,7 @@ class TestLoadFeatures(unittest.TestCase):
 
         # Assertions
         self.assertTrue(mock_save_artifact.called)
+
         # Check that the save_artifact method was called with the correct parameters
         args_list = mock_save_artifact.call_args_list
 

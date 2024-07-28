@@ -1,25 +1,16 @@
 # src/app.py
-import os
 import gradio as gr
-import mlflow
-from model import load_features
-import sys
-# current_directory = os.getcwd()
-# sys.path.append(current_directory)
 
-# sys.path.append("/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice")
 from src.data import init_hydra, preprocess_data as transform_data, read_datastore, validate_features, load_features
 
 import json
 import requests
-import numpy as np
 import pandas as pd
-from hydra import compose, initialize
-from omegaconf import DictConfig
 
 cfg = init_hydra()
 raw_df, _ = read_datastore()
 raw_df: pd.DataFrame = raw_df
+
 
 # You need to define a parameter for each column in your raw dataset
 def predict(Beds=None,
@@ -88,13 +79,8 @@ def predict(Beds=None,
         'Estiamted_Vacancy': Estiamted_Vacancy
     }
 
-    # print(features)
-
     # Build a dataframe of one row
     raw_df = pd.DataFrame(features, index=[0])
-    print(raw_df)
-    # This will read the saved transformers "v4" from ZenML artifact store
-    # And only transform the input data (no fit here).
     X, _ = transform_data(
         df=raw_df
     )
@@ -110,7 +96,6 @@ def predict(Beds=None,
     payload = example
 
     # Send POST request with the payload to the deployed Model API
-    # Here you can pass the port number at runtime using Hydra
     response = requests.post(
         url=f"http://localhost:{5001}/predict",
         data=payload,
@@ -192,8 +177,5 @@ demo = gr.Interface(
     # when needed.
 )
 
-# Launch the web UI locally on port 5155
 demo.launch(server_port=5155)
 
-# Launch the web UI in Gradio cloud on port 5155
-# demo.launch(share=True, server_port = 5155)

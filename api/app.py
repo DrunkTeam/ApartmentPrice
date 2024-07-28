@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, abort, make_response
 
-import mlflow
 import mlflow.pyfunc
 import os
 import pandas as pd
