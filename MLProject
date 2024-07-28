@@ -9,8 +9,28 @@ entry_points:
   validate:
     command: "python src/validate.py"
 
+  evaluate:
+    command: "python src/evaluate.py"
+
   transform:
-    command: "zenml pipeline run transform_pipeline"
+    command: "python src/transform.py"
 
   extract:
-    command: "airflow dags test <dag-id>"
+    command: "python src/extract.py"
+
+  predict:
+    parameters:
+      example_version:
+        type: string
+        default: 1
+      hostname:
+        type: string
+        default: "localhost"
+      port:
+        type: float
+        default: 5001
+      random_state:
+        type: float
+        default: 1
+
+  command: "python src/predict.py ++example_version={example_version} ++hostname={hostname} ++port={port} ++random_state={random_state}"
