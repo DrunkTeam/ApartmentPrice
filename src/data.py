@@ -7,6 +7,7 @@ import great_expectations as gx
 import dvc.api
 import datetime as dt
 import re
+import pickle
 from subprocess import run
 from zipfile import ZipFile
 
@@ -14,7 +15,8 @@ from omegaconf import DictConfig
 from hydra.core.global_hydra import GlobalHydra
 from hydra import compose, initialize
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+
 from gensim.models import Word2Vec
 from gensim.utils import simple_preprocess
 from pathlib import Path
@@ -176,6 +178,16 @@ def split_vectors(df, column):
     vector_df.columns = [f'{column}_{i}' for i in range(vector_df.shape[1])]
     return vector_df
 
+# def load_model(path):
+#     if os.path.exists(path):
+#         with open(path, 'rb') as file:
+#             return pickle.load(file)
+#     return None
+
+# def save_model(model, path):
+#     with open(path, 'wb') as file:
+#         pickle.dump(model, file)
+
 
 def read_datastore():
     """
@@ -219,6 +231,9 @@ def preprocess_data(df):
     # initialize(config_path="../configs/data", version_base="1.1")
     cfg = compose(config_name="ApartmentPrice")
 
+    path = compose(config_name="main")
+
+
     # column contains just index of the row
     df.drop('Unnamed: 0', axis=1, inplace=True)
 
@@ -246,7 +261,6 @@ def preprocess_data(df):
     df[clean_string_col] = df[clean_string_col].apply(clean_string).str.lower()
 
     # Impute missing values with 'most-frequent' strategy
-
     imp_most_frequent = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
 
 
@@ -254,11 +268,7 @@ def preprocess_data(df):
     for i in cols_most_frequent:
         df[[i]] = imp_most_frequent.fit_transform(df[[i]])
 
-
     df[clean_string_col] = df[clean_string_col].fillna(df[clean_string_col].mode()[0])
-
-
-
 
     New_date = []
 
@@ -287,13 +297,45 @@ def preprocess_data(df):
     df.drop([cfg.col_for_new_date, cfg.todatatime_columns, "Move_in_date_year"], axis=1, inplace=True)
 
     # One-hot encoding
-    ohe_col = cfg.ohe_columns
-    cities = pd.get_dummies(df[ohe_col], dtype=float).drop(df[ohe_col].value_counts().tail(1).index[0], axis=1)
-    df = pd.concat([df, cities], axis=1)
-    df.drop([ohe_col], axis=1, inplace=True)
+    # ohe_col = cfg.ohe_columns
+    # cities = pd.get_dummies(df[ohe_col], dtype=float).drop(df[ohe_col].value_counts().tail(1).index[0], axis=1)
+    # print(cities)
+    # df = pd.concat([df, cities], axis=1)
+    # df.drop([ohe_col], axis=1, inplace=True)
+    # print(df.columns)
+
+    models_path = os.path.join(path.paths.root_path, 'models', 'transformations')
+    if not os.path.exists(models_path):
+        os.makedirs(models_path)
+
+
+    # Categories encoding
+    categorical_cols = cfg.ohe_columns
+
+    ohe_path = os.path.join(models_path, 'onehotencoder.pkl')
+
+
+    if os.path.exists(ohe_path):
+        with open(ohe_path, 'rb') as file:
+            ohe = pickle.load(file)
+
+    else: 
+        ohe=None        
+
+    if ohe is None:
+        ohe = OneHotEncoder(sparse_output=False, dtype=int)
+        ohe.fit(df[categorical_cols])
+        with open(ohe_path, 'wb') as file:
+            pickle.dump(ohe, file)
+    encoded_categorical_cols = ohe.transform(df[categorical_cols])
+    column_names = ohe.categories_[0]
+    encoded_df = pd.DataFrame(encoded_categorical_cols, columns=column_names, index=df.index)
+
+    df = pd.concat([df, encoded_df], axis=1)
+    df = df.drop(categorical_cols, axis=1)
+
 
     # Label encoding
-    # label_encoding = {'Tuesday': 1, 'Saturday': 2,'Friday': 3, 'Sunday': 4, 'Monday': 5, 'Wednesday': 6, 'Thursday': 7}
     df[cfg.columns_for_label_enc] = df[cfg.columns_for_label_enc].apply(lambda x: cfg.label_encoding.get(x))
 
     # Encoding text features using embeddings
@@ -334,14 +376,12 @@ def preprocess_data(df):
     df.drop([clean_string_col, clean_description_col, 'clean_description_col_processed', 'clean_string_col_processed',
              clean_rn_col, 'clean_rn_col_processed'], axis=1, inplace=True)
 
-    # for_scaling = ['Beds', 'Baths', 'sq.ft', 'Floor', 'Days_Till_Available', 'Units', 'Estiamted_Vacancy', 'Move_in_date_day', 'Move_in_date_month', 'Move_in_date_year']
     for_scaling = cfg.for_scaling
     scaler = StandardScaler()
     for scale in for_scaling:
         df[[scale]] = scaler.fit_transform(df[[scale]])
 
     # Processing vectors columns into separate single value columns to build a model further.
-    # columns_to_split = ['clean_string_col_vector','clean_description_col_vector', 'clean_rn_col_vector']
     split_dfs = [split_vectors(df, column) for column in cfg.columns_to_split]
     df_split = pd.concat(split_dfs, axis=1)
 
@@ -352,7 +392,7 @@ def preprocess_data(df):
 
     df.drop(cfg.columns_to_split, axis=1, inplace=True)
 
-
+    print(df.columns, '\n', df)
 
     X = df.drop(cfg.target_col, axis=1)
     y = df[[cfg.target_col]]

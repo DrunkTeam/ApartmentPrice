@@ -19,7 +19,7 @@ col_for_old_date: 'Move_in_date'
 
 col_for_extracting_date: []
 
-ohe_columns: 'City'
+ohe_columns: ['City']
 
 columns_for_label_enc: 'Day_of_the_week_recorded'
 
