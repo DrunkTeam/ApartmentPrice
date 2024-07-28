@@ -63,7 +63,9 @@ jobs:
           export PYTHONPATH=$PWD/src
 
       - name: Run ZenML server  
-        run: poetry run zenml down && poetry run zenml up
+        run: |
+          poetry run zenml down && poetry run zenml up
+          poetry run python services/airflow/dags/data_prepare.py
 
       - name: Run MLFlow server
         run: |
