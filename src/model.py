@@ -20,10 +20,15 @@ from models import RMSELoss, WrappedNeuralNetRegressor
 def load_features(name, version, target_col='Price', size = 0.2):
     сlient = Client()
     artifacts = сlient.list_artifacts(name=name, version=version)
+    print(artifacts)
     artifacts = sorted(artifacts, key=lambda x: x.version, reverse=True)
-    # # print("LEN: " + str(len(artifacts)))                                              
+    print("LEN: " + str(len(artifacts)))
     # # print("Loading features from", name, version)
-    df = artifacts[0].load()
+    if artifacts:
+        df = artifacts[0].load()
+    else:
+        df = pd.read_csv("artifacts/artifact.csv")
+
     # df = pd.read_csv('data/clear_data/output.csv', index_col=0)
 
     df = df.sample(frac = size, random_state = 88)
@@ -32,6 +37,9 @@ def load_features(name, version, target_col='Price', size = 0.2):
     print("shapes of X,y = ", X.shape, y.shape)
 
     return X, y
+
+if __name__ == "__main__":
+    load_features(name="features_target", version=1)
 
 def plot_loss_claassic_ML(model, name, cfg, run,  X_val=None, y_val=None):
     plt.figure(figsize=(12, 6))
