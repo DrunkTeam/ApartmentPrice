@@ -1,15 +1,8 @@
 import unittest
-from unittest.mock import patch
-import pandas as pd
-
-from src.data import read_datastore
-from src.data import init_hydra
-
-import unittest
 from unittest.mock import patch, MagicMock
 import pandas as pd
 
-from src.data import read_datastore, init_hydra
+from src.data import read_datastore
 
 
 class TestReadDatastore(unittest.TestCase):
@@ -29,6 +22,7 @@ class TestReadDatastore(unittest.TestCase):
         mock_cfg.data.repo = "."
         mock_cfg.data.version = "v1.0"
         mock_init_hydra.return_value = mock_cfg
+        print(mock_cfg)
 
         with patch("src.data.cfg", mock_cfg):
             # Call the method
