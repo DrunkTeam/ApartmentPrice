@@ -28,9 +28,10 @@ hydra:
   sweeper:
     params:
       # +model: "decision_tree"
-      +model: "gbr"
+      # +model: "gbr"
       # +model: "sn"
-      # +model: "decision_tree, gbr, sn"
+      +model: "regnet"
+      # +model: "decision_tree, gbr, sn, regnet"
 
 reproducibility:
   seeds:

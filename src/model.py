@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from uuid import UUID
 from zenml import ExternalArtifact, pipeline, step, save_artifact, load_artifact
 
-from models import RMSELoss, WrappedNeuralNetRegressor
+from models import RMSELoss, WrapperNN
 
 def load_features(name, version, target_col='Price', size = 0.2):
     сlient = Client()
@@ -111,9 +111,9 @@ def train(X_train, y_train, cfg):
     torch.manual_seed(cfg.random_state)
 
     class_instance = getattr(importlib.import_module(cfg.model.module_name), cfg.model.class_name)
-    if class_name == "SimpleNet":
+    if class_name in ["SimpleNet", "RegressionNet"]:
         optimizer = torch.optim.AdamW
-        estimator = WrappedNeuralNetRegressor(module=class_instance, optimizer=optimizer, verbose=0, 
+        estimator = WrapperNN(module=class_instance, optimizer=optimizer, verbose=0, 
                                           criterion=RMSELoss, batch_size=512)
     else:
         estimator = class_instance(**params)
@@ -127,7 +127,7 @@ def train(X_train, y_train, cfg):
         estimator=estimator,
         param_grid=param_grid,
         scoring=scoring,
-        n_jobs=8,
+        n_jobs=cfg.cv_n_jobs,
         refit=evaluation_metric,
         cv=cfg.model.folds,
         verbose=1,
@@ -198,7 +198,7 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
 
     # Parent run
     with mlflow.start_run(run_name=run_name, experiment_id=experiment_id) as run:
-        if cfg.model.class_name == "SimpleNet":
+        if cfg.model.class_name in ["SimpleNet", "RegressionNet"]:
             plot_loss(gs.best_estimator_, 'champion_loss', cfg, run)
         else:
             df_t = df_test.iloc[:30]
@@ -286,9 +286,9 @@ def log_metadata(cfg, gs, X_train, y_train, X_test, y_test):
                     importlib.import_module(module_name), class_name
                 )
 
-                if class_name == "SimpleNet":
+                if class_name in ["SimpleNet", "RegressionNet"]:
                     optimizer = torch.optim.AdamW
-                    estimator = WrappedNeuralNetRegressor(
+                    estimator = WrapperNN(
                         module=class_instance, optimizer=optimizer, 
                         criterion=RMSELoss, batch_size=512, **ps
                     )
