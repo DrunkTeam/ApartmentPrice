@@ -437,7 +437,7 @@ def load_features(X, y, version):
 
     l = client.list_artifacts(name="features_target", sort_by="version").items
     l.reverse()
-    if not l:
+    if l:
         df = l[0].load()
 
         saved_X = df.drop(cfg.target_col, axis=1)
@@ -445,7 +445,7 @@ def load_features(X, y, version):
 
         return saved_X, saved_y
     else:
-        return None, None
+        return X, y
 
 
 if __name__ == "__main__":
