@@ -8,10 +8,8 @@ import sys
 current_directory = os.getcwd()
 sys.path.append(current_directory)
 from src.data import read_datastore, preprocess_data, validate_features, load_features
-# from utils import get_sample_version
 
 
-# BASE_PATH = os.path.expandvars("$/Users/Sofa/Desktop/Innopolis/MLOps/ApartmentPrice")
 
 @step(enable_cache=False)
 def extract()-> Tuple[
@@ -60,12 +58,6 @@ def validate(X:pd.DataFrame,
     return X, y
 
 
-# @step(enable_cache=False)
-# def load(X:pd.DataFrame, y:pd.DataFrame, version: str):
-    
-#     load_features(X, y, version)
-
-# #     return X, y
 @step(enable_cache=False)
 def load(X:pd.DataFrame, y:pd.DataFrame, version: str)-> Tuple[
                     Annotated[pd.DataFrame, 
@@ -76,9 +68,10 @@ def load(X:pd.DataFrame, y:pd.DataFrame, version: str)-> Tuple[
                                            tags=["data_preparation"])]
                                     ]:
     
-    X, y = load_features(X, y, version)
+     X, y = load_features(X, y, version)
+        # load_features(X, y, version)
 
-    return X, y
+     return X, y
 
 @pipeline()
 def prepare_data_pipeline():

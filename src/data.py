@@ -178,15 +178,6 @@ def split_vectors(df, column):
     vector_df.columns = [f'{column}_{i}' for i in range(vector_df.shape[1])]
     return vector_df
 
-# def load_model(path):
-#     if os.path.exists(path):
-#         with open(path, 'rb') as file:
-#             return pickle.load(file)
-#     return None
-
-# def save_model(model, path):
-#     with open(path, 'wb') as file:
-#         pickle.dump(model, file)
 
 
 def read_datastore():
@@ -195,16 +186,6 @@ def read_datastore():
 
     """
     # Initialize Hydra with config path (replace with your config file)
-    # we have to read them from the datastore after the 1 task in this phase
-    # initialize(config_path="../configs", version_base="1.1")
-    # cfg = compose(config_name="data_version")
-    # version_num = cfg.data_version
-
-    # sample_path = Path("data") / "samples" / "sample.csv"
-    # df = pd.read_csv(sample_path)
-    # return df, version_num
-    # relative_path = os.path.join('data', 'samples', cfg.data.sample_filename)
-    # path=Path("data")
     data_url = dvc.api.get_url(
         path=cfg.data.path,
         remote=cfg.data.remote,
@@ -227,8 +208,6 @@ def preprocess_data(df):
     Preprocess data step in ZenML pipeline
 
     """
-    # client = zenml.client.Client()
-    # initialize(config_path="../configs/data", version_base="1.1")
     cfg = compose(config_name="ApartmentPrice")
 
     path = compose(config_name="main")
@@ -238,7 +217,7 @@ def preprocess_data(df):
     df.drop('Unnamed: 0', axis=1, inplace=True)
 
     # Columns which dublicate the information from different text columns
-    # dublicate_cols = ['unit_id','Apartment Name', 'URL','building_id']
+
     dublicate_cols = cfg.dublicate_cols
     df = df.drop(dublicate_cols, axis=1)
 
@@ -297,12 +276,7 @@ def preprocess_data(df):
     df.drop([cfg.col_for_new_date, cfg.todatatime_columns, "Move_in_date_year"], axis=1, inplace=True)
 
     # One-hot encoding
-    # ohe_col = cfg.ohe_columns
-    # cities = pd.get_dummies(df[ohe_col], dtype=float).drop(df[ohe_col].value_counts().tail(1).index[0], axis=1)
-    # print(cities)
-    # df = pd.concat([df, cities], axis=1)
-    # df.drop([ohe_col], axis=1, inplace=True)
-    # print(df.columns)
+
 
     models_path = os.path.join(path.paths.root_path, 'models', 'transformations')
     if not os.path.exists(models_path):
@@ -392,7 +366,6 @@ def preprocess_data(df):
 
     df.drop(cfg.columns_to_split, axis=1, inplace=True)
 
-    print(df.columns, '\n', df)
 
     X = df.drop(cfg.target_col, axis=1)
     y = df[[cfg.target_col]]
@@ -451,10 +424,16 @@ def load_features(X, y, version):
 
     l = client.list_artifacts(name="features_target", sort_by="version").items
     l.reverse()
+
     df = l[0].load()
+
+
 
     saved_X = df.drop(cfg.target_col, axis=1)
     saved_y = df[[cfg.target_col]]
+
+    # print(saved_X, '\n', saved_y, '\n')
+
 
     return saved_X, saved_y
 
