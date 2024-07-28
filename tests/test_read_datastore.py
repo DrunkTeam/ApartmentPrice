@@ -22,7 +22,6 @@ class TestReadDatastore(unittest.TestCase):
         mock_cfg.data.repo = "."
         mock_cfg.data.version = "v1.0"
         mock_init_hydra.return_value = mock_cfg
-        print(mock_cfg)
 
         with patch("src.data.cfg", mock_cfg):
             # Call the method
