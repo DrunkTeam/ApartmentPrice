@@ -54,11 +54,12 @@ python src/app.py
 You can run many elemnts of our project: from airflow to CI/CD. Instructions you can find in relevant folders and in folder 'docs'
 
 ## Listening ports
+MLflow: 5000 \
+ZenML: 8237 \
+Flask: 5001 \
+UI: 5155 \
 Airflow:
-- scheduler : 8793
-- triger : 8794
-- webserver: 8882
-MLflow: 5000
-ZenML: 8237
-Flask: 5001
-UI: 5155
+  - scheduler : 8793
+  - triger : 8794
+  - webserver: 8882 
+
