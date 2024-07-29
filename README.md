@@ -23,9 +23,14 @@ For Equity Residential, the challenge lies in accurately adjusting rental prices
 └───tests              # Scripts for testing Python code \
 ```
 
-##Installing
+## Installing
 To install environments and requirements, use the following script:
 ```bash
-./scripts/install_requirements.sh
+conda create -n mlops python=3.11.9 
+conda activate mlops
+pip install poetry==1.8.1
+poetry install
+
+poetry run ... write command (example, python src/data.py)
 ```
 
