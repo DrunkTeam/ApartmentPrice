@@ -1,4 +1,4 @@
-For running
+# For running docker
 ```bash
 cd ApartmentPrice/api
 ```
@@ -31,4 +31,11 @@ docker stop <CONTAINER_ID>
 If it doesn't help, you need run docker on another port.
 ```bash
 docker run --rm -p 5153:8080 my_ml_service
+```
+
+# For running UI\flask
+```bash
+export PROJECTPATH={your_path}/ApartmentPrice
+python api/app.py
+python src/app.py
 ```
