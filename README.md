@@ -34,5 +34,23 @@ poetry install
 poetry run ... write command (example, python src/data.py)
 ```
 
+## Deployment Instructions
+Launch Docker Container:
+
+```bash
+docker run -d -p 5152:8080 --name team_6_ml_service
+```
+Start Flask API:
+
+```bash
+python api/app.py
+```
+
+Initiate Gradio UI:
+
+```bash
+python src/app.py
+```
+
 ## Running
 You can run many elemnts of our project: from airflow to CI/CD. Instructions you can find in relevant folders and in folder 'docs'
