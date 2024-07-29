@@ -1,11 +1,13 @@
 ## Installing dependencies
 
-Make the script executable, give the script execution rights: \
-chmod +x scripts/install_requirements.sh
-
-To install dependencies, use the following script:
+To install environments and requirements, use the following script:
 ```bash
-./scripts/install_requirements.sh
+conda create -n mlops python=3.11.9 
+conda activate mlops
+pip install poetry==1.8.1
+poetry install
+
+poetry run ... write command (example, python src/data.py)
 ```
 
 To automate taking data and validation you can use test_data.sh
