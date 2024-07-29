@@ -10,7 +10,7 @@ cd services/airflow/
 nano airflow.cfg
 ```
 
-Changed paths to yours path: 
+Changed paths to yours path: \
 dags_folder = {your_path}/ApartmentPrice/services/airflow/dags \
 plugins_folder = {your_path}/ApartmentPrice/services/airflow/plugins \
 base_log_folder = {your_path}/ApartmentPrice/services/airflow/logs \
