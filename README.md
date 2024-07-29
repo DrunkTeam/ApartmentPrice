@@ -7,7 +7,6 @@ For Equity Residential, the challenge lies in accurately adjusting rental prices
 ```
 ├───README.md          # Repo docs \
 ├───.gitignore         # gitignore file \
-├───requirements.txt   # Python packages   \
 ├───configs            # Hydra configuration management \
 ├───data               # All data \
 ├───docs               # Project docs like reports or figures \
