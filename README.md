@@ -34,3 +34,5 @@ poetry install
 poetry run ... write command (example, python src/data.py)
 ```
 
+## Running
+You can run many elemnts of our project: from airflow to CI/CD. Instructions you can find in relevant folders and in folder 'docs'
