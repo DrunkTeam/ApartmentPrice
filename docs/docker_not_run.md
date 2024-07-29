@@ -1,16 +1,16 @@
-Для запуска надо набрать 
+For running
 ```bash
-cd /home/kama/Documents/MLOps/ApartmentPrice/api
+cd ApartmentPrice/api
 ```
 
 ```bash
-ocker run --rm -p 5152:8080 my_ml_service
+docker run --rm -p 5152:8080 my_ml_service
 ```
 
-Если выскакиевает ошибка по типу
+If you have error like this:
 docker: Error response from daemon: driver failed programming external connectivity on endpoint hungry_spence (b7475c6cd0e0a5ffc5a1ababab7347113688d4b9aefa97f15412aa8769163f27): Bind for 0.0.0.0:5152 failed: port is already allocated.
 
-То надо сделать следующее:
+You need to do:
 
 ```bash
 sudo lsof -i :5152
@@ -28,7 +28,7 @@ docker ps
 docker stop <CONTAINER_ID>
 ```
 
-Это должно помочь, но если не помогло, то можно тупо запустить докер на другом порту:
+If it doesn't help, you need run docker on another port.
 ```bash
 docker run --rm -p 5153:8080 my_ml_service
 ```
