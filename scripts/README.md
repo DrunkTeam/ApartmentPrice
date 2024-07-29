@@ -14,20 +14,4 @@ To automate taking data and validation you can use test_data.sh
 ```bash
 ./scripts/test_data.sh <path_to_csv> <tag_name> <branch of git>
 ```
-## Deployment Instructions
-Launch Docker Container:
 
-```bash
-docker run -d -p 5152:8080 --name team_6_ml_service
-```
-Start Flask API:
-
-```bash
-python api/app.py
-```
-
-Initiate Gradio UI:
-
-```bash
-python src/app.py
-```
