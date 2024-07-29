@@ -11,12 +11,12 @@ nano airflow.cfg
 ```
 
 Changed paths to yours path: 
-dags_folder = {your_path}/ApartmentPrice/services/airflow/dags
-plugins_folder = {your_path}/ApartmentPrice/services/airflow/plugins
-base_log_folder = {your_path}/ApartmentPrice/services/airflow/logs
-dag_processor_manager_log_location = {your_path}/ApartmentPrice/services/airflow/logs/dag_processor_manager/dag_processor_man>
-config_file = {your_path}/ApartmentPrice/services/airflow/webserver_config.py
-child_process_log_directory = {your_path}/ApartmentPrice/services/airflow/logs/scheduler
+dags_folder = {your_path}/ApartmentPrice/services/airflow/dags \
+plugins_folder = {your_path}/ApartmentPrice/services/airflow/plugins \
+base_log_folder = {your_path}/ApartmentPrice/services/airflow/logs \
+dag_processor_manager_log_location = {your_path}/ApartmentPrice/services/airflow/logs/dag_processor_manager/dag_processor_man> \
+config_file = {your_path}/ApartmentPrice/services/airflow/webserver_config.py \
+child_process_log_directory = {your_path}/ApartmentPrice/services/airflow/logs/scheduler \
 
 ### Create database for our data
 ```bash
