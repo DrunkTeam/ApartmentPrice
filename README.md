@@ -17,7 +17,6 @@ For Equity Residential, the challenge lies in accurately adjusting rental prices
 ├───reports            # Generated reports \
 ├───scripts            # Shell scripts (.sh) \
 ├───services           # Metadata of services (PostgreSQL, Feast, Apache airflow, ...etc) \
-├───sql                # SQL files \
 ├───src                # Python scripts \
 └───tests              # Scripts for testing Python code \
 ```
